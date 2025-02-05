@@ -65,3 +65,23 @@ body {
 .track-right {
     animation: scroll-right var(--duration) linear infinite;
 }
+
+/* Main content */
+
+.needs {
+    text-align: center;
+}
+
+#needs--list{
+    list-style: none;
+    text-align: start;
+    padding-right: 2px;
+}
+
+#needs--start{
+    padding: 0 3 0 3;
+}
+
+.intro {
+    padding-right: 6px;
+}
