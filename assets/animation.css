@@ -1,0 +1,70 @@
+/* Marquee animations */
+.marquee-container {
+    position: relative;
+    width: 100%;
+    height: 35vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.marquee-track {
+    position: absolute;
+    display: flex;
+    width: max-content;
+    left: 0;
+}
+@keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@keyframes scroll-right {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+}
+
+.track-left {
+    animation: scroll-left var(--duration) linear infinite;
+}
+
+.track-right {
+    animation: scroll-right var(--duration) linear infinite;
+}
+
+/* Icon Animations */
+.question-card p::before {
+    content: '?';
+    position: absolute;
+    top: -2.9rem;
+    left: -1rem;
+    font-size: 3.5rem;
+    font-weight: bold;
+    z-index: 2;
+    color: rgb(27, 143, 184, 0.8);
+}
+
+/* .service-card p::before {
+    content: '✅️';
+    position: absolute;
+    top: -3rem;
+    left: -3rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+    z-index: 2;
+} */
+
+.service-card p::before {
+    content: '';
+    position: absolute;
+    top: -2.5rem;
+    left: -2.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    z-index: 2;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='rgb(21, 92, 14, 0.8)'%3E%3Cpath d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
