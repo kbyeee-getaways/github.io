@@ -2,79 +2,141 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="Kbyeee Getaways - Your trusted travel agent for stress-free vacation planning. Personalized travel services, payment plans, and expert guidance for your dream getaway.">
-    <meta name="keywords" content="travel agent, vacation planning, travel services, getaway planning, stress-free vacation, travel booking, vacation packages">
-    <title>Kbyeee Getaways | Professional Travel Planning & Booking Services</title>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kbyeee Getaways - Your perfect travel experience awaits. We specialize in stress-free vacation planning for resort getaways, custom itineraries, Disney planning, and destination weddings and more. Personalized travel services, payment plans, and expert guidance for your dream getaway.">
+    <meta name="keywords" content="travel planning, luxury resorts, Disney vacation, destination wedding, all-inclusive stays, cruise planning, travel agent, vacation planning, travel services, getaway planning, stress-free vacation, travel booking, vacation packages">
+    <title>Kbyeee Getaways | Stress-Free Travel Planning & Custom Experiences</title>
+    <link rel="stylesheet" href="assets/reset.css">
     <link rel="stylesheet" href="assets/styles.css">
-    <link rel="stylesheet" href="assets/animation.css">
-    <link rel="stylesheet" href="assets/responsive.css">
 </head>
 <body>
-    <!--marquee container -->
-    <div class="marquee-container">
-    </div>
-
-    <!-- Main content section -->
-    <main class="content-section">
-        <section class="intro-section">
-            <div class="content-container">
-                <div class="h1-container">
-                    <h1>Heeey! I'm Brandi, and I would love to help you plan your next Getaway!</h1>
-                    <img 
-                        src="assets/brandi.png" 
-                        alt="background image of owner" 
-                        class="h1-background-image"
-                        aria-hidden="true"
-                    >                    
+    <header>
+        <nav aria-label="Main navigation" class="main-nav">
+            <div class="container nav-container">
+                <a href="#" class="logo">Kbyeee Getaways</a>
+                <button aria-label="Toggle menu" class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="nav-menu">
+                    <ul class="nav-links">
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#why-us">Why Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
                 </div>
-                <h2>Kbyeee Getaways offers Getaway Planning and Booking services to handle all your travel needs!</h2>
-                
-                <div class="questions-grid">
-                    <div class="question-card">
-                        <p class="questions">Stuck on where to even start researching?</p>
-                    </div>
-                    <div class="question-card">
-                        <p class="questions">Don't have the time to research and plan?</p>
-                    </div>
-                    <div class="question-card">
-                        <p class="questions">Need help just putting it all together?</p>
-                    </div>
-                </div>
+            </div>
+        </nav>
+    </header>
 
-                <div class="service-description">
-                    <h3>No matter what your needs are, we will take the stress away from vacation planning so you can enjoy the journey.</h3>
-                </div>
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" aria-labelledby="hero-heading">
+            <div class="hero__content">
+                <h1 id="hero-heading">You Dream It, We Plan It. Your Perfect Getaway, Seamlessly Designed.</h1>
+                <p>Stress-free, curated travel experiences tailored to your style—so you can simply enjoy the journey.</p>
+                <button class="cta-button planning-button">Start Planning Now</button>
+            </div>
+        </section>
 
+        <!-- About Section -->
+        <section id="about" class="about" aria-labelledby="about-heading">
+            <div class="container">
+                <h2 id="about-heading">About Kbyeee Getaways</h2>
+                <p>At Kbyeee Getaways, we take the stress out of travel planning so you can simply enjoy the journey. Whether you're dreaming of a relaxing resort escape, an all-inclusive getaway, a magical Disney vacation, or a dream destination wedding, we craft seamless, well-curated experiences tailored to your style. You dream it—we handle every detail, ensuring a smooth, stress-free trip from start to finish.</p>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services" aria-labelledby="services-heading">
+            <div class="container">
+                <h2 id="services-heading"> What We Offer</h2>
                 <div class="services-grid">
-                    <div class="service-card">
-                        <p>Need an easy to follow payment plan with secure payment options?</p>
-                    </div>
-                    <div class="service-card">
-                        <p>Need questions answered before, during, or after your Getaway?</p>
-                    </div>
-                    <div class="service-card">
-                        <p>Only need a customized itinerary to keep you on schedule?</p>
-                    </div>
-                    <div class="service-card">
-                        <p>Need to know how to best protect your Getaway?</p>
-                    </div>
-                    <div class="service-card">
-                        <p>Ready to get your sea legs on a cruise?</p>
-                    </div>
-                    <div class="service-card">
-                        <p>Want us to handle it all so you only have to pay and pack?</p>
-                    </div>
+                    <article class="service-card">
+                        <span class="emoji-icon">✅</span>
+                        <h3>Resort Getaways & All-Inclusive Stays</h3>
+                        <p>Handpicked stays with seamless service.</p>
+                    </article>
+                    <article class="service-card">
+                        <span class="emoji-icon">✅</span>
+                        <h3>Custom-Curated Itineraries</h3>
+                        <p>From start to finish, every detail planned for you.</p>
+                    </article>
+                    <article class="service-card">
+                        <span class="emoji-icon">✅</span>
+                        <h3>Hassle-Free Cruise & Disney Planning</h3>
+                        <p>The magic without the stress.</p>
+                    </article>
+                    <article class="service-card">
+                        <span class="emoji-icon">✅</span>
+                        <h3>Group Travel & Destination Weddings</h3>
+                        <p>Unforgettable experiences, effortlessly arranged.</p>
+                    </article>
                 </div>
+            </div>
+        </section>
 
+<<<<<<< Updated upstream
                 <div class="closing-statement">
                     <h4>We aren't just here to find you the best deals, <i>although we will try =]</i>. We want to ensure your vacation planning is as seamless and stress free as possible!</h4>
+=======
+        <!-- Why Book With Us Section -->
+        <section id="why-us" class="why-us" aria-labelledby="why-us-heading">
+            <div class="container">
+                <h2 id="why-us-heading">Why Book With Us?</h2>
+                <div class="benefits-grid">
+                    <div class="benefit">
+                        <span class="emoji-icon">⭐</span>
+                        <h3>Expert Planning</h3>
+                        <p>Save hours of research; we handle the details.</p>
+                    </div>
+                    <div class="benefit">
+                        <span class="emoji-icon">⭐</span>
+                        <h3>Curated Experiences</h3>
+                        <p>No generic packages—just personalized, high-quality getaways.</p>
+                    </div>
+                    <div class="benefit">
+                        <span class="emoji-icon">⭐</span>
+                        <h3>Insider Knowledge</h3>
+                        <p>Exclusive insights on top destinations.</p>
+                    </div>
+                    <div class="benefit">
+                        <span class="emoji-icon">⭐</span>
+                        <h3>Dedicated Support</h3>
+                        <p>Before, during, and after your trip.</p>
+                    </div>
+>>>>>>> Stashed changes
                 </div>
+            </div>
+        </section>
+
+        <!-- Call to Action Section -->
+        <section id="contact" class="contact" aria-labelledby="contact-heading">
+            <div class="container">
+                <h2 id="contact-heading">Let's Plan Your Next Escape</h2>
+                <p>Stress-Free & Seamlessly Curated</p>
+                <button class="cta-button planning-button">Get Started</button>
             </div>
         </section>
     </main>
 
-    <script src="marquee.js"></script>
+    <!-- Modal Form -->
+    <div class="modal" aria-labelledby="modal-title" aria-modal="true" role="dialog">
+        <div class="modal-content">
+            <button class="close-modal" aria-label="Close form">×</button>
+            <h2 id="modal-title">Start Planning Your Dream Vacation</h2>
+            <p>Form will be added here later</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Kbyeee Getaways. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
 </body>
 </html>
