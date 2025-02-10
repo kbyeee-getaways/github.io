@@ -10,36 +10,62 @@
     <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
-    <header>
-        <nav aria-label="Main navigation" class="main-nav">
-            <div class="container nav-container">
-                <a href="#" class="logo">Kbyeee Getaways</a>
+<header>
+    <nav aria-label="Main navigation" class="main-nav">
+        <div class="container nav-container">
+            <div class="top-header">
+                <a href="#" class="logo-link">
+                    <img 
+                        src="assets/logoTM_transparent.png" 
+                        alt="Kbyeee Getaways Logo" 
+                        class="logo-image"
+                    >
+                </a>
+                <div class="site-title">Kbyeee Getaways</div>
                 <button aria-label="Toggle menu" class="hamburger">
                     <span></span>
                     <span></span>
                     <span></span>
                 </button>
-                <div class="nav-menu">
-                    <ul class="nav-links">
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#why-us">Why Us</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
             </div>
-        </nav>
-    </header>
+            <div class="title-row">
+                <div></div> <!-- Empty column for left spacing -->
+                
+                <div></div> <!-- Empty column for right spacing -->
+            </div>
+            <div class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#why-us">Why Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
 
     <main>
         <!-- Hero Section -->
         <section class="hero" aria-labelledby="hero-heading">
+            <div class="hero__background">
+                <img 
+                    src="assets/brandi.png" 
+                    alt="background image of owner" 
+                    class="h1-background-image"
+                    aria-hidden="true"
+                >
+            </div>
             <div class="hero__content">
-                <h1 id="hero-heading">You Dream It, We Plan It. Your Perfect Getaway, Seamlessly Designed.</h1>
+                <h2 id="hero-heading">Heeey! I'm Brandi, and I would love to help you plan your next Getaway!</h1>
+                <h3>You Dream It, We Plan It. Your Perfect Getaway, Seamlessly Designed.</h3>
                 <p>Stress-free, curated travel experiences tailored to your style—so you can simply enjoy the journey.</p>
-                <button class="cta-button planning-button">Start Planning Now</button>
+                <button class="cta-button">Start Planning Now</button>
             </div>
         </section>
+        <div class="signature">
+            <img src="assets/name_signature.png" alt="love brandi signature">
+        </div>
 
         <!-- About Section -->
         <section id="about" class="about" aria-labelledby="about-heading">
@@ -78,10 +104,6 @@
             </div>
         </section>
 
-<<<<<<< Updated upstream
-                <div class="closing-statement">
-                    <h4>We aren't just here to find you the best deals, <i>although we will try =]</i>. We want to ensure your vacation planning is as seamless and stress free as possible!</h4>
-=======
         <!-- Why Book With Us Section -->
         <section id="why-us" class="why-us" aria-labelledby="why-us-heading">
             <div class="container">
@@ -107,7 +129,6 @@
                         <h3>Dedicated Support</h3>
                         <p>Before, during, and after your trip.</p>
                     </div>
->>>>>>> Stashed changes
                 </div>
             </div>
         </section>
@@ -117,7 +138,7 @@
             <div class="container">
                 <h2 id="contact-heading">Let's Plan Your Next Escape</h2>
                 <p>Stress-Free & Seamlessly Curated</p>
-                <button class="cta-button planning-button">Get Started</button>
+                <button class="cta-button">Get Started</button>
             </div>
         </section>
     </main>
@@ -137,6 +158,6 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
