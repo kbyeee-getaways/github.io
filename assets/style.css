@@ -1,0 +1,332 @@
+/* Base Imports and Variables - Same for all sizes */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+:root {
+    --primary-purple: rgb(139, 39, 239);
+    --primary-green: rgb(2, 123, 0);
+    --primary-blue: rgb(42, 145, 185);
+    --primary-pink: rgb(166, 63, 164);
+    --gradient-bg: linear-gradient(180deg, #c8ffc4 15.39%, #77a5fc 100%);
+}
+
+/* Base Mobile-First Styles */
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    background: var(--gradient-bg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    color: var(--primary-purple);
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 1rem;
+}
+
+/* Accessibility - Remains the same */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* Mobile-First Header and Navigation */
+.container {
+    max-width: 100vw;
+    padding: 0.5rem;
+}
+
+.nav-container {
+    display: grid;
+    grid-template-rows: auto;
+    width: 100%;
+}
+
+.top-header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    width: 100%;
+    padding: 1px;
+    align-items: center;
+}
+
+.logo-link {
+    display: block;
+    width: 50px;
+    height: 50px;
+    justify-self: start;
+    margin-left: 1px;
+    grid-column: 1;
+}
+
+.logo-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.site-title {
+    font-family: 'Playfair Display', serif;
+    color: var(--primary-purple);
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 1px 0;
+    padding: 0;
+    grid-column: 2;
+}
+
+.main-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.5rem 0;
+    z-index: 1000;
+}
+
+.nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 50%;
+    height: 100vh;
+    background: var(--gradient-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: right 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+.nav-menu.active {
+    right: 0;
+}
+
+/* Mobile Navigation Links */
+.nav-links {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 1.5rem 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.nav-menu.active .nav-links li {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.nav-links a {
+    color: var(--primary-purple);
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-blue);
+}
+
+/* Mobile Hamburger Menu */
+.hamburger {
+    justify-self: end;
+    margin-right: 1px;
+    grid-column: 3;
+    width: 30px;
+    height: 24px;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    z-index: 1001;
+}
+
+.hamburger span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: var(--primary-purple);
+    transition: .25s ease-in-out;
+    left: 0;
+}
+
+.hamburger span:nth-child(1) { top: 0; }
+.hamburger span:nth-child(2) { top: 10px; }
+.hamburger span:nth-child(3) { top: 20px; }
+
+.hamburger.active span:nth-child(1) {
+    top: 10px;
+    transform: rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+    width: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    top: 10px;
+    transform: rotate(-45deg);
+}
+
+/* Mobile Hero Section */
+.hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 2rem;
+    /* overflow: hidden; */
+}
+
+.hero__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+#hero-heading {
+    font-size: larger;
+}
+
+#hero-tag {
+    font-size: medium;
+    margin-bottom: .25rem;
+    margin-top: .5rem;
+}
+
+.h1-background-image {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 36%;
+    left: 50%;
+    width: 100%;
+    height: fit-content;
+    object-fit: cover;
+    opacity: 0.3;
+    z-index: 1;
+    object-position: top;
+}
+
+.hero__content {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1rem;
+    border-radius: 1rem;
+    max-width: 90%;
+    text-align: center;
+    opacity: 0.8;
+}
+
+/* Mobile Signature and CTA button */
+.signature {
+    text-align: center;
+    position: absolute;
+    top: 82%;
+    left: 25%;
+}
+
+.signature img {
+    max-width: 150px;
+    height: auto;
+}
+
+.cta-content {
+    text-align: center;
+    position: absolute;
+    top: 93%;
+    left: 19%;
+}
+.cta-button {
+    padding: 0.8rem 1.5rem;
+    background: var(--primary-purple);
+    color: white;
+    text-decoration: none;
+    border-radius: 2rem;
+    transition: background 0.3s ease;
+    border: none;
+    cursor: pointer;
+    margin-top: 0.5rem;
+}
+
+
+.cta-button:hover {
+    background: var(--primary-blue);
+}
+
+/* Mobile Service Grid */
+.page-break {
+    width: 85%;
+    height: 1px;
+    background-color: var(--primary-purple);
+    margin: 2rem auto 1rem auto;
+    opacity: 0.7;
+    position: relative;
+    z-index: 2;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem 0;
+}
+
+#services-heading {
+    text-align: center;
+    width: 100%;
+}
+
+.service-card {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    text-align: center;
+}
+
+/* Mobile Benefits Grid */
+#why-us-heading {
+    margin-top: .75rem;
+    width: 75%;
+    margin-left: 11%;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem 0;
+}
+
+.benefit {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    text-align: center;
+}
