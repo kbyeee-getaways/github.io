@@ -135,6 +135,7 @@ h3 { font-family: 'Fraunces', serif; font-size: clamp(1.2rem, 2vw, 1.5rem); font
 #hero .body-lg { max-width: 500px; margin-bottom: 36px; text-align: center; color: rgba(255,255,255,.75); }
 .hero-trust { display: flex; align-items: center; gap: 8px; font-size: .78rem; color: rgba(255,255,255,.7); font-weight: 500; }
 .hero-trust-stars { color: var(--green-lt); }
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-bottom: 32px; }
 
 /* ─── TICKER ─── */
 #ticker { background: var(--blue); padding: 18px 0; overflow: hidden; white-space: nowrap; }
@@ -431,6 +432,22 @@ h3 { font-family: 'Fraunces', serif; font-size: clamp(1.2rem, 2vw, 1.5rem); font
 .h-row { display: contents; }
 .h-day { font-size: .84rem; color: var(--ink-3); white-space: nowrap; padding: 2px 0; }
 .h-time { font-size: .84rem; font-weight: 500; padding: 2px 0; }
+
+.cf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.cf-field { display: flex; flex-direction: column; gap: 6px; }
+.cf-label { font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--ink-3); }
+.cf-input {
+  padding: 13px 16px; border: 1.5px solid var(--border);
+  border-radius: 10px; font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: .9rem; color: var(--ink); background: var(--surface);
+  outline: none; transition: border-color .2s; width: 100%;
+}
+.cf-input:focus { border-color: var(--purple); }
+.cf-input::placeholder { color: var(--ink-3); }
+.cf-textarea { min-height: 130px; resize: vertical; }
+.cf-success { display: none; margin-top: 14px; color: var(--green-dk); font-size: .9rem; font-weight: 600; }
+.cf-error { display: none; margin-top: 14px; color: #c0392b; font-size: .9rem; }
+@media (max-width: 480px) { .cf-grid { grid-template-columns: 1fr; } }
 
 /* ─── FOOTER ─── */
 footer { background: #0e5c80; color: #fff; text-align: center; padding: 48px 5% 32px; }
