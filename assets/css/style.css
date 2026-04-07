@@ -445,7 +445,7 @@ h3 { font-family: 'Fraunces', serif; font-size: clamp(1.2rem, 2vw, 1.5rem); font
 .cf-input:focus { border-color: var(--purple); }
 .cf-input::placeholder { color: var(--ink-3); }
 .cf-textarea { min-height: 130px; resize: vertical; }
-<p class="cf-success" id="cfSuccess" style="display:block;">🎉 Message sent! We'll be in touch soon.</p>
+.cf-success { display: none; margin-top: 14px; color: var(--green-dk); font-size: .9rem; font-weight: 600; }
 .cf-error { display: none; margin-top: 14px; color: #c0392b; font-size: .9rem; }
 @media (max-width: 480px) { .cf-grid { grid-template-columns: 1fr; } }
 
