@@ -451,7 +451,7 @@
         const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
         const json = await res.json();
         if (json.success) {
-          contactForm.reset();
+          contactForm.style.display = 'none';
           document.getElementById('cfSuccess').style.display = 'block';
           document.getElementById('cfError').style.display = 'none';
         } else {
