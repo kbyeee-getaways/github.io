@@ -438,11 +438,37 @@
   }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
   document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
-  // Fallback: if observer doesn't fire, reveal everything after 1.5s
+// Contact form — Web3Forms
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = contactForm.querySelector('button[type="submit"]');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      const data = new FormData(contactForm);
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
+        const json = await res.json();
+        if (json.success) {
+          contactForm.reset();
+          document.getElementById('cfSuccess').style.display = 'block';
+          document.getElementById('cfError').style.display = 'none';
+        } else {
+          document.getElementById('cfError').style.display = 'block';
+          document.getElementById('cfSuccess').style.display = 'none';
+        }
+      } catch {
+        document.getElementById('cfError').style.display = 'block';
+      }
+      btn.textContent = 'Send Message →';
+      btn.disabled = false;
+    });
+  }
+ // Fallback: if observer doesn't fire, reveal everything after 1.5s
   setTimeout(() => {
     document.querySelectorAll('.reveal:not(.on)').forEach(el => el.classList.add('on'));
   }, 1500);
-
   }); // end DOMContentLoaded
 </script>
 </body>
