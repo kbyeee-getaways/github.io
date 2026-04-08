@@ -417,14 +417,14 @@
     document.body.style.overflow = '';
   };
 
-  // Newsletter
-  function handleNewsletter() {
-    const email = document.getElementById('nlEmail').value.trim();
-    if (!email || !email.includes('@')) { document.getElementById('nlEmail').focus(); return; }
-    document.getElementById('nlForm').style.display = 'none';
-    document.getElementById('nlSuccess').style.display = 'block';
-  }
-  document.getElementById('nlEmail').addEventListener('keydown', e => { if (e.key === 'Enter') handleNewsletter(); });
+  // Newsletter -- add back when add stay in touch back
+  // function handleNewsletter() {
+  //   const email = document.getElementById('nlEmail').value.trim();
+  //   if (!email || !email.includes('@')) { document.getElementById('nlEmail').focus(); return; }
+  //   document.getElementById('nlForm').style.display = 'none';
+  //   document.getElementById('nlSuccess').style.display = 'block';
+  // }
+  // document.getElementById('nlEmail').addEventListener('keydown', e => { if (e.key === 'Enter') handleNewsletter(); });
 
   // Scroll reveal with stagger
   const revealObs = new IntersectionObserver((entries) => {
