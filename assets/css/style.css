@@ -365,10 +365,9 @@ h3 { font-family: 'Fraunces', serif; font-size: clamp(1.2rem, 2vw, 1.5rem); font
 
 /* ─── RESOURCES ─── */
 #resources { padding: 64px 0; background: var(--purple-pale); }
-/* Uncomment when adding stay in touch back and comment out the other one */
-/* .resources-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 72px; align-items: start; } */
-.resources-grid { display: grid; grid-template-columns: 1fr; gap: 72px; align-items: start; max-width: 600px; margin: 0 auto; }
-#resources h2 { color: var(--ink); margin-bottom: 10px; }
+.resources-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+#resources h2 { color: var(--ink); margin-bottom: 40px; }
+.res-col-heading { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 700; color: var(--purple-dk); margin-bottom: 6px; }
 
 .res-links { display: flex; flex-direction: column; gap: 10px; margin-top: 28px; }
 .res-link {
@@ -396,8 +395,8 @@ h3 { font-family: 'Fraunces', serif; font-size: clamp(1.2rem, 2vw, 1.5rem); font
 .diy-card .di { font-size: 1.4rem; margin-bottom: 6px; }
 .diy-card span { display: block; font-size: .7rem; color: var(--ink-3); font-weight: 500; line-height: 1.4; }
 
-/* Newsletter */
-.nl-box {
+/* Newsletter -- uncomment below when adding stay in touch back*/
+/* .nl-box {
   background: var(--surface); border-radius: 24px;
   padding: 40px; border: 1px solid var(--border);
   box-shadow: var(--shadow-sm); position: sticky; top: 90px;
@@ -413,11 +412,15 @@ h3 { font-family: 'Fraunces', serif; font-size: clamp(1.2rem, 2vw, 1.5rem); font
 .nl-form input:focus { border-color: var(--purple); }
 .nl-form input::placeholder { color: var(--ink-3); }
 .nl-form .btn { width: 100%; }
-.nl-success { display: none; text-align: center; padding: 18px; color: var(--green-dk); font-weight: 600; font-size: .9rem; }
+.nl-success { display: none; text-align: center; padding: 18px; color: var(--green-dk); font-weight: 600; font-size: .9rem; } */
 
 /* ─── CONTACT ─── */
 #contact { padding: 64px 0; background: var(--bg); }
 #contact h2 { color: var(--ink); margin-bottom: 10px; }
+.contact-col-heading { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 700; color: var(--purple-dk); margin-bottom: 6px; }
+/* Single column now — change to 1fr 1fr when adding Stay in the Loop */
+.contact-grid { display: grid; grid-template-columns: 1fr; gap: 48px; max-width: 640px; }
+.contact-hours { margin-top: 44px; padding-top: 36px; border-top: 1px solid var(--border); max-width: 640px; }
 .contact-info { max-width: 600px; }
 .c-details { display: flex; flex-direction: column; gap: 18px; margin-top: 8px; }
 .c-row { display: flex; align-items: flex-start; gap: 14px; }
