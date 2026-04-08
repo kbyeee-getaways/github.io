@@ -365,7 +365,9 @@ h3 { font-family: 'Fraunces', serif; font-size: clamp(1.2rem, 2vw, 1.5rem); font
 
 /* ─── RESOURCES ─── */
 #resources { padding: 64px 0; background: var(--purple-pale); }
-.resources-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 72px; align-items: start; }
+/* Uncomment when adding stay in touch back and comment out the other one */
+/* .resources-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 72px; align-items: start; } */
+.resources-grid { display: grid; grid-template-columns: 1fr; gap: 72px; align-items: start; }
 #resources h2 { color: var(--ink); margin-bottom: 10px; }
 
 .res-links { display: flex; flex-direction: column; gap: 10px; margin-top: 28px; }
