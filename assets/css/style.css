@@ -59,6 +59,8 @@ h3 { font-family: 'Fraunces', serif; font-size: clamp(1.2rem, 2vw, 1.5rem); font
 .btn-purple:hover { background: var(--purple-dk); border-color: var(--purple-dk); box-shadow: 0 10px 28px rgba(160,40,160,.32); }
 .btn-outline-purple { background: transparent; color: var(--purple); border-color: var(--purple); }
 .btn-outline-purple:hover { background: var(--purple-pale); }
+.btn-outline-green { background: transparent; color: var(--green-dk); border-color: var(--green-dk); }
+.btn-outline-green:hover { background: var(--green-pale); transform: translateY(-2px); }
 .btn-white { background: #fff; color: var(--purple); border-color: #fff; }
 .btn-white:hover { background: var(--purple-pale); border-color: var(--purple-pale); box-shadow: 0 10px 28px rgba(0,0,0,.15); }
 .btn-ghost-light { background: rgba(255,255,255,.08); color: rgba(255,255,255,.85); border-color: rgba(255,255,255,.22); }
