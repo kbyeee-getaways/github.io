@@ -482,6 +482,7 @@ footer a:hover { color: #fff; }
 .reveal.on { opacity: 1; transform: none; }
 
 /* ─── RESPONSIVE ─── */
+/* ─── RESPONSIVE ─── */
 @media (max-width: 1020px) {
   .meet-grid { grid-template-columns: 1fr; gap: 44px; }
   .meet-grid .intro-right { max-width: 420px; }
@@ -490,15 +491,19 @@ footer a:hover { color: #fff; }
   .sf-visual { min-height: 160px; }
   .resources-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
   .nl-box { position: static; }
-
   #cta-band { grid-template-columns: 1fr; text-align: center; padding: 48px 40px; }
   .cta-band-text p { max-width: 100%; }
 }
 @media (max-width: 720px) {
-  .hiw-steps { grid-template-columns: 1fr; gap: 32px; }
+  .nav-inner { padding: 12px 4%; gap: 8px; }
+  .nav-logo img { height: 38px; }
+  .nav-cta-center .btn { padding: 9px 16px; font-size: .78rem; }
+  .hiw-steps { grid-template-columns: 1fr; gap: 28px; }
   .hiw-steps::before, .hiw-steps::after { display: none; }
   .hiw-step { align-items: flex-start; text-align: left; flex-direction: row; gap: 20px; padding: 0; }
   .hiw-num { width: 52px; height: 52px; font-size: 1.1rem; flex-shrink: 0; margin-bottom: 0; }
+  .resources-grid { grid-template-columns: 1fr; gap: 40px; }
+  .contact-grid { grid-template-columns: 1fr; }
   .services-grid { grid-template-columns: 1fr; }
   .t-grid { grid-template-columns: 1fr; }
   .diy-grid { grid-template-columns: repeat(2, 1fr); }
@@ -509,7 +514,9 @@ footer a:hover { color: #fff; }
   h1 { font-size: 2.3rem; }
   .hero-actions { flex-direction: column; align-items: stretch; }
   .hero-actions .btn { justify-content: center; }
-
+  .nav-cta-center .btn { display: none; }
   #cta-band { padding: 36px 22px; }
   .meet-grid .intro-right { max-width: 100%; }
+  .resources-grid { grid-template-columns: 1fr; }
+  .diy-grid { grid-template-columns: repeat(2, 1fr); }
 }
