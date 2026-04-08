@@ -279,20 +279,7 @@
           <a href="https://www.viator.com/?pid=P00168200&uid=U00645008&mcid=58086&currency=USD" class="diy-card" target="_blank" rel="noopener"><div class="di">🗺️</div><span>Viator<br>Excursions</span></a>
           <a href="https://kbyeeegetaways.goldentickets.com" class="diy-card" target="_blank" rel="noopener"><div class="di">🎟️</div><span>Golden Tickets<br>Events</span></a>
         </div>
-      </div>
-      <!-- Stay in touch section for when we're ready  -->
-      <!-- <div>
-        <div class="nl-box reveal">
-          <h3>Stay in the Loop</h3>
-          <p class="body-sm" style="margin-top:6px;">Exclusive deals, travel tips, and getaway inspiration delivered to your inbox.</p>
-          <div class="nl-form" id="nlForm">
-            <input type="text" placeholder="Your name" id="nlName" autocomplete="name"/>
-            <input type="email" placeholder="Email address" id="nlEmail" autocomplete="email"/>
-            <button type="button" class="btn btn-purple" onclick="handleNewsletter()">Subscribe. It's Free.</button>
-          </div>
-          <div class="nl-success" id="nlSuccess">🎉 You're in! Welcome to the Kbyeee family.</div>
-        </div>
-      </div> -->
+      </div>     
     </div>
   </div>
 </section>
@@ -300,55 +287,75 @@
 <!-- CONTACT -->
 <section id="contact">
   <div class="wrap">
-    <div class="contact-info reveal">
-      <span class="eyebrow">Get In Touch</span>
-      <h2>Contact Us</h2>
-      <p class="body-lg" style="margin-top:10px;margin-bottom:36px;">Have a question before you commit? No problem. Send us a quick message and we'll get back to you during business hours.</p>
- 
-      <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-        <input type="hidden" name="access_key" value="877d06cb-2d69-4832-922a-c253893ff5c5"/>
-        <input type="hidden" name="subject" value="New message from Kbyeee Getaways website"/>
-        <input type="hidden" name="redirect" value="false"/>
-        <input type="checkbox" name="botcheck" style="display:none;"/>
- 
-        <div class="cf-grid">
-          <div class="cf-field">
-            <label class="cf-label" for="cf-name">Your Name</label>
-            <input class="cf-input" type="text" id="cf-name" name="name" placeholder="Enter your first and last name" required/>
+    <span class="eyebrow">Get In Touch</span>
+    <h2 style="color:var(--ink);margin-bottom:40px;">Have a Question?</h2>
+
+    <div class="contact-grid">
+
+      <!-- Have a Question form -->
+      <div class="reveal">
+        <h3 class="contact-col-heading">Send Us a Message</h3>
+        <p class="body-sm" style="margin-bottom:24px;">Not quite ready to fill out the full inquiry? No problem. Send us a quick message and we'll get back to you during business hours.</p>
+
+        <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="877d06cb-2d69-4832-922a-c253893ff5c5"/>
+          <input type="hidden" name="subject" value="New message from Kbyeee Getaways website"/>
+          <input type="hidden" name="redirect" value="false"/>
+          <input type="checkbox" name="botcheck" style="display:none;"/>
+          <div class="cf-grid">
+            <div class="cf-field">
+              <label class="cf-label" for="cf-name">Your Name</label>
+              <input class="cf-input" type="text" id="cf-name" name="name" placeholder="Your name" required/>
+            </div>
+            <div class="cf-field">
+              <label class="cf-label" for="cf-email">Your Email</label>
+              <input class="cf-input" type="email" id="cf-email" name="email" placeholder="you@email.com" required/>
+            </div>
           </div>
-          <div class="cf-field">
-            <label class="cf-label" for="cf-email">Your Email</label>
-            <input class="cf-input" type="email" id="cf-email" name="email" placeholder="you@email.com" required/>
+          <div class="cf-field" style="margin-top:14px;">
+            <label class="cf-label" for="cf-message">Your Question</label>
+            <textarea class="cf-input cf-textarea" id="cf-message" name="message" placeholder="Ask us anything..." required></textarea>
           </div>
+          <button type="submit" class="btn btn-outline-green arr" style="margin-top:20px;">Send Message</button>
+        </form>
+        <p class="cf-success" id="cfSuccess">🎉 Message sent! We'll be in touch soon.</p>
+        <p class="cf-error" id="cfError">Something went wrong. Please try again.</p>
+      </div>
+
+      <!-- STAY IN THE LOOP — uncomment when ready
+      <div class="reveal">
+        <h3 class="contact-col-heading">Stay in the Loop</h3>
+        <p class="body-sm" style="margin-bottom:24px;">Exclusive deals, travel tips, and getaway inspiration delivered to your inbox.</p>
+        <div class="nl-form" id="nlForm">
+          <input type="text" placeholder="Your name" id="nlName" autocomplete="name"/>
+          <input type="email" placeholder="Email address" id="nlEmail" autocomplete="email"/>
+          <button type="button" class="btn btn-outline-green" onclick="handleNewsletter()">Subscribe. It's Free.</button>
         </div>
-        <div class="cf-field" style="margin-top:14px;">
-          <label class="cf-label" for="cf-message">Your Question</label>
-          <textarea class="cf-input cf-textarea" id="cf-message" name="message" placeholder="Ask us anything..." required></textarea>
+        <div class="nl-success" id="nlSuccess">🎉 You're in! Welcome to the Kbyeee family.</div>
+      </div>
+      -->
+
+    </div>
+
+    <!-- Business Hours -->
+    <div class="contact-hours reveal">
+      <div class="c-row">
+        <div class="c-badge">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
         </div>
-        <button type="submit" class="btn btn-outline-green arr" style="margin-top:20px;">Send Message</button>        
-      </form>
-      <p class="cf-success" id="cfSuccess">🎉 Message sent! We'll be in touch soon.</p>
-      <p class="cf-error" id="cfError">Something went wrong. Please try again.</p>
- 
-      <div style="margin-top:44px;padding-top:36px;border-top:1px solid var(--border);">
-        <div class="c-row">
-          <div class="c-badge">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          </div>
-          <div class="c-info">
-            <div class="c-label">Business Hours</div>
-            <div class="c-val">
-              <div class="hours-list">
-                <div class="h-row"><span class="h-day">Mon - Fri</span><span class="h-time">12pm - 6pm EST</span></div>
-                <div class="h-row"><span class="h-day">Saturday</span><span class="h-time">By Appointment</span></div>
-                <div class="h-row"><span class="h-day">Sunday</span><span class="h-time">Closed</span></div>
-              </div>
+        <div class="c-info">
+          <div class="c-label">Business Hours</div>
+          <div class="c-val">
+            <div class="hours-list">
+              <div class="h-row"><span class="h-day">Mon - Fri</span><span class="h-time">12pm - 6pm EST</span></div>
+              <div class="h-row"><span class="h-day">Saturday</span><span class="h-time">By Appointment</span></div>
+              <div class="h-row"><span class="h-day">Sunday</span><span class="h-time">Closed</span></div>
             </div>
           </div>
         </div>
       </div>
- 
     </div>
+
   </div>
 </section>
 
