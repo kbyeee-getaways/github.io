@@ -367,7 +367,7 @@ h3 { font-family: 'Fraunces', serif; font-size: clamp(1.2rem, 2vw, 1.5rem); font
 #resources { padding: 64px 0; background: var(--purple-pale); }
 .resources-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
 #resources h2 { color: var(--ink); margin-bottom: 40px; }
-.res-col-heading { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 700; color: var(--purple-dk); margin-bottom: 6px; }
+.res-col-heading { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 700; color: var(--purple-dk); margin-bottom: 6px; text-align: center }
 
 .res-links { display: flex; flex-direction: column; gap: 10px; margin-top: 28px; }
 .res-link {
@@ -417,7 +417,7 @@ h3 { font-family: 'Fraunces', serif; font-size: clamp(1.2rem, 2vw, 1.5rem); font
 /* ─── CONTACT ─── */
 #contact { padding: 64px 0; background: var(--bg); }
 #contact h2 { color: var(--ink); margin-bottom: 10px; }
-.contact-col-heading { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 700; color: var(--purple-dk); margin-bottom: 6px; }
+.contact-col-heading { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 700; color: var(--purple-dk); margin-bottom: 6px; text-align: center}
 /* Single column now — change to 1fr 1fr when adding Stay in the Loop */
 .contact-grid { display: grid; grid-template-columns: 1fr; gap: 48px; max-width: 640px; }
 .contact-hours { margin-top: 44px; padding-top: 36px; border-top: 1px solid var(--border); max-width: 640px; }
