@@ -521,6 +521,12 @@ footer { background: #0e5c80; color: #fff; text-align: center; padding: 48px 5% 
 .footer-logo { display: flex; justify-content: center; margin-bottom: 16px; }
 .footer-logo img { height: 52px; width: auto; }
 footer p { font-size: .82rem; line-height: 1.9; }
+.footer-hours {
+  display: inline-grid; grid-template-columns: auto 1fr;
+  gap: 4px 20px; margin: 14px auto; font-size: .8rem;
+}
+.footer-hours .h-day { color: rgba(255,255,255,.6); white-space: nowrap; padding: 2px 0; }
+.footer-hours .h-time { font-weight: 500; color: #fff; padding: 2px 0; }
 footer a { color: rgba(255,255,255,.85); transition: color .2s; }
 footer a:hover { color: #fff; }
 .footer-socials {
