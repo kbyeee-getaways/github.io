@@ -34,6 +34,7 @@
   <a href="#intro" onclick="closeMobile()">About</a>
   <a href="#how-it-works" onclick="closeMobile()">How It Works</a>
   <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#pricing" onclick="closeMobile()">Pricing</a>
   <a href="#testimonials" onclick="closeMobile()">Reviews</a>
   <a href="#resources" onclick="closeMobile()">Resources</a>
   <a href="#contact" onclick="closeMobile()">Contact</a>
@@ -194,6 +195,62 @@
         <p>Pre-packaged deals posted periodically on social media. If you saw a deal and want to check availability or book, this is the place. Spots are limited so don't wait.</p>
         <span class="sc-cta">Check Availability</span>
       </a>
+    </div>
+  </div>
+</section>
+  <!-- PRICING -->
+<section id="pricing">
+  <div class="wrap">
+    <span class="eyebrow">Investment</span>
+    <h2>Simple, Transparent Pricing.</h2>
+    <p class="body-lg" style="margin-top:10px;margin-bottom:40px;">Research fees vary based on the complexity of your trip and customizations. Here's what to expect.</p>
+
+    <div class="pricing-tabs">
+      <button class="pricing-tab active" onclick="switchTab('vacation', event)">✈️ Vacation Packages</button>
+      <button class="pricing-tab" onclick="switchTab('cruise', event)">🚢 Cruise Packages</button>
+    </div>
+
+    <div class="pricing-panel" id="tab-vacation">
+      <div class="pricing-card">
+        <div class="pricing-icon">✈️</div>
+        <h3 class="pricing-title">Vacation Packages</h3>
+        <p class="pricing-tagline">Your next escape, fully planned.</p>
+        <div class="pricing-price">Starting at <span>$50</span></div>
+        <ul class="pricing-list">
+          <li>1-on-1 Consultation</li>
+          <li>3 Curated travel options</li>
+          <li>Accommodations &amp; transportation</li>
+          <li>Complimentary revisions</li>
+          <li>Concierge support</li>
+          <li>Standard or custom itinerary</li>
+          <li>Flight pricing &amp; excursions available</li>
+          <li>Multi-destination options available</li>
+        </ul>
+        <p class="pricing-note">Pricing varies by customization.</p>
+      </div>
+    </div>
+
+    <div class="pricing-panel" id="tab-cruise" style="display:none;">
+      <div class="pricing-card">
+        <div class="pricing-icon">🚢</div>
+        <h3 class="pricing-title">Cruise Packages</h3>
+        <p class="pricing-tagline">Smooth sailing from start to finish.</p>
+        <div class="pricing-price">Starting at <span>$50</span></div>
+        <ul class="pricing-list">
+          <li>1-on-1 Consultation</li>         
+          <li>1-3 cruise line options</li>
+          <li>Complimentary revisions</li>
+          <li>Concierge support</li>
+          <li>Standard or custom itinerary</li>
+          <li>Pre/Post Cruise options available</li>
+        </ul>
+        <p class="pricing-note">Pricing varies by group size.</p>
+      </div>
+    </div>
+
+    <div class="pricing-cta">
+      <p>Not sure which package is right for you? Fill out the inquiry form and we'll figure it out together.</p>
+      <a href="https://www.cognitoforms.com/KbyeeeGetaways/GetawayInquiryForm" class="btn btn-purple arr" target="_blank" rel="noopener">Start Your Inquiry</a>
     </div>
   </div>
 </section>
@@ -421,6 +478,14 @@
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   document.addEventListener('DOMContentLoaded', function() {
 
+  // Pricing tabs
+  window.switchTab = function(tab, e) {
+    document.querySelectorAll('.pricing-panel').forEach(p => p.style.display = 'none');
+    document.querySelectorAll('.pricing-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('tab-' + tab).style.display = 'block';
+    e.target.classList.add('active');
+  };
+  
   // Nav scroll shadow
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40), { passive: true });
