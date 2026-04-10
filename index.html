@@ -2,9 +2,54 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Kbyeee Getaways | Stress-Free Travel Planning</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>  
   <meta name="description" content="Let Brandi handle every detail of your next trip. Custom travel planning, itineraries, group getaways, cruises and more."/>
+  <meta name="color-scheme" content="light">
+  <meta name="keywords" content="travel advisor, travel agent, custom travel planning, group trips, cruises, vacation planning, Atlanta travel advisor, stress free travel, destination weddings, honeymoon planning"/>
+  <meta name="author" content="Brandi, Kbyeee Getaways"/>
+  <title>Kbyeee Getaways | Travel Planning - Stress-Free </title>
+
+   <!-- Open Graph -->
+  <meta property="og:title" content="Kbyeee Getaways | Stress-Free Travel Planning"/>
+  <meta property="og:description" content="Let Brandi handle every detail of your next trip. Custom travel planning, itineraries, group getaways, cruises and more."/>
+  <meta property="og:image" content="https://kbyeeegetaways.com/assets/images/logo.png"/>
+  <meta property="og:url" content="https://kbyeeegetaways.com"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="Kbyeee Getaways"/>
+
+  <!-- Twitter/X -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Kbyeee Getaways | Stress-Free Travel Planning"/>
+  <meta name="twitter:description" content="Let Brandi handle every detail of your next trip. Custom travel planning, itineraries, group getaways, cruises and more."/>
+  <meta name="twitter:image" content="https://kbyeeegetaways.com/assets/images/logo.png"/>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/logo.png"/>
+  <link rel="apple-touch-icon" href="assets/images/logo.png"/>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Kbyeee Getaways",
+    "description": "Custom travel planning, itineraries, group getaways, cruises and more.",
+    "url": "https://kbyeeegetaways.com",
+    "logo": "https://kbyeeegetaways.com/assets/images/logo.png",
+    "image": "https://kbyeeegetaways.com/assets/images/logo.png",
+    "priceRange": "$$",    
+    "openingHours": ["Mo-Fr 12:00-18:00"],
+    "sameAs": [
+      "https://www.instagram.com/kbyeee_getaways",
+      "https://www.youtube.com/@kbyeeegetaways",
+      "https://www.tiktok.com/@kbyeee_getaways",
+      "https://www.threads.net/@kbyeee_getaways",
+      "https://www.pinterest.com/kbyeee_getaways",
+      "https://www.facebook.com/profile.php?id=61560112709213"
+    ]
+  }
+  </script>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
@@ -34,6 +79,7 @@
   <a href="#intro" onclick="closeMobile()">About</a>
   <a href="#how-it-works" onclick="closeMobile()">How It Works</a>
   <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#pricing" onclick="closeMobile()">Pricing</a>
   <a href="#testimonials" onclick="closeMobile()">Reviews</a>
   <a href="#resources" onclick="closeMobile()">Resources</a>
   <a href="#contact" onclick="closeMobile()">Contact</a>
@@ -197,6 +243,62 @@
     </div>
   </div>
 </section>
+  <!-- PRICING -->
+<section id="pricing">
+  <div class="wrap">
+    <span class="eyebrow">Investment</span>
+    <h2>Simple, Transparent Pricing.</h2>
+    <p class="body-lg" style="margin-top:10px;margin-bottom:40px;">Research fees vary based on the complexity of your trip and customizations. Here's what to expect.</p>
+
+    <div class="pricing-tabs">
+      <button class="pricing-tab active" onclick="switchTab('vacation', event)">✈️ Vacation Packages</button>
+      <button class="pricing-tab" onclick="switchTab('cruise', event)">🚢 Cruise Packages</button>
+    </div>
+
+    <div class="pricing-panel" id="tab-vacation">
+      <div class="pricing-card">
+        <div class="pricing-icon">✈️</div>
+        <h3 class="pricing-title">Vacation Packages</h3>
+        <p class="pricing-tagline">Your next escape, fully planned.</p>
+        <div class="pricing-price">Starting at <span>$50</span></div>
+        <ul class="pricing-list">
+          <li>1-on-1 Consultation</li>
+          <li>3 Curated travel options</li>
+          <li>Accommodations &amp; transportation</li>
+          <li>Complimentary revisions</li>
+          <li>Concierge support</li>
+          <li>Standard or custom itinerary</li>
+          <li>Flight pricing &amp; excursions available</li>
+          <li>Multi-destination options available</li>
+        </ul>
+        <p class="pricing-note">Pricing varies by customization.</p>
+      </div>
+    </div>
+
+    <div class="pricing-panel" id="tab-cruise" style="display:none;">
+      <div class="pricing-card">
+        <div class="pricing-icon">🚢</div>
+        <h3 class="pricing-title">Cruise Packages</h3>
+        <p class="pricing-tagline">Smooth sailing from start to finish.</p>
+        <div class="pricing-price">Starting at <span>$50</span></div>
+        <ul class="pricing-list">
+          <li>1-on-1 Consultation</li>         
+          <li>1-3 cruise line options</li>
+          <li>Complimentary revisions</li>
+          <li>Concierge support</li>
+          <li>Standard or custom itinerary</li>
+          <li>Pre/Post Cruise options available</li>
+        </ul>
+        <p class="pricing-note">Pricing varies by group size.</p>
+      </div>
+    </div>
+
+    <div class="pricing-cta">
+      <p>Not sure which package is right for you? Fill out the inquiry form and we'll figure it out together.</p>
+      <a href="https://www.cognitoforms.com/KbyeeeGetaways/GetawayInquiryForm" class="btn btn-outline-green arr" target="_blank" rel="noopener">Start Your Inquiry</a>
+    </div>
+  </div>
+</section>
 
 <!-- TESTIMONIALS -->
 <section id="testimonials">
@@ -230,17 +332,19 @@
 </section>
 
 <!-- CTA BAND -->
-<div id="cta-band" role="complementary">
-  <div class="cta-band-text reveal">
-    <span class="eyebrow eyebrow-light">Let's Make It Happen</span>
-    <h2>Your Next Getaway Starts Here.</h2>
-    <p>Stop scrolling. Stop putting it off. Fill out the inquiry form and let's start building your perfect trip today.</p>
+<section id="cta-band" role="complementary">
+  <div class="wrap">
+    <div class="cta-band-text reveal">
+      <span class="eyebrow eyebrow-light">Let's Make It Happen</span>
+      <h2>Your Next Getaway Starts Here.</h2>
+      <p>Stop scrolling. Stop putting it off. Fill out the inquiry form and let's start building your perfect trip today.</p>
+    </div>
+    <div class="cta-band-action reveal">
+      <a href="https://www.cognitoforms.com/KbyeeeGetaways/GetawayInquiryForm" class="btn btn-white btn-lg arr" target="_blank" rel="noopener">Plan My Getaway</a>
+      <span class="cta-band-sub">Free to inquire. No commitment.</span>
+    </div>
   </div>
-  <div class="cta-band-action reveal">
-    <a href="https://www.cognitoforms.com/KbyeeeGetaways/GetawayInquiryForm" class="btn btn-white btn-lg arr" target="_blank" rel="noopener">Plan My Getaway</a>
-    <span class="cta-band-sub">Free to inquire. No commitment.</span>
-  </div>
-</div>
+</section>
 
 <!-- RESOURCES -->
 <section id="resources">
@@ -326,7 +430,7 @@
             <label class="cf-label" for="cf-message">Your Question</label>
             <textarea class="cf-input cf-textarea" id="cf-message" name="message" placeholder="Ask us anything..." required></textarea>
           </div>
-          <button type="submit" class="btn btn-purple arr" style="margin-top:20px;">Send Message</button>
+          <button type="submit" class="btn btn-outline-green arr" style="margin-top:20px;display:block;margin-left:auto;margin-right:auto;">Send Message</button>
         </form>
         <p class="cf-success" id="cfSuccess">🎉 Message sent! We'll be in touch soon.</p>
         <p class="cf-error" id="cfError">Something went wrong. Please try again.</p>
@@ -347,33 +451,17 @@
       -->
 
     </div>
-
-    <!-- Business Hours -->
-    <div class="contact-hours reveal">
-      <div class="c-row">
-        <div class="c-badge">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        </div>
-        <div class="c-info">
-          <div class="c-label">Business Hours</div>
-          <div class="c-val">
-            <div class="hours-list">
-              <div class="h-row"><span class="h-day">Mon - Fri</span><span class="h-time">12pm - 6pm EST</span></div>
-              <div class="h-row"><span class="h-day">Saturday</span><span class="h-time">By Appointment</span></div>
-              <div class="h-row"><span class="h-day">Sunday</span><span class="h-time">Closed</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
 </section>
   
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo"><img src="assets/images/logo.png" alt="Kbyeee Getaways"/></div>
   <p>You Dream It. We Plan It. Your Perfect Getaway, Seamlessly Designed.</p>
+  <div class="footer-hours">
+    <div class="h-row"><span class="h-day">Mon - Fri</span><span class="h-time">12pm - 6pm EST</span></div>
+    <div class="h-row"><span class="h-day">Saturday</span><span class="h-time">By Appointment</span></div>
+    <div class="h-row"><span class="h-day">Sunday</span><span class="h-time">Closed</span></div>
+  </div>
 
   <!-- Social Icons -->
   <div class="footer-socials">
@@ -421,6 +509,14 @@
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   document.addEventListener('DOMContentLoaded', function() {
 
+  // Pricing tabs
+  window.switchTab = function(tab, e) {
+    document.querySelectorAll('.pricing-panel').forEach(p => p.style.display = 'none');
+    document.querySelectorAll('.pricing-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('tab-' + tab).style.display = 'block';
+    e.target.classList.add('active');
+  };
+  
   // Nav scroll shadow
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40), { passive: true });
