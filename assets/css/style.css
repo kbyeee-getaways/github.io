@@ -418,7 +418,7 @@ h3 { font-family: 'Fraunces', serif; font-size: clamp(1.2rem, 2vw, 1.5rem); font
 .cta-band-text { position: relative; z-index: 1; }
 .cta-band-text h2 { color: #fff; margin-bottom: 10px; }
 .cta-band-text p { font-size: .93rem; color: rgba(255,255,255,.58); max-width: 480px; line-height: 1.65; }
-.cta-band-action { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 10px; flex-shrink: 0; }
+.cta-band-action { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 10px; flex-shrink: 0; padding-top: 16px; }
 .cta-band-sub { font-size: .72rem; color: rgba(255,255,255,.35); }
 
 /* ─── RESOURCES ─── */
