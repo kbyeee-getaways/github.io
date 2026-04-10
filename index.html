@@ -1,80 +1,499 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="Kbyeee Getaways - Your trusted travel agent for stress-free vacation planning. Personalized travel services, payment plans, and expert guidance for your dream getaway.">
-    <meta name="keywords" content="travel agent, vacation planning, travel services, getaway planning, stress-free vacation, travel booking, vacation packages">
-    <title>Kbyeee Getaways | Professional Travel Planning & Booking Services</title>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/styles.css">
-    <link rel="stylesheet" href="assets/animation.css">
-    <link rel="stylesheet" href="assets/responsive.css">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kbyeee Getaways | Stress-Free Travel Planning</title>
+  <meta name="description" content="Let Brandi handle every detail of your next trip. Custom travel planning, itineraries, group getaways, cruises and more."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
 </head>
 <body>
-    <!--marquee container -->
-    <div class="marquee-container">
+
+<!-- NAV -->
+<header id="nav">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo" aria-label="Kbyeee Getaways home">
+      <img src="assets/images/logo.png" alt="Kbyeee Getaways"/>
+    </a>
+    <div class="nav-cta-center">
+      <a href="https://www.cognitoforms.com/KbyeeeGetaways/GetawayInquiryForm" class="btn btn-purple arr" target="_blank" rel="noopener">Plan My Getaway</a>
+    </div>
+    <div class="nav-right">
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile menu">
+  <a href="#intro" onclick="closeMobile()">About</a>
+  <a href="#how-it-works" onclick="closeMobile()">How It Works</a>
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#testimonials" onclick="closeMobile()">Reviews</a>
+  <a href="#resources" onclick="closeMobile()">Resources</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <h1>Pack your bags.<br><em>Leave the rest to us.</em></h1>
+    <p class="body-lg">Custom travel planning built around you. Every detail handled from start to finish so you can just show up and enjoy the ride.</p>
+    <div class="hero-actions">
+      <a href="https://www.cognitoforms.com/KbyeeeGetaways/GetawayInquiryForm" class="btn btn-white btn-lg arr" target="_blank" rel="noopener">Plan My Getaway</a>
+    </div>
+    <div class="hero-trust">
+      <span class="hero-trust-stars">★★★★★</span>&nbsp;5-star rated by real travelers
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div id="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item"><span class="ticker-dot"></span>Solo Adventures</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Couples Vacations</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Group Getaways</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Cruises</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Destination Weddings</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Honeymoons</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Social Media Trips</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Solo Adventures</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Couples Vacations</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Group Getaways</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Cruises</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Destination Weddings</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Honeymoons</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Social Media Trips</span>
+  </div>
+</div>
+
+<!-- MEET BRANDI -->
+<section id="intro">
+  <div class="meet-section">
+    <div class="wrap">
+      <div class="meet-grid reveal">
+        <div class="intro-right">
+          <div class="photo-frame">
+            <img src="assets/images/brandi.png" alt="Brandi, Travel Advisor" />
+          </div>
+        </div>
+        <div class="meet-text">
+          <span class="eyebrow">Meet Brandi</span>
+          <h2>Heeey! I'm Brandi.</h2>
+          <p class="body-lg">Travel has been part of my whole life. Road trips, travel sports, and the military were my foundation. When I became a travel advisor, it just made sense; although the perks didn't hurt either. What kept me here is the work itself. The research, the logistics, the details that make a trip actually come together — that is my jam!</p>
+          <p class="body-lg" style="margin-top:14px;">I take your vision, turn it into a real plan, and handle every detail so you can finally stop scrolling and start seeing the world. Let's turn <strong style="color:--purple-dk;">"one day"</strong> into <strong style="color:var(--green-dk);">TODAY.</strong></p>
+          <p class="body-lg" style="margin-top:14px;">I'd love to make your next getaway my favorite obsession.</p>
+          <div style="text-align:center;">
+            <img src="assets/images/signature.png" alt="Brandi, Travel Advisor" style="height:84px;width:auto;margin-top:20px;display:inline-block;"/>
+            <br/>
+            <a href="https://www.cognitoforms.com/KbyeeeGetaways/GetawayInquiryForm" class="btn btn-purple arr" style="margin-top:16px;" target="_blank" rel="noopener">Plan My Getaway</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Value prop -->
+  <div class="value-section">
+    <div class="wrap">
+      <div class="value-grid reveal">
+        <div class="value-text">
+          <span class="eyebrow">Why Kbyeee Getaways</span>
+          <h2>You Dream It. <br> We Plan It.</h2>
+          <p class="body-lg">Overwhelmed by the options? That is exactly what we are here for. Here is what you can expect when you work with us.</p>
+        </div>
+        <div class="promise-list">
+          <div class="promise-item">
+            <span class="p-num">01</span>
+            <div><div class="p-label">Not sure where to start?</div><div class="p-desc">We help you figure out where to go, what fits your budget, and what experience you actually want.</div></div>
+          </div>
+          <div class="promise-item">
+            <span class="p-num">02</span>
+            <div><div class="p-label">No time to research?</div><div class="p-desc">We handle all the planning so you don't have to spend hours comparing flights, hotels, and activities.</div></div>
+          </div>
+          <div class="promise-item">
+            <span class="p-num">03</span>
+            <div><div class="p-label">Flexible payment options</div><div class="p-desc">Travel on your terms. We work with partners who offer payment plans so your trip doesn't wait on your wallet.</div></div>
+          </div>
+          <div class="promise-item">
+            <span class="p-num">04</span>
+            <div><div class="p-label">Support before, during and after</div><div class="p-desc">Questions on the road? We're here. It's not just about booking. It's a full experience.</div></div>
+          </div>
+          <div class="promise-item">
+            <span class="p-num">05</span>
+            <div><div class="p-label">Tips to protect your investment</div><div class="p-desc">Travel insurance, documentation advice, and everything that keeps your trip safe.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works">
+  <div class="wrap">
+    <span class="eyebrow">The Process</span>
+    <h2>Here's How It Works</h2>
+    <p class="body-lg hiw-intro">No guessing, no surprises. Here's exactly what happens from the moment you reach out to the moment you're packed and ready to go.</p>
+
+    <div class="hiw-steps">
+  <div class="hiw-step reveal">
+    <div class="hiw-num">1</div>
+    <div class="hiw-step-content">
+      <h3>Fill Out the Inquiry</h3>
+      <p>Tell us about your dream trip. Where you want to go, when, who's coming, and your budget. It's free and takes just a few minutes.</p>
+    </div>
+  </div>
+  <div class="hiw-step reveal">
+    <div class="hiw-num">2</div>
+    <div class="hiw-step-content">
+      <h3>1-on-1 Consultation</h3>
+      <p>We'll hop on a call to talk through your vision, answer your questions, and map out the right plan for you. No commitment at this stage. Just a real conversation.</p>
+    </div>
+  </div>
+  <div class="hiw-step reveal">
+    <div class="hiw-num">3</div>
+    <div class="hiw-step-content">
+      <h3>We Get to Work</h3>
+      <p>If you're ready to move forward, you'll receive a booking link to pay the research fee. Once that's in, we handle everything.</p>
+    </div>
+  </div>
+</div>
+
+    <div class="hiw-note reveal">
+      <strong>Heads up:</strong> The research fee covers the time and expertise it takes to build your perfect itinerary. It's paid only after your consultation, so you always know exactly what you're getting before you commit.
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div class="services-header reveal">
+      <span class="eyebrow eyebrow-light">What We Offer</span>
+      <h2>Ready to Get Started?</h2>
+      <p>Two ways to work with us. Both lead to a great trip.</p>
     </div>
 
-    <!-- Main content section -->
-    <main class="content-section">
-        <section class="intro-section">
-            <div class="content-container">
-                <div class="h1-container">
-                    <h1>Heeey! I'm Brandi, and I would love to help you plan your next Getaway!</h1>
-                    <img 
-                        src="assets/brandi.png" 
-                        alt="background image of owner" 
-                        class="h1-background-image"
-                        aria-hidden="true"
-                    >                    
-                </div>
-                <h2>Kbyeee Getaways offers Getaway Planning and Booking services to handle all your travel needs!</h2>
-                
-                <div class="questions-grid">
-                    <div class="question-card">
-                        <p class="questions">Stuck on where to even start researching?</p>
-                    </div>
-                    <div class="question-card">
-                        <p class="questions">Don't have the time to research and plan?</p>
-                    </div>
-                    <div class="question-card">
-                        <p class="questions">Need help just putting it all together?</p>
-                    </div>
-                </div>
+    <div class="services-grid">
+      <a href="https://www.cognitoforms.com/KbyeeeGetaways/GetawayInquiryForm" class="service-card reveal" target="_blank" rel="noopener">
+        <div class="sc-icon">✈️</div>
+        <h3>Custom Getaways</h3>
+        <p>Full-service travel planning built around your vision, budget, and style. Vacations, cruises, group trips, destination weddings and more. Start with a free inquiry and we'll take it from there.</p>
+        <span class="sc-cta">Start Your Inquiry</span>
+      </a>
+      <a href="https://traveljoy.com/bookings/9D1djVAGqm81bdurAkGBmPAX" class="service-card reveal" target="_blank" rel="noopener">
+        <div class="sc-icon">🌴</div>
+        <h3>Posted Getaways</h3>
+        <p>Pre-packaged deals posted periodically on social media. If you saw a deal and want to check availability or book, this is the place. Spots are limited so don't wait.</p>
+        <span class="sc-cta">Check Availability</span>
+      </a>
+    </div>
+  </div>
+</section>
 
-                <div class="service-description">
-                    <h3>No matter what your needs are, we will take the stress away from vacation planning so you can enjoy the journey.</h3>
-                </div>
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="wrap">
+    <div class="t-head">
+      <span class="eyebrow">Client Love</span>
+      <h2>Real Travelers. <br> Real Results.</h2>
+      <div class="t-stars-row">★★★★★</div>
+    </div>
+    <div class="t-grid">
+      <div class="t-card reveal">
+        <div class="t-card-stars">★★★★★</div>
+        <p class="t-quote">"We had an amazing experience. This was the first trip I'd been on with a travel advisor and I'd do it again!"</p>
+        <div class="t-author"><div class="t-avatar">Z</div><span class="t-name">Zee Iree</span></div>
+      </div>
+      <div class="t-card reveal">
+        <div class="t-card-stars">★★★★★</div>
+        <p class="t-quote">"Booking a trip was seamless and easy. I was able to customize my experience as little or as much as I wanted, and the major details were handled with ease."</p>
+        <div class="t-author"><div class="t-avatar">A</div><span class="t-name">Alysia J.</span></div>
+      </div>
+      <div class="t-card reveal">
+        <div class="t-card-stars">★★★★★</div>
+        <p class="t-quote">"You will find lots of options available for adventure and exploration!"</p>
+        <div class="t-author"><div class="t-avatar">V</div><span class="t-name">Vandell J.</span></div>
+      </div>
+    </div>
+    <div class="t-foot">
+      <a href="https://www.cognitoforms.com/kbyeeegetaways/postgetawaysurvey" class="btn btn-outline-green arr" target="_blank" rel="noopener">Leave a Review</a>
+    </div>
+  </div>
+</section>
 
-                <div class="services-grid">
-                    <div class="service-card">
-                        <p>Need an easy to follow payment plan with secure payment options?</p>
-                    </div>
-                    <div class="service-card">
-                        <p>Need questions answered before, during, or after your Getaway?</p>
-                    </div>
-                    <div class="service-card">
-                        <p>Only need a customized itinerary to keep you on schedule?</p>
-                    </div>
-                    <div class="service-card">
-                        <p>Need to know how to best protect your Getaway?</p>
-                    </div>
-                    <div class="service-card">
-                        <p>Ready to get your sea legs on a cruise?</p>
-                    </div>
-                    <div class="service-card">
-                        <p>Want us to handle it all so you only have to pay and pack?</p>
-                    </div>
-                </div>
+<!-- CTA BAND -->
+<div id="cta-band" role="complementary">
+  <div class="cta-band-text reveal">
+    <span class="eyebrow eyebrow-light">Let's Make It Happen</span>
+    <h2>Your Next Getaway Starts Here.</h2>
+    <p>Stop scrolling. Stop putting it off. Fill out the inquiry form and let's start building your perfect trip today.</p>
+  </div>
+  <div class="cta-band-action reveal">
+    <a href="https://www.cognitoforms.com/KbyeeeGetaways/GetawayInquiryForm" class="btn btn-white btn-lg arr" target="_blank" rel="noopener">Plan My Getaway</a>
+    <span class="cta-band-sub">Free to inquire. No commitment.</span>
+  </div>
+</div>
 
-                <div class="closing-statement">
-                    <h4>We aren't just here to find you the best deals, <i>although we will try =]</i>. We want to ensure your vacation planning is as seamless and stress free as possible!</h4>
-                </div>
+<!-- RESOURCES -->
+<section id="resources">
+  <div class="wrap">
+    <span class="eyebrow">Before You Go</span>
+    <h2 style="color:var(--ink);margin-bottom:40px;">Self-Service Resources.</h2>
+    <div class="resources-grid">
+
+      <!-- DIY Booking Partners -->
+      <div class="reveal">
+        <h3 class="res-col-heading">DIY Booking Partners</h3>
+        <p class="body-sm" style="margin-bottom:20px;">Want to book on your own? These are our trusted partners.</p>
+        <div class="diy-grid">
+          <a href="https://v1.airfordable.com/referred?referrer=AFRC-698ON" class="diy-card" target="_blank" rel="noopener"><div class="di">✈️</div><span>Airfordable<br>Flight Plans</span></a>
+          <a href="https://www.virginvoyages.com/book/voyage-planner/find-a-voyage?cabins=1&currencyCode=USD&agentId=241617&agencyId=35653&bookingChannel=FMLINK" class="diy-card" target="_blank" rel="noopener"><div class="di">🚢</div><span>Virgin Voyages<br>Cruises</span></a>
+          <a href="https://www.getyourguide.com?partner_id=CVD4WXV&cmp=share_to_earn" class="diy-card" target="_blank" rel="noopener"><div class="di">🎒</div><span>GetYourGuide<br>Excursions</span></a>
+          <a href="https://www.viator.com/?pid=P00168200&uid=U00645008&mcid=58086&currency=USD" class="diy-card" target="_blank" rel="noopener"><div class="di">🗺️</div><span>Viator<br>Excursions</span></a>
+          <a href="https://kbyeeegetaways.goldentickets.com" class="diy-card" target="_blank" rel="noopener"><div class="di">🎟️</div><span>Golden Tickets<br>Events</span></a>
+        </div>
+      </div>
+
+      <!-- Travel Resources -->
+      <div class="reveal">
+        <h3 class="res-col-heading">Travel Resources</h3>
+        <p class="body-sm" style="margin-bottom:20px;">Official links and tools straight from the source.</p>
+        <div class="res-links">
+          <a href="https://travel.state.gov/content/travel/en/passports.html" class="res-link" target="_blank" rel="noopener">
+            <div class="res-icon">📘</div>
+            <div class="res-label"><strong>Passport Information</strong><small>U.S. Department of State</small></div>
+            <span class="res-arrow">↗</span>
+          </a>
+          <a href="https://travel.state.gov/content/travel/en/us-visas.html" class="res-link" target="_blank" rel="noopener">
+            <div class="res-icon">🛂</div>
+            <div class="res-label"><strong>Visa Information</strong><small>U.S. Department of State</small></div>
+            <span class="res-arrow">↗</span>
+          </a>
+          <a href="https://www.gov.uk/guidance/apply-for-an-electronic-travel-authorisation-eta" class="res-link" target="_blank" rel="noopener">
+            <div class="res-icon">🇬🇧</div>
+            <div class="res-label"><strong>UK Electronic Travel Auth (ETA)</strong><small>UK Government</small></div>
+            <span class="res-arrow">↗</span>
+          </a>
+          <a href="https://www.withfaye.com/quote/offer?utm_campaign=Brandi.Jefferson&utm_source=KbyeeeGetaways&utm_medium=bd-traveladvisors&utm_term=glinda" class="res-link" target="_blank" rel="noopener">
+            <div class="res-icon">🛡️</div>
+            <div class="res-label"><strong>Travel Insurance</strong><small>Free quote via Faye</small></div>
+            <span class="res-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <span class="eyebrow">Get In Touch</span>
+    <h2 style="color:var(--ink);margin-bottom:40px;">Let's Connect.</h2>
+
+    <div class="contact-grid">
+
+      <!-- Have a Question form -->
+      <div class="reveal">
+        <h3 class="contact-col-heading">Send Us a Message</h3>
+        <p class="body-sm" style="margin-bottom:24px;">Not quite ready to fill out the full inquiry? No problem. Send us a quick message and we'll get back to you during business hours.</p>
+
+        <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="877d06cb-2d69-4832-922a-c253893ff5c5"/>
+          <input type="hidden" name="subject" value="New message from Kbyeee Getaways website"/>
+          <input type="hidden" name="redirect" value="false"/>
+          <input type="checkbox" name="botcheck" style="display:none;"/>
+          <div class="cf-grid">
+            <div class="cf-field">
+              <label class="cf-label" for="cf-name">Your Name</label>
+              <input class="cf-input" type="text" id="cf-name" name="name" placeholder="Your name" required/>
             </div>
-        </section>
-    </main>
+            <div class="cf-field">
+              <label class="cf-label" for="cf-email">Your Email</label>
+              <input class="cf-input" type="email" id="cf-email" name="email" placeholder="you@email.com" required/>
+            </div>
+          </div>
+          <div class="cf-field" style="margin-top:14px;">
+            <label class="cf-label" for="cf-message">Your Question</label>
+            <textarea class="cf-input cf-textarea" id="cf-message" name="message" placeholder="Ask us anything..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-purple arr" style="margin-top:20px;">Send Message</button>
+        </form>
+        <p class="cf-success" id="cfSuccess">🎉 Message sent! We'll be in touch soon.</p>
+        <p class="cf-error" id="cfError">Something went wrong. Please try again.</p>
+      </div>
 
-    <script src="marquee.js"></script>
+      <!-- STAY IN THE LOOP -->
+      <!-- uncomment when ready
+      <div class="reveal">
+        <h3 class="contact-col-heading">Stay in the Loop</h3>
+        <p class="body-sm" style="margin-bottom:24px;">Exclusive deals, travel tips, and getaway inspiration delivered to your inbox.</p>
+        <div class="nl-form" id="nlForm">
+          <input type="text" placeholder="Your name" id="nlName" autocomplete="name"/>
+          <input type="email" placeholder="Email address" id="nlEmail" autocomplete="email"/>
+          <button type="button" class="btn btn-outline-green" onclick="handleNewsletter()">Subscribe. It's Free.</button>
+        </div>
+        <div class="nl-success" id="nlSuccess">🎉 You're in! Welcome to the Kbyeee family.</div>
+      </div>
+      -->
+
+    </div>
+
+    <!-- Business Hours -->
+    <div class="contact-hours reveal">
+      <div class="c-row">
+        <div class="c-badge">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <div class="c-info">
+          <div class="c-label">Business Hours</div>
+          <div class="c-val">
+            <div class="hours-list">
+              <div class="h-row"><span class="h-day">Mon - Fri</span><span class="h-time">12pm - 6pm EST</span></div>
+              <div class="h-row"><span class="h-day">Saturday</span><span class="h-time">By Appointment</span></div>
+              <div class="h-row"><span class="h-day">Sunday</span><span class="h-time">Closed</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+  
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"><img src="assets/images/logo.png" alt="Kbyeee Getaways"/></div>
+  <p>You Dream It. We Plan It. Your Perfect Getaway, Seamlessly Designed.</p>
+
+  <!-- Social Icons -->
+  <div class="footer-socials">
+
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/kbyeee_getaways" class="social-icon" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+    </a>
+
+    <!-- YouTube -->
+    <a href="https://www.youtube.com/@kbyeeegetaways" class="social-icon" target="_blank" rel="noopener" aria-label="YouTube">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+    </a>
+
+    <!-- TikTok -->
+    <a href="https://www.tiktok.com/@kbyeee_getaways" class="social-icon" target="_blank" rel="noopener" aria-label="TikTok">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+    </a>
+
+    <!-- Threads -->
+    <a href="https://www.threads.net/@kbyeee_getaways" class="social-icon" target="_blank" rel="noopener" aria-label="Threads">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.312-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.582-1.289-.878-2.309-.884h-.048c-.785 0-1.897.207-2.59 1.179l-1.699-1.179c.96-1.388 2.457-2.148 4.29-2.148h.065c3.261.023 5.231 2.024 5.43 5.553.027.047.056.09.083.137.2.345.399.724.573 1.137.596 1.4.679 3.206-.388 5.043C19.773 22.76 17.203 23.98 12.186 24z"/></svg>
+    </a>
+
+    <!-- Pinterest -->
+    <a href="https://www.pinterest.com/kbyeee_getaways/" class="social-icon" target="_blank" rel="noopener" aria-label="Pinterest">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+    </a>
+
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/profile.php?id=61560112709213" class="social-icon" target="_blank" rel="noopener" aria-label="Facebook">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    </a>
+
+  </div>
+
+  <p>&copy; 2025 Kbyeee Getaways</p>
+  <p style="margin-top:8px;font-size:.75rem;">
+    <a href="https://drive.google.com/file/d/10eOUFTT8w2oSgYOZ9plQVgYR1DO-dkcG/view" target="_blank" rel="noopener">Terms &amp; Conditions</a>
+    &nbsp;&middot;&nbsp;
+    <a href="https://drive.google.com/file/d/1m37AMlfF0lNAjjpukSf2jU6rbuTK35Pf/view?usp=drive_link" target="_blank" rel="noopener">Privacy Policy</a>
+  </p>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  document.addEventListener('DOMContentLoaded', function() {
+
+  // Nav scroll shadow
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40), { passive: true });
+
+  // Mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  hamburger.addEventListener('click', () => {
+    const open = mobileNav.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  window.closeMobile = function() {
+    mobileNav.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  };
+
+  // Newsletter -- add back when add stay in touch back
+  // function handleNewsletter() {
+  //   const email = document.getElementById('nlEmail').value.trim();
+  //   if (!email || !email.includes('@')) { document.getElementById('nlEmail').focus(); return; }
+  //   document.getElementById('nlForm').style.display = 'none';
+  //   document.getElementById('nlSuccess').style.display = 'block';
+  // }
+  // document.getElementById('nlEmail').addEventListener('keydown', e => { if (e.key === 'Enter') handleNewsletter(); });
+
+  // Scroll reveal with stagger
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const siblings = [...entry.target.parentElement.querySelectorAll('.reveal:not(.on)')];
+      const idx = siblings.indexOf(entry.target);
+      setTimeout(() => entry.target.classList.add('on'), Math.max(0, idx * 70));
+      revealObs.unobserve(entry.target);
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+// Contact form — Web3Forms
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = contactForm.querySelector('button[type="submit"]');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      const data = new FormData(contactForm);
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
+        const json = await res.json();
+        if (json.success) {
+          contactForm.style.display = 'none';
+          document.getElementById('cfSuccess').style.display = 'block';
+          document.getElementById('cfError').style.display = 'none';
+        } else {
+          document.getElementById('cfError').style.display = 'block';
+          document.getElementById('cfSuccess').style.display = 'none';
+        }
+      } catch {
+        document.getElementById('cfError').style.display = 'block';
+      }
+      btn.textContent = 'Send Message →';
+      btn.disabled = false;
+    });
+  }
+ // Fallback: if observer doesn't fire, reveal everything after 1.5s
+  setTimeout(() => {
+    document.querySelectorAll('.reveal:not(.on)').forEach(el => el.classList.add('on'));
+  }, 1500);
+  }); // end DOMContentLoaded
+</script>
 </body>
 </html>
