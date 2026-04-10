@@ -19,6 +19,7 @@
   --shadow-md:   0 8px 32px rgba(106,26,107,.12);
   --shadow-lg:   0 20px 60px rgba(106,26,107,.18);
   --ease:        cubic-bezier(.4,0,.2,1);
+  color-scheme: light;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
