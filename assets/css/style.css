@@ -106,7 +106,7 @@ h3 { font-family: 'Fraunces', serif; font-size: clamp(1.2rem, 2vw, 1.5rem); font
   flex-direction: column; gap: 4px;
 }
 .mobile-nav.open { display: flex; }
-.mobile-nav a { font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 700; color: var(--ink); padding: 14px 0; border-bottom: 1px solid var(--border); }
+.mobile-nav a { font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 700; color: var(--purple); padding: 14px 0; border-bottom: 1px solid var(--border); }
 .mobile-nav .btn { margin-top: 20px; }
 
 /* ─── HERO ─── */
@@ -316,6 +316,64 @@ h3 { font-family: 'Fraunces', serif; font-size: clamp(1.2rem, 2vw, 1.5rem); font
 .sc-cta::after { content: '→'; transition: transform .2s; }
 .service-card:hover .sc-cta::after { transform: translateX(4px); }
 
+/* ─── PRICING ─── */
+#pricing { padding: 64px 0; background: var(--bg); }
+#pricing h2 { color: var(--ink); margin-bottom: 10px; }
+.pricing-tabs {
+  display: flex; gap: 0; margin-bottom: 0;
+  border-bottom: 2px solid var(--border);
+}
+.pricing-tab {
+  padding: 12px 32px;
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: .88rem; font-weight: 600;
+  border: 2px solid transparent; border-bottom: none;
+  background: transparent; color: var(--ink-3);
+  cursor: pointer; transition: all .2s;
+  border-radius: 10px 10px 0 0;
+  margin-bottom: -2px;
+  position: relative;
+}
+.pricing-tab:hover { color: var(--blue); background: #e8f4fa; }
+.pricing-tab.active {
+  background: var(--surface);
+  color: var(--blue);
+  border-color: var(--border);
+  border-bottom-color: var(--surface);
+}
+.pricing-tab.active::after {
+  content: '';
+  position: absolute; bottom: -2px; left: 0; right: 0;
+  height: 3px; background: var(--blue);
+  border-radius: 2px 2px 0 0;
+}
+.pricing-panel {
+  animation: fadeIn .25s ease;
+  border: 2px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 20px 20px;
+  padding: 36px;
+  background: var(--surface);
+}
+.pricing-card {
+  background: transparent; border: none;
+  border-radius: 0; padding: 0;
+  display: flex; flex-direction: column;
+  max-width: 480px;
+  transition: none;
+}
+.pricing-card:hover { transform: none; box-shadow: none; }
+.pricing-icon { font-size: 2.4rem; margin-bottom: 16px; }
+.pricing-title { font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 700; color: var(--purple-dk); margin-bottom: 6px; }
+.pricing-tagline { font-size: .88rem; color: var(--ink-3); margin-bottom: 20px; font-style: italic; }
+.pricing-price { font-size: 1rem; font-weight: 600; color: var(--ink-2); margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+.pricing-price span { font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 900; color: var(--purple); display: block; line-height: 1.1; margin-top: 4px; }
+.pricing-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; flex: 1; }
+.pricing-list li { font-size: .88rem; color: var(--ink-2); display: flex; align-items: flex-start; gap: 10px; line-height: 1.4; }
+.pricing-list li::before { content: '✓'; color: var(--green-dk); font-weight: 700; font-size: .85rem; flex-shrink: 0; margin-top: 1px; }
+.pricing-note { font-size: .76rem; color: var(--ink-3); line-height: 1.5; padding-top: 16px; border-top: 1px solid var(--border); }
+.pricing-cta { text-align: center; padding-top: 48px; border-top: 1px solid var(--border); }
+.pricing-cta p { font-size: .95rem; color: var(--ink-2); margin-bottom: 20px; }
+
 /* ─── TESTIMONIALS ─── */
 #testimonials { padding: 64px 0; background: var(--bg); }
 .t-head { text-align: center; max-width: 540px; margin: 0 auto 52px; }
@@ -518,6 +576,9 @@ footer a:hover { color: #fff; }
     width: 2px; height: calc(100% + 28px);
     background: var(--purple); z-index: 0;
   }
+  .pricing-tabs { flex-wrap: wrap; }
+  .pricing-tab { flex: 1; text-align: center; }
+  .pricing-panel { padding: 24px; }
   .resources-grid { grid-template-columns: 1fr; gap: 40px; }
   .contact-grid { grid-template-columns: 1fr; }
   .services-grid { grid-template-columns: 1fr; }
