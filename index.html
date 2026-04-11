@@ -537,10 +537,16 @@ const nextBtn = document.getElementById('tNext');
 if (carousel) {
   const scrollAmount = 340;
   const updateArrows = () => {
-    const atStart = carousel.scrollLeft <= 0;
+    const atStart = carousel.scrollLeft <= 5;
     const atEnd = carousel.scrollLeft + carousel.offsetWidth >= carousel.scrollWidth - 4;
-    prevBtn.setAttribute('style', atStart ? 'opacity:0.3;pointer-events:none' : 'opacity:1;pointer-events:auto');
-    nextBtn.setAttribute('style', atEnd ? 'opacity:0.3;pointer-events:none' : 'opacity:1;pointer-events:auto');
+    const noScroll = atStart && atEnd;
+    document.querySelector('.t-arrow-row').style.display = noScroll ? 'none' : 'flex';
+    prevBtn.style.background = atStart ? '#ccc' : 'var(--purple)';
+    prevBtn.style.cursor = atStart ? 'default' : 'pointer';
+    prevBtn.style.pointerEvents = atStart ? 'none' : 'auto';
+    nextBtn.style.background = atEnd ? '#ccc' : 'var(--purple)';
+    nextBtn.style.cursor = atEnd ? 'default' : 'pointer';
+    nextBtn.style.pointerEvents = atEnd ? 'none' : 'auto';
   };
   prevBtn.addEventListener('click', () => { carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' }); setTimeout(updateArrows, 300); });
   nextBtn.addEventListener('click', () => { carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' }); setTimeout(updateArrows, 300); });
