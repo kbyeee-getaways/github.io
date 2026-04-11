@@ -541,6 +541,7 @@ if (carousel) {
     const atEnd = carousel.scrollLeft + carousel.offsetWidth >= carousel.scrollWidth - 4;
     const noScroll = atStart && atEnd;
     document.querySelector('.t-arrow-row').style.display = noScroll ? 'none' : 'flex';
+    carousel.style.justifyContent = noScroll ? 'center' : 'flex-start';
     prevBtn.style.background = atStart ? '#ccc' : 'var(--purple)';
     prevBtn.style.cursor = atStart ? 'default' : 'pointer';
     prevBtn.style.pointerEvents = atStart ? 'none' : 'auto';
