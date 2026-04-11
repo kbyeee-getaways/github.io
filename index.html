@@ -552,6 +552,8 @@ if (carousel) {
   prevBtn.addEventListener('click', () => { carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' }); setTimeout(updateArrows, 300); });
   nextBtn.addEventListener('click', () => { carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' }); setTimeout(updateArrows, 300); });
   carousel.addEventListener('scroll', updateArrows, { passive: true });
+  setTimeout(updateArrows, 500);
+  window.addEventListener('resize', updateArrows);
 }
   // Nav scroll shadow
   const nav = document.getElementById('nav');
