@@ -388,7 +388,7 @@ h3 { font-family: 'Fraunces', serif; font-size: clamp(1.2rem, 2vw, 1.5rem); font
   padding: 8px 4px 16px; scroll-behavior: smooth;
 }
 .t-carousel::-webkit-scrollbar { display: none; }
-.t-carousel .t-card { min-width: 300px; max-width: 300px; flex-shrink: 0; scroll-snap-align: start; }
+.t-carousel .t-card { min-width: 300px; max-width: 300px; flex-shrink: 0; scroll-snap-align: start; width: 300px;}
 .t-arrow-row { display: flex; justify-content: center; gap: 12px; margin-top: 16px; }
 .t-arrow {
   width: 42px; height: 42px; border-radius: 50%;
