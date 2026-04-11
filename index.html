@@ -308,18 +308,20 @@
       <h2>Real Travelers. <br> Real Results.</h2>
       <div class="t-stars-row">★★★★★</div>
     </div>
-    <div class="t-grid">
-      <div class="t-card reveal">
+  </div>
+  <div class="t-carousel-wrap">
+    <div class="t-carousel" id="tCarousel">
+      <div class="t-card">
         <div class="t-card-stars">★★★★★</div>
         <p class="t-quote">"We had an amazing experience. This was the first trip I'd been on with a travel advisor and I'd do it again!"</p>
         <div class="t-author"><div class="t-avatar">Z</div><span class="t-name">Zee Iree</span></div>
       </div>
-      <div class="t-card reveal">
+      <div class="t-card">
         <div class="t-card-stars">★★★★★</div>
         <p class="t-quote">"Booking a trip was seamless and easy. I was able to customize my experience as little or as much as I wanted, and the major details were handled with ease."</p>
         <div class="t-author"><div class="t-avatar">A</div><span class="t-name">Alysia J.</span></div>
       </div>
-      <div class="t-card reveal">
+      <div class="t-card">
         <div class="t-card-stars">★★★★★</div>
         <p class="t-quote">"You will find lots of options available for adventure and exploration!"</p>
         <div class="t-author"><div class="t-avatar">V</div><span class="t-name">Vandell J.</span></div>
@@ -522,6 +524,31 @@
     e.target.classList.add('active');
   };
   
+  // Testimonial carousel
+const carousel = document.getElementById('tCarousel');
+const prevBtn = document.getElementById('tPrev');
+const nextBtn = document.getElementById('tNext');
+if (carousel) {
+  const scrollAmount = 340;
+  const updateArrows = () => {
+    const atStart = carousel.scrollLeft <= 5;
+    const atEnd = carousel.scrollLeft + carousel.offsetWidth >= carousel.scrollWidth - 4;
+    const noScroll = atStart && atEnd;
+    document.querySelector('.t-arrow-row').style.display = noScroll ? 'none' : 'flex';
+    carousel.style.justifyContent = noScroll ? 'center' : 'flex-start';
+    prevBtn.style.background = atStart ? '#ccc' : 'var(--purple)';
+    prevBtn.style.cursor = atStart ? 'default' : 'pointer';
+    prevBtn.style.pointerEvents = atStart ? 'none' : 'auto';
+    nextBtn.style.background = atEnd ? '#ccc' : 'var(--purple)';
+    nextBtn.style.cursor = atEnd ? 'default' : 'pointer';
+    nextBtn.style.pointerEvents = atEnd ? 'none' : 'auto';
+  };
+  prevBtn.addEventListener('click', () => { carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' }); setTimeout(updateArrows, 300); });
+  nextBtn.addEventListener('click', () => { carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' }); setTimeout(updateArrows, 300); });
+  carousel.addEventListener('scroll', updateArrows, { passive: true });
+  setTimeout(updateArrows, 500);
+  window.addEventListener('resize', updateArrows);
+}
   // Nav scroll shadow
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40), { passive: true });
