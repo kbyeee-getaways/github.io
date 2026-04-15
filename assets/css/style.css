@@ -47,6 +47,18 @@ h3 { font-family: 'Fraunces', serif; font-size: clamp(1.2rem, 2vw, 1.5rem); font
 .body-lg { font-size: 1.05rem; line-height: 1.75; color: var(--ink-2); }
 .body-sm { font-size: .88rem; line-height: 1.65; color: var(--ink-3); }
 
+/* ─── INQUIRY PAGE ─── */
+.inquiry-nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 5%; border-bottom: 1px solid var(--border); background: rgba(253,249,253,.95); backdrop-filter: blur(16px); position: sticky; top: 0; z-index: 100; margin-bottom: 52px; }
+.inquiry-nav img { height: 44px; width: auto; }
+.back { font-size: .82rem; font-weight: 600; color: var(--purple); display: inline-flex; align-items: center; gap: 6px; transition: gap .2s; }
+.back:hover { gap: 10px; }
+.inquiry-hero { text-align: center; padding: 0 5%; margin-bottom: 40px; }
+.inquiry-hero h1 { color: var(--purple-dk); margin-bottom: 12px; }
+.inquiry-hero p { font-size: 1rem; color: var(--ink-2); max-width: 460px; margin: 0 auto; line-height: 1.65; }
+.inquiry-card { max-width: 720px; margin: 0 auto; background: var(--surface); border-radius: 24px; padding: 48px 40px; box-shadow: var(--shadow-md); border: 1px solid var(--border); }
+.inquiry-note { text-align: center; margin-top: 28px; font-size: .78rem; color: var(--ink-3); line-height: 1.7; padding-top: 20px; border-top: 1px solid var(--border); }
+@media (max-width: 760px) { .inquiry-card { margin: 0 5%; padding: 28px 20px; border-radius: 16px; } }
+
 /* ─── BUTTONS ─── */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
