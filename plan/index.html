@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="color-scheme" content="light"/>
+  <title>Plan My Getaway | Kbyeee Getaways</title>
+  <meta name="description" content="Ready to plan your next getaway? Fill out the inquiry form and let's start building your perfect trip."/>
+  <meta name="robots" content="noindex"/>
+  <link rel="icon" type="image/png" href="../assets/images/logo.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../assets/css/style.css"/>
+  <style>
+    body { background: var(--purple-pale); }
+    .plan-page { min-height: 100vh; padding-bottom: 80px; }
+    .plan-nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 5%; border-bottom: 1px solid var(--border);
+      background: rgba(253,249,253,.95); backdrop-filter: blur(16px);
+      position: sticky; top: 0; z-index: 100; margin-bottom: 52px;
+    }
+    .plan-nav img { height: 44px; width: auto; }
+    .plan-hero { text-align: center; padding: 0 5%; margin-bottom: 40px; }
+    .plan-hero h1 { font-family: 'Fraunces', serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; color: var(--purple-dk); margin-bottom: 12px; }
+    .plan-hero p { font-size: 1rem; color: var(--ink-2); max-width: 500px; margin: 0 auto; line-height: 1.65; }
+    .plan-card {
+      max-width: 800px; margin: 0 auto;
+      background: var(--surface);
+      border-radius: 24px; padding: 48px 40px;
+      box-shadow: 0 8px 32px rgba(106,26,107,.12);
+      border: 1px solid var(--border);
+    }
+    .plan-note { text-align: center; margin-top: 28px; font-size: .78rem; color: var(--ink-3); line-height: 1.7; padding-top: 20px; border-top: 1px solid var(--border); }
+    @media (max-width: 760px) {
+      .plan-card { margin: 0 5%; padding: 28px 20px; border-radius: 16px; }
+    }
+  </style>
+</head>
+<body>
+ 
+<div class="plan-page">
+ 
+  <nav class="plan-nav">
+    <a href="/" aria-label="Kbyeee Getaways home">
+      <img src="../assets/images/logo.png" alt="Kbyeee Getaways"/>
+    </a>
+    <a href="/" class="back">← Back to site</a>
+  </nav>
+ 
+  <div class="plan-hero">
+    <h1>Plan My Getaway</h1>
+    <p>Tell us about your dream trip.</p>
+  </div>
+ 
+  <div class="plan-card">
+    <iframe src="https://www.cognitoforms.com/f/mgETcQFq-UG70Dztg30efw/6" allow="payment" style="border:0;width:100%;"></iframe>
+    <script src="https://www.cognitoforms.com/f/iframe.js"></script>
+    <!-- <p class="plan-note">
+      After submitting you'll hear from Brandi within 24 hours during business hours.<br/>
+      Mon–Fri 12pm–6pm EST &nbsp;·&nbsp; Saturday by appointment
+    </p> -->
+  </div>
+ 
+</div>
+ 
+</body>
+</html>
