@@ -445,6 +445,19 @@ h3 { font-family: 'Fraunces', serif; font-size: clamp(1.2rem, 2vw, 1.5rem); font
 .t-name { font-size: .84rem; font-weight: 600; color: var(--ink); }
 .t-foot { text-align: center; }
 
+/* ─── REVIEW PAGE ─── */
+.review-nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 5%; border-bottom: 1px solid var(--border); background: rgba(253,249,253,.95); backdrop-filter: blur(16px); position: sticky; top: 0; z-index: 100; }
+.review-nav img { height: 44px; width: auto; }
+.back { font-size: .82rem; font-weight: 600; color: var(--purple); display: inline-flex; align-items: center; gap: 6px; transition: gap .2s; }
+.back:hover { gap: 10px; }
+.review-hero { text-align: center; padding: 64px 5% 40px; }
+.review-hero h1 { font-size: clamp(2.4rem, 6vw, 4rem); font-weight: 900; color: var(--purple-dk); margin-bottom: 16px; }
+.review-hero h1 em { font-style: italic; color: var(--purple-dk); }
+.review-hero p { font-size: 1.05rem; color: var(--ink-2); max-width: 480px; margin: 0 auto; line-height: 1.7; }
+.review-stars { font-size: 1.4rem; color: var(--green-dk); letter-spacing: 4px; margin: 20px 0; }
+.review-card { max-width: 800px; margin: 0 auto 80px; background: var(--surface); border-radius: 24px; padding: 48px 40px; box-shadow: var(--shadow-md); border: 1px solid var(--border); }
+@media (max-width: 760px) { .review-card { margin: 0 5% 60px; padding: 28px 20px; border-radius: 16px; } .review-hero { padding: 48px 5% 32px; } }
+
 /* ─── CTA BAND ─── */
 #cta-band {
   background: var(--purple-dk); padding: 80px 0;
