@@ -29,6 +29,7 @@ a { color: inherit; text-decoration: none; }
 
 /* ─── LAYOUT ─── */
 .wrap { max-width: 1140px; margin: 0 auto; padding: 0 5%; }
+.plan-hero, .review-hero, .inquiry-hero { padding-top: 100px; }
 
 /* ─── TYPE ─── */
 .eyebrow {
