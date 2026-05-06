@@ -448,7 +448,7 @@ h3 { font-family: 'Fraunces', serif; font-size: clamp(1.2rem, 2vw, 1.5rem); font
 .review-nav img { height: 44px; width: auto; }
 .back { font-size: .82rem; font-weight: 600; color: var(--purple); display: inline-flex; align-items: center; gap: 6px; transition: gap .2s; }
 .back:hover { gap: 10px; }
-.review-hero { text-align: center; padding: 100px 5% 40px; }
+.review-hero { text-align: center; padding: 150px 5% 40px; }
 .review-hero h1 { font-size: clamp(2.4rem, 6vw, 4rem); font-weight: 900; color: var(--purple-dk); margin-bottom: 16px; }
 .review-hero h1 em { font-style: italic; color: var(--purple-dk); }
 .review-hero p { font-size: 1.05rem; color: var(--ink-2); max-width: 480px; margin: 0 auto; line-height: 1.7; }
