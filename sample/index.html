@@ -1,0 +1,1512 @@
+<!DOCTYPE html>
+<html lang="en" id="top">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Travel Guide | Kbyeee Getaways</title>
+<meta name="description" content="Your personalized interactive travel guide from Kbyeee Getaways.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Dominant */
+  --sapphire:     #3A5FC4;
+  --sap-dark:     #2C4A9E;
+  --sap-pale:     #EBF0FB;
+  --sap-mid:      #C5D3F4;
+  /* Secondary */
+  --emerald:      #1A7A5E;
+  --em-pale:      #E4F4EE;
+  --em-glow:      #22A07D;
+  /* Accents — used sparingly */
+  --topaz:        #A85E08;
+  --topaz-pale:   #FBF2E6;
+  --amethyst:     #6B3FA0;
+  --am-pale:      #F0EAF9;
+  /* Neutrals */
+  --ink:          #1A1828;
+  --charcoal:     #2E2C3E;
+  --slate:        #5A5770;
+  --mist:         #7A7890;  /* 4.7:1 on white — AA pass */
+  --fog:          #A8A6B8;
+  --stone:        #E2E0EC;
+  --offwhite:     #F8F7FB;  /* very slight violet tint */
+  --white:        #FFFFFF;
+  --border-l:     rgba(58,95,196,0.1);
+  --border-d:     rgba(255,255,255,0.1);
+}
+
+/* ── BASE ────────────────────────────────── */
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--offwhite);
+  color: var(--charcoal);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── SKIP LINK (accessibility) ───────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 9999;
+  background: var(--sapphire);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 0 0 8px 8px;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 0; }
+
+/* ── SAMPLE BANNER ───────────────────────── */
+.banner {
+  background: var(--sapphire);
+  text-align: center;
+  padding: 9px 20px;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.9);
+  letter-spacing: 0.02em;
+}
+.banner a {
+  color: #fff;
+  font-weight: 600;
+  text-underline-offset: 2px;
+}
+
+/* ── HERO ────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 72px 24px 88px;
+  overflow: hidden;
+  background: linear-gradient(160deg, #F0EEF8 0%, #E8F0F8 50%, #EAF4F0 100%);
+}
+
+/* Soft radial warmth — no heavy overlay needed */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 85% 105%, rgba(58,95,196,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 10% -10%, rgba(26,122,94,0.06) 0%, transparent 55%);
+  z-index: 0;
+}
+
+.hero-stars { display: none; }
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+}
+
+.hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--sapphire);
+  margin-bottom: 28px;
+  animation: riseIn 0.7s ease both;
+}
+.hero-kicker::before, .hero-kicker::after {
+  content: '';
+  display: block;
+  height: 1px;
+  width: 28px;
+  background: var(--sap-mid);
+}
+
+/* Type hierarchy level 1 — massive display */
+.hero h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(58px, 12vw, 110px);
+  font-weight: 700;
+  line-height: 0.9;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+  animation: riseIn 0.7s 0.1s ease both;
+}
+.hero h1 em {
+  display: block;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--sapphire);
+}
+
+/* Type hierarchy level 4 — caption */
+.hero-meta {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--mist);
+  margin: 20px 0 40px;
+  letter-spacing: 0.04em;
+  animation: riseIn 0.7s 0.2s ease both;
+}
+.hero-meta strong { color: var(--charcoal); font-weight: 500; }
+
+.hero-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  animation: riseIn 0.7s 0.3s ease both;
+}
+.hero-pill {
+  display: inline-block;
+  padding: 11px 24px;
+  border-radius: 100px;
+  border: 1.5px solid var(--sap-mid);
+  background: var(--white);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--sapphire);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.hero-pill:hover,
+.hero-pill:focus-visible {
+  background: var(--sapphire);
+  border-color: var(--sapphire);
+  color: #fff;
+  outline: none;
+}
+.hero-pill:focus-visible { outline: 2px solid var(--sapphire); outline-offset: 3px; }
+
+.scroll-cue {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: var(--fog);
+  font-size: 9.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  animation: riseIn 1s 0.5s ease both;
+}
+.scroll-line {
+  width: 1px;
+  height: 36px;
+  background: linear-gradient(to bottom, var(--fog), transparent);
+  animation: scrollBob 2s ease-in-out infinite;
+}
+
+/* ── SECTION DIVIDER ─────────────────────── */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--sap-mid) 20%, var(--sap-mid) 80%, transparent 100%);
+  margin: 0;
+  opacity: 0.6;
+}
+/* Type hierarchy level 5 — eyebrow */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sapphire);
+  margin-bottom: 10px;
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--sap-mid);
+}
+
+/* ── ITINERARY ───────────────────────────── */
+.itinerary-wrap {
+  background: var(--offwhite);
+  padding: 80px 0 88px;
+}
+.itinerary-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.itinerary-head { margin-bottom: 36px; }
+
+/* Type hierarchy level 2 — section title */
+.itinerary-head h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(34px, 6vw, 54px);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+/* Type hierarchy level 3 — subtitle */
+.itinerary-head p {
+  font-size: 16px;
+  color: var(--mist);
+  font-weight: 300;
+}
+
+/* Day jump pills */
+.day-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+.day-pill {
+  padding: 7px 16px;
+  border-radius: 100px;
+  border: 1.5px solid var(--stone);
+  background: var(--white);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--mist);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: all 0.18s;
+}
+.day-pill:hover,
+.day-pill:focus-visible {
+  border-color: var(--sapphire);
+  color: var(--sapphire);
+  background: var(--sap-pale);
+  outline: none;
+}
+.day-pill:focus-visible { outline: 2px solid var(--sapphire); outline-offset: 2px; }
+
+/* ── HOTEL CARD ──────────────────────────── */
+.hotel-card {
+  background: var(--white);
+  border: 1px solid var(--border-l);
+  border-radius: 18px;
+  overflow: hidden;
+  margin-bottom: 28px;
+  box-shadow: 0 2px 12px rgba(58,95,196,0.06);
+}
+.hotel-card-header {
+  background: var(--sapphire);
+  padding: 14px 22px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hotel-card-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.01em;
+}
+.hotel-card-location {
+  font-size: 12px;
+  color: rgba(255,255,255,0.65);
+  margin-top: 1px;
+}
+.hotel-card-body {
+  padding: 18px 22px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.hotel-field-label {
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sapphire);
+  margin-bottom: 4px;
+}
+/* Hotel name is the prominent field; dates/confirmation are secondary */
+.hotel-field-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.3;
+}
+.hotel-field-sub {
+  font-size: 12px;
+  color: var(--mist);
+  margin-top: 2px;
+  font-weight: 400;
+}
+.hotel-confirm {
+  font-size: 13px;
+  color: var(--slate);
+  font-weight: 400;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.04em;
+}
+
+/* ── ACCORDION DAY CARDS ─────────────────── */
+.day-card {
+  background: var(--white);
+  border-radius: 14px;
+  border: 1px solid var(--border-l);
+  margin-bottom: 10px;
+  overflow: hidden;
+  transition: box-shadow 0.25s;
+}
+.day-card:hover { box-shadow: 0 4px 20px rgba(58,95,196,0.08); }
+
+.day-card-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  transition: background 0.18s;
+  -webkit-tap-highlight-color: transparent;
+}
+.day-card-trigger:hover { background: rgba(58,95,196,0.03); }
+.day-card-trigger:focus-visible { outline: 2px solid var(--sapphire); outline-offset: -2px; }
+
+#day-1 .day-card-trigger { border-left: 3px solid var(--sapphire); }
+#day-2 .day-card-trigger { border-left: 3px solid var(--emerald); }
+#day-3 .day-card-trigger { border-left: 3px solid var(--topaz); }
+#day-4 .day-card-trigger { border-left: 3px solid var(--amethyst); }
+#day-5 .day-card-trigger { border-left: 3px solid var(--sapphire); }
+
+.day-num-badge {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 12px;
+  font-weight: 600;
+  font-style: italic;
+  padding: 5px 14px;
+  border-radius: 100px;
+  flex-shrink: 0;
+  letter-spacing: 0.02em;
+}
+#day-1 .day-num-badge { background: var(--sap-pale);   color: var(--sapphire); }
+#day-2 .day-num-badge { background: var(--em-pale);    color: var(--emerald); }
+#day-3 .day-num-badge { background: var(--topaz-pale); color: var(--topaz); }
+#day-4 .day-num-badge { background: var(--am-pale);    color: var(--amethyst); }
+#day-5 .day-num-badge { background: var(--sap-pale);   color: var(--sapphire); }
+
+.day-trigger-text { flex: 1; min-width: 0; }
+
+.day-card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+.day-card-date {
+  font-size: 12px;
+  color: var(--fog);
+  font-weight: 400;
+  margin-top: 2px;
+}
+
+.day-chevron {
+  flex-shrink: 0;
+  width: 20px; height: 20px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--fog);
+  transition: transform 0.3s ease, color 0.2s;
+}
+.day-chevron svg {
+  width: 14px; height: 14px;
+  stroke: currentColor; fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+.day-card.open .day-chevron { transform: rotate(180deg); color: var(--sapphire); }
+
+.day-card-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease;
+  border-top: 0px solid var(--border-l);
+}
+.day-card.open .day-card-body {
+  grid-template-rows: 1fr;
+  border-top-width: 1px;
+}
+.day-card-body-inner {
+  overflow: hidden;
+  padding: 0 20px;
+  transition: padding 0.35s ease;
+}
+.day-card.open .day-card-body-inner { padding: 20px 20px; }
+
+.events { display: flex; flex-direction: column; gap: 18px; }
+
+.event {
+  display: grid;
+  grid-template-columns: 68px 1fr;
+  gap: 0 16px;
+}
+.event-time {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--fog);
+  letter-spacing: 0.03em;
+  padding-top: 1px;
+  text-align: right;
+  line-height: 1.4;
+}
+.event-right {
+  border-left: 2px solid var(--stone);
+  padding-left: 16px;
+  padding-bottom: 2px;
+}
+/* Type hierarchy level 3b — event name */
+.event-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+/* Type hierarchy level 4b — event description — 14px minimum */
+.event-desc {
+  font-size: 14px;
+  color: var(--mist);
+  font-weight: 300;
+  line-height: 1.65;
+}
+.event-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 8px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 100px;
+  background: var(--em-pale);
+  color: var(--emerald);
+}
+.event-note {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  font-style: italic;
+  color: var(--sapphire);
+}
+
+/* ── GOOD TO KNOW ────────────────────────── */
+/* Sapphire-tinted light bg — clear visual break without going dark */
+.tips-wrap {
+  background: var(--sap-pale);
+  padding: 80px 0 88px;
+}
+.tips-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.tips-head { margin-bottom: 36px; }
+.tips-head h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+  line-height: 1.0;
+}
+.tips-head p { font-size: 15px; color: var(--mist); font-weight: 300; }
+
+/* Grouped tips — 3 thematic clusters */
+.tips-group { margin-bottom: 28px; }
+.tips-group-label {
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sapphire);
+  padding-bottom: 10px;
+  border-bottom: 1.5px solid var(--sap-mid);
+  margin-bottom: 10px;
+}
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.tip-card {
+  background: var(--white);
+  border: 1px solid rgba(58,95,196,0.1);
+  border-radius: 14px;
+  padding: 16px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.tip-card:hover {
+  border-color: rgba(58,95,196,0.25);
+  box-shadow: 0 4px 16px rgba(58,95,196,0.08);
+}
+.tip-emoji { font-size: 20px; display: block; margin-bottom: 9px; }
+.tip-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 5px;
+}
+/* Body text at 14px — readable on mobile */
+.tip-body {
+  font-size: 14px;
+  color: var(--mist);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* ── PACKING LIST ────────────────────────── */
+.packing-wrap {
+  background: var(--offwhite);
+  padding: 80px 0 108px;
+}
+.packing-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.packing-head { margin-bottom: 32px; }
+.packing-head h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+  line-height: 1.0;
+}
+.packing-head p { font-size: 15px; color: var(--mist); font-weight: 300; }
+
+.progress-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.progress-count {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--mist);
+}
+.reset-btn {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--mist);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-family: inherit;
+  padding: 4px 0;
+  transition: color 0.15s;
+}
+.reset-btn:hover { color: var(--amethyst); }
+.reset-btn:focus-visible { outline: 2px solid var(--sapphire); outline-offset: 2px; border-radius: 2px; }
+
+.progress-track {
+  height: 5px;
+  background: var(--stone);
+  border-radius: 100px;
+  overflow: hidden;
+  margin-bottom: 36px;
+}
+.progress-fill {
+  height: 100%;
+  /* Sapphire dominant left, emerald accent right */
+  background: linear-gradient(90deg, var(--sapphire) 0%, var(--em-glow) 100%);
+  border-radius: 100px;
+  width: 0%;
+  transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+
+.pack-group { margin-bottom: 24px; }
+.pack-group-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sapphire);
+  padding-bottom: 10px;
+  border-bottom: 1.5px solid var(--sap-mid);
+  margin-bottom: 2px;
+}
+
+.pack-items { display: flex; flex-direction: column; }
+
+/* pack-item is a button for full keyboard + screen reader support */
+.pack-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  /* Increased padding for thumb-friendliness */
+  padding: 15px 6px;
+  border-bottom: 1px solid var(--stone);
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  background: none;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-radius: 0;
+  width: 100%;
+  text-align: left;
+  font-family: inherit;
+  transition: background 0.12s;
+}
+.pack-item:last-child { border-bottom: none; }
+.pack-item:hover { background: rgba(58,95,196,0.03); }
+.pack-item:focus-visible {
+  outline: 2px solid var(--sapphire);
+  outline-offset: -2px;
+  border-radius: 4px;
+}
+
+.pack-check {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border: 1.5px solid var(--fog);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, border-color 0.15s;
+  pointer-events: none;
+}
+.pack-item[aria-checked="true"] .pack-check {
+  background: var(--sapphire);
+  border-color: var(--sapphire);
+}
+.pack-check svg {
+  width: 12px; height: 12px;
+  stroke: white; fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity 0.15s, transform 0.15s;
+}
+.pack-item[aria-checked="true"] .pack-check svg { opacity: 1; transform: scale(1); }
+
+.pack-item-text {
+  font-size: 14px;
+  color: var(--charcoal);
+  font-weight: 400;
+  line-height: 1.4;
+  transition: color 0.15s;
+}
+.pack-item[aria-checked="true"] .pack-item-text {
+  text-decoration: line-through;
+  color: var(--fog);
+}
+
+.footer-logo-placeholder {
+  width: 80px;
+  height: 80px;
+  border-radius: 16px;
+  border: 2px dashed var(--sap-mid);
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 14px;
+}
+.footer-logo-placeholder span {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fog);
+}
+.footer {
+  background: var(--sap-pale);
+  padding: 52px 24px 48px;
+  text-align: center;
+  border-top: 1.5px solid var(--sap-mid);
+}
+.footer-wordmark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--sapphire);
+  margin-bottom: 6px;
+}
+.footer-sub {
+  font-size: 12.5px;
+  color: var(--mist);
+  letter-spacing: 0.02em;
+  margin-bottom: 28px;
+}
+.footer-sub a {
+  color: var(--slate);
+  text-decoration: none;
+}
+.footer-sub a:hover { color: var(--sapphire); }
+
+/* CTA block */
+.footer-cta {
+  margin: 0 auto 32px;
+  max-width: 360px;
+  padding: 24px;
+  border: 1.5px solid var(--sap-mid);
+  border-radius: 18px;
+  background: var(--white);
+}
+.footer-cta-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 14px;
+  letter-spacing: -0.01em;
+}
+.footer-cta-btn {
+  display: inline-block;
+  padding: 12px 28px;
+  background: var(--sapphire);
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 100px;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: background 0.2s, transform 0.2s;
+}
+.footer-cta-btn:hover { background: var(--sap-dark); transform: translateY(-1px); }
+.footer-cta-btn:focus-visible { outline: 2px solid var(--sapphire); outline-offset: 3px; }
+.footer-gems {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 28px;
+}
+.gem {
+  width: 7px; height: 7px;
+  border-radius: 2px;
+  transform: rotate(45deg);
+  animation: gemPulse 2.4s ease-in-out infinite;
+}
+.gem:nth-child(1) { background: var(--sapphire); }
+.gem:nth-child(2) { background: var(--emerald);  animation-delay: 0.4s; }
+.gem:nth-child(3) { background: var(--topaz);    animation-delay: 0.8s; }
+.gem:nth-child(4) { background: var(--amethyst); animation-delay: 1.2s; }
+.gem:nth-child(5) { background: var(--sapphire); animation-delay: 1.6s; }
+
+/* ── BACK TO TOP ─────────────────────────── */
+/* button element, not anchor — no history-stack pollution */
+.back-top {
+  position: fixed;
+  bottom: 24px; right: 24px;
+  width: 36px; height: 36px;
+  background: var(--sapphire);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s, transform 0.3s, background 0.2s;
+  z-index: 99;
+}
+.back-top.visible { opacity: 1; transform: translateY(0); }
+.back-top:hover { background: var(--sap-dark); }
+.back-top:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+.back-top svg {
+  width: 14px; height: 14px;
+  stroke: #fff; fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+
+/* ── ANIMATIONS ──────────────────────────── */
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes scrollBob {
+  0%, 100% { opacity: 0.5; transform: scaleY(1); }
+  50%       { opacity: 1;   transform: scaleY(1.12); }
+}
+@keyframes gemPulse {
+  0%, 100% { opacity: 0.35; transform: rotate(45deg) scale(1); }
+  50%       { opacity: 1;   transform: rotate(45deg) scale(1.35); }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.1ms !important;
+  }
+  html { scroll-behavior: auto; }
+}
+
+/* ── MOBILE ──────────────────────────────── */
+@media (max-width: 580px) {
+  .itinerary-wrap,
+  .tips-wrap,
+  .packing-wrap { padding-top: 56px; padding-bottom: 64px; }
+
+  .hotel-card-body { grid-template-columns: 1fr 1fr; }
+
+  .tips-grid { grid-template-columns: 1fr; gap: 8px; }
+
+  .event { grid-template-columns: 60px 1fr; gap: 0 12px; }
+  .event-time { font-size: 11px; }
+
+  .day-card-body { padding: 16px; }
+  .day-card-top  { padding: 14px 16px; }
+
+  .back-top { bottom: 16px; right: 16px; }
+
+  .hero h1 { font-size: 52px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Skip link — first focusable element on page -->
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<!-- Sample banner -->
+<div class="banner" role="note">
+  This is a sample guide. Yours will be customized for your trip. <a href="https://kbyeeegetaways.com" target="_blank" rel="noopener noreferrer" aria-label="Book with Kbyeee Getaways, opens in new tab">Book with Kbyeee Getaways &rarr;</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<header class="hero">
+  <!-- Scattered stars — night sky / bioluminescent water -->
+  <!-- Warm golden dots — fireflies / golden hour light -->
+  <svg class="hero-stars" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <!-- White stars upper -->
+    <circle cx="120"  cy="80"  r="2"   fill="rgba(255,255,255,0.3)"/>
+    <circle cx="380"  cy="140" r="1.5" fill="rgba(255,255,255,0.22)"/>
+    <circle cx="720"  cy="60"  r="2.5" fill="rgba(255,255,255,0.28)"/>
+    <circle cx="1050" cy="110" r="2"   fill="rgba(255,255,255,0.25)"/>
+    <circle cx="1320" cy="55"  r="1.5" fill="rgba(255,255,255,0.2)"/>
+    <circle cx="1410" cy="200" r="2"   fill="rgba(255,255,255,0.28)"/>
+    <circle cx="55"   cy="280" r="1.5" fill="rgba(255,255,255,0.18)"/>
+    <circle cx="210"  cy="320" r="1"   fill="rgba(255,255,255,0.15)"/>
+    <circle cx="490"  cy="240" r="1.5" fill="rgba(255,255,255,0.2)"/>
+    <circle cx="860"  cy="180" r="1.5" fill="rgba(255,255,255,0.18)"/>
+    <circle cx="1160" cy="230" r="2"   fill="rgba(255,255,255,0.22)"/>
+    <circle cx="1380" cy="310" r="1"   fill="rgba(255,255,255,0.14)"/>
+    <circle cx="170"  cy="160" r="1"   fill="rgba(255,255,255,0.14)"/>
+    <circle cx="560"  cy="130" r="1"   fill="rgba(255,255,255,0.12)"/>
+    <circle cx="1100" cy="160" r="1"   fill="rgba(255,255,255,0.14)"/>
+    <!-- Golden accent dots — warm firefly glow -->
+    <circle cx="330"  cy="75"  r="1.2" fill="rgba(255,200,120,0.4)"/>
+    <circle cx="900"  cy="95"  r="1.5" fill="rgba(255,200,120,0.35)"/>
+    <circle cx="1200" cy="70"  r="1"   fill="rgba(255,200,120,0.3)"/>
+    <circle cx="450"  cy="290" r="1.2" fill="rgba(255,200,120,0.28)"/>
+    <circle cx="640"  cy="310" r="1"   fill="rgba(255,200,120,0.25)"/>
+    <circle cx="1350" cy="180" r="1.5" fill="rgba(255,200,120,0.32)"/>
+    <circle cx="80"   cy="400" r="1"   fill="rgba(255,200,120,0.2)"/>
+    <circle cx="980"  cy="280" r="1.2" fill="rgba(255,200,120,0.28)"/>
+    <!-- Warm coral bottom glow — horizon light -->
+    <circle cx="90"   cy="820" r="1.5" fill="rgba(240,160,120,0.18)"/>
+    <circle cx="420"  cy="800" r="2"   fill="rgba(240,160,120,0.16)"/>
+    <circle cx="780"  cy="820" r="1.5" fill="rgba(240,160,120,0.14)"/>
+    <circle cx="1100" cy="810" r="2"   fill="rgba(240,160,120,0.16)"/>
+    <circle cx="1420" cy="800" r="1"   fill="rgba(240,160,120,0.12)"/>
+  </svg>
+  <div class="hero-inner">
+    <div class="hero-kicker" aria-hidden="true">Kbyeee Getaways &nbsp;&#10022;&nbsp; Your Trip Guide</div>
+    <h1>
+      Sun &amp; Sea
+      <em>Somewhere Beautiful</em>
+    </h1>
+    <p class="hero-meta">
+      <strong>Sample Destination</strong> &nbsp;&middot;&nbsp; 5 Days &nbsp;&middot;&nbsp; June 2025
+    </p>
+    <nav aria-label="Page sections">
+      <div class="hero-pills">
+        <a class="hero-pill" href="#itinerary">Itinerary</a>
+        <a class="hero-pill" href="#tips">Good to Know</a>
+        <a class="hero-pill" href="#packing">Packing List</a>
+      </div>
+    </nav>
+  </div>
+  <div class="scroll-cue" aria-hidden="true">
+    <div class="scroll-line"></div>
+    <span>scroll</span>
+  </div>
+</header>
+
+<!-- ═══ MAIN CONTENT ═══ -->
+<main id="main-content">
+
+<!-- ── ITINERARY ── -->
+<section id="itinerary" class="itinerary-wrap" aria-labelledby="itinerary-heading">
+  <div class="itinerary-inner">
+
+    <div class="itinerary-head">
+      <div class="section-label" aria-hidden="true">Your Schedule</div>
+      <h2 id="itinerary-heading">The Full Plan</h2>
+      <p>Every detail, laid out so you can just show up and enjoy it.</p>
+    </div>
+
+    <!-- Hotel card — name is prominent, confirmation is de-emphasised -->
+    <div class="hotel-card" role="region" aria-label="Accommodation details">
+      <div class="hotel-card-header">
+        <div>
+          <div class="hotel-card-name">🏨 Your Boutique Hotel</div>
+          <div class="hotel-card-location">Destination City</div>
+        </div>
+      </div>
+      <div class="hotel-card-body">
+        <div>
+          <div class="hotel-field-label">Check-in</div>
+          <div class="hotel-field-value">3:00 PM</div>
+          <div class="hotel-field-sub">Day 1</div>
+        </div>
+        <div>
+          <div class="hotel-field-label">Check-out</div>
+          <div class="hotel-field-value">12:00 PM</div>
+          <div class="hotel-field-sub">Day 5</div>
+        </div>
+        <div>
+          <div class="hotel-field-label">Confirmation</div>
+          <div class="hotel-confirm">#XXXXXXXXX</div>
+          <div class="hotel-field-sub">Keep this handy</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 1 -->
+<article class="day-card" id="day-1" aria-labelledby="d1-title">
+  <button class="day-card-trigger" aria-expanded="false" aria-controls="d1-body" onclick="toggleDay(this)">
+    <span class="day-num-badge" aria-hidden="true">Day 01</span>
+    <div class="day-trigger-text">
+      <div class="day-card-title" id="d1-title">Arrival Day 🌅</div>
+      <div class="day-card-date">Thursday, June 5</div>
+    </div>
+    <div class="day-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+  </button>
+  <div class="day-card-body" id="d1-body" role="region" aria-labelledby="d1-title">
+    <div class="day-card-body-inner">
+      <div class="events">
+        <div class="event">
+          <div class="event-time">Varies</div>
+          <div class="event-right">
+            <div class="event-name">Arrive &amp; Check In</div>
+            <div class="event-desc">Head to the hotel after landing. If you arrive before 3 PM the front desk can hold your bags so you can start exploring early.</div>
+            <span class="event-note">Check-in from 3:00 PM</span>
+          </div>
+        </div>
+        <div class="event">
+          <div class="event-time">Afternoon</div>
+          <div class="event-right">
+            <div class="event-name">Get Your Bearings</div>
+            <div class="event-desc">Wander the area, find a local spot for a bite, and take in the first golden hour. No agenda required.</div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="event-time">Evening</div>
+          <div class="event-right">
+            <div class="event-name">Welcome Dinner</div>
+            <div class="event-desc">Dinner reservation confirmed at a local favorite. Full details will be in your personalized guide.</div>
+            <span class="event-badge">✓ Reservation Confirmed</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- Day 2 -->
+<article class="day-card" id="day-2" aria-labelledby="d2-title">
+  <button class="day-card-trigger" aria-expanded="false" aria-controls="d2-body" onclick="toggleDay(this)">
+    <span class="day-num-badge" aria-hidden="true">Day 02</span>
+    <div class="day-trigger-text">
+      <div class="day-card-title" id="d2-title">City Exploration 🗺</div>
+      <div class="day-card-date">Friday, June 6</div>
+    </div>
+    <div class="day-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+  </button>
+  <div class="day-card-body" id="d2-body" role="region" aria-labelledby="d2-title">
+    <div class="day-card-body-inner">
+      <div class="events">
+        <div class="event">
+          <div class="event-time">9:00 AM</div>
+          <div class="event-right">
+            <div class="event-name">Guided City Tour</div>
+            <div class="event-desc">Pickup from the hotel lobby. Comfortable shoes recommended — you'll be on your feet most of the morning.</div>
+            <span class="event-badge">✓ Pickup Included</span>
+          </div>
+        </div>
+        <div class="event">
+          <div class="event-time">1:00 PM</div>
+          <div class="event-right">
+            <div class="event-name">Lunch Stop</div>
+            <div class="event-desc">Lunch is included with the tour. Enjoy a local meal before the afternoon wraps up.</div>
+            <span class="event-badge">✓ Lunch Included</span>
+          </div>
+        </div>
+        <div class="event">
+          <div class="event-time">3:00 PM</div>
+          <div class="event-right">
+            <div class="event-name">Free Time</div>
+            <div class="event-desc">The rest of the day is yours. Shop, explore, rest, or find a rooftop bar for the sunset.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- Day 3 -->
+<article class="day-card" id="day-3" aria-labelledby="d3-title">
+  <button class="day-card-trigger" aria-expanded="false" aria-controls="d3-body" onclick="toggleDay(this)">
+    <span class="day-num-badge" aria-hidden="true">Day 03</span>
+    <div class="day-trigger-text">
+      <div class="day-card-title" id="d3-title">Adventure Day 🌊</div>
+      <div class="day-card-date">Saturday, June 7</div>
+    </div>
+    <div class="day-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+  </button>
+  <div class="day-card-body" id="d3-body" role="region" aria-labelledby="d3-title">
+    <div class="day-card-body-inner">
+      <div class="events">
+        <div class="event">
+          <div class="event-time">7:30 AM</div>
+          <div class="event-right">
+            <div class="event-name">Meet at Pickup Point</div>
+            <div class="event-desc">5-minute walk from the hotel. Do not be late — this excursion departs on time. Bring reef-safe sunscreen and your swim things.</div>
+            <span class="event-note">Map link will be in your personalized guide</span>
+          </div>
+        </div>
+        <div class="event">
+          <div class="event-time">8:00 AM</div>
+          <div class="event-right">
+            <div class="event-name">Full Day Excursion</div>
+            <div class="event-desc">A full day out. Details specific to your destination and what to bring will all be in your personalized guide.</div>
+            <span class="event-badge">✓ Lunch Included</span>
+          </div>
+        </div>
+        <div class="event">
+          <div class="event-time">5:00 PM</div>
+          <div class="event-right">
+            <div class="event-name">Return &amp; Refresh</div>
+            <div class="event-desc">Back at the hotel by late afternoon. Evening is free to rest up or head out.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- Day 4 -->
+<article class="day-card" id="day-4" aria-labelledby="d4-title">
+  <button class="day-card-trigger" aria-expanded="false" aria-controls="d4-body" onclick="toggleDay(this)">
+    <span class="day-num-badge" aria-hidden="true">Day 04</span>
+    <div class="day-trigger-text">
+      <div class="day-card-title" id="d4-title">Unwind Day 🧖🏾</div>
+      <div class="day-card-date">Sunday, June 8</div>
+    </div>
+    <div class="day-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+  </button>
+  <div class="day-card-body" id="d4-body" role="region" aria-labelledby="d4-title">
+    <div class="day-card-body-inner">
+      <div class="events">
+        <div class="event">
+          <div class="event-time">9:45 AM</div>
+          <div class="event-right">
+            <div class="event-name">Arrive at Spa</div>
+            <div class="event-desc">7-minute walk from the hotel. Arrive 10 minutes early to get settled before your appointment starts.</div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="event-time">10:00 AM</div>
+          <div class="event-right">
+            <div class="event-name">Spa Day</div>
+            <div class="event-desc">Full access to treatments and facilities. Confirmed services and all details will be in your personalized guide.</div>
+            <span class="event-badge">✓ Reservation Confirmed</span>
+          </div>
+        </div>
+        <div class="event">
+          <div class="event-time">Evening</div>
+          <div class="event-right">
+            <div class="event-name">Last Night Out</div>
+            <div class="event-desc">Dinner recommendations or a confirmed reservation will be included in your personalized guide for this evening.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- Day 5 -->
+<article class="day-card" id="day-5" aria-labelledby="d5-title">
+  <button class="day-card-trigger" aria-expanded="false" aria-controls="d5-body" onclick="toggleDay(this)">
+    <span class="day-num-badge" aria-hidden="true">Day 05</span>
+    <div class="day-trigger-text">
+      <div class="day-card-title" id="d5-title">Departure ✈️</div>
+      <div class="day-card-date">Monday, June 9</div>
+    </div>
+    <div class="day-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+  </button>
+  <div class="day-card-body" id="d5-body" role="region" aria-labelledby="d5-title">
+    <div class="day-card-body-inner">
+      <div class="events">
+        <div class="event">
+          <div class="event-time">Morning</div>
+          <div class="event-right">
+            <div class="event-name">Breakfast &amp; Pack Up</div>
+            <div class="event-desc">Check-out by 12:00 PM. The hotel can hold your luggage if your flight is later in the day.</div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="event-time">Varies</div>
+          <div class="event-right">
+            <div class="event-name">Head to the Airport</div>
+            <div class="event-desc">Allow plenty of time. Transportation details will be coordinated by your advisor and included in your guide.</div>
+            <span class="event-note">Safe travels. Until next time!</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+  </div>
+</section>
+
+<div class="section-divider" role="separator" aria-hidden="true"></div>
+
+<!-- ── GOOD TO KNOW ── -->
+<section id="tips" class="tips-wrap" aria-labelledby="tips-heading">
+  <div class="tips-inner">
+    <div class="tips-head">
+      <div class="section-label" aria-hidden="true">Tips &amp; Info</div>
+      <h2 id="tips-heading">Good to Know</h2>
+      <p>Everything you need before you go.</p>
+    </div>
+
+    <!-- Group 1: Before You Go -->
+    <div class="tips-group">
+      <div class="tips-group-label">Before You Go</div>
+      <div class="tips-grid">
+        <div class="tip-card">
+          <span class="tip-emoji" aria-hidden="true">🛂</span>
+          <div class="tip-title">Documents</div>
+          <p class="tip-body">Keep your passport accessible and save a digital copy in your email. Check entry requirements at least 2 weeks before your trip.</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-emoji" aria-hidden="true">💵</span>
+          <div class="tip-title">Money &amp; Cards</div>
+          <p class="tip-body">Notify your bank before you leave. Most places take cards but carry some local currency for markets, small vendors, and tips.</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-emoji" aria-hidden="true">📱</span>
+          <div class="tip-title">Phone Plan</div>
+          <p class="tip-body">Check if your carrier offers an international day pass before you go. A local SIM on arrival is always a solid backup option.</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-emoji" aria-hidden="true">⏰</span>
+          <div class="tip-title">Time Zone</div>
+          <p class="tip-body">Your personalized guide will include the local time zone so you can set alarms and plan calls from home ahead of time.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Group 2: While You're There -->
+    <div class="tips-group">
+      <div class="tips-group-label">While You're There</div>
+      <div class="tips-grid">
+        <div class="tip-card">
+          <span class="tip-emoji" aria-hidden="true">🧴</span>
+          <div class="tip-title">Sunscreen</div>
+          <p class="tip-body">Pack reef-safe SPF 50+ if your trip includes water activities. Reapply often and don't skip lip balm with SPF.</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-emoji" aria-hidden="true">🌤</span>
+          <div class="tip-title">Weather</div>
+          <p class="tip-body">Your personalized guide will have destination-specific info. Light layers always come in handy for AC and cooler evenings.</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-emoji" aria-hidden="true">🔒</span>
+          <div class="tip-title">Safety</div>
+          <p class="tip-body">Stick to busy, well-lit areas and leave valuables in the hotel safe. Your advisor will include any destination-specific safety tips.</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-emoji" aria-hidden="true">🚌</span>
+          <div class="tip-title">Getting Around</div>
+          <p class="tip-body">Transportation options vary by destination. Your advisor will outline the best ways to get around, including rideshare tips.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider" role="separator" aria-hidden="true"></div>
+
+<!-- ── PACKING LIST ── -->
+<section id="packing" class="packing-wrap" aria-labelledby="packing-heading">
+  <div class="packing-inner">
+    <div class="packing-head">
+      <div class="section-label" aria-hidden="true">Checklist</div>
+      <h2 id="packing-heading">Packing List</h2>
+      <p>Check things off as you go. Progress saves on this device.</p>
+    </div>
+
+    <div class="progress-row">
+      <span class="progress-count" id="progressText" aria-live="polite" aria-atomic="true">0 of 0 items packed</span>
+      <button class="reset-btn" onclick="resetAll()">Reset all</button>
+    </div>
+    <div class="progress-track" role="progressbar" aria-labelledby="progressText" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="progressBar">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <!-- Clothing -->
+    <div class="pack-group">
+      <div class="pack-group-label" id="group-clothing"><span aria-hidden="true">👗</span> Clothing</div>
+      <div class="pack-items" role="group" aria-labelledby="group-clothing">
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Swimsuits</span></button>
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Cover-ups</span></button>
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Going out outfits</span></button>
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Casual daywear</span></button>
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Socks &amp; underwear</span></button>
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Lightweight pajamas</span></button>
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Light cardigan or wrap (for AC)</span></button>
+      </div>
+    </div>
+
+    <!-- Shoes -->
+    <div class="pack-group">
+      <div class="pack-group-label" id="group-shoes"><span aria-hidden="true">👟</span> Shoes</div>
+      <div class="pack-items" role="group" aria-labelledby="group-shoes">
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Water shoes</span></button>
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Sandals / flip flops</span></button>
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Casual sneakers or flats</span></button>
+      </div>
+    </div>
+
+    <!-- Jewelry & Accessories -->
+    <div class="pack-group">
+      <div class="pack-group-label" id="group-accessories"><span aria-hidden="true">💍</span> Jewelry &amp; Accessories</div>
+      <div class="pack-items" role="group" aria-labelledby="group-accessories">
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Everyday jewelry</span></button>
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Going out jewelry</span></button>
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Sunglasses</span></button>
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Sun hat or cap</span></button>
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Hair ties &amp; clips</span></button>
+      </div>
+    </div>
+
+    <!-- Toiletries -->
+    <div class="pack-group">
+      <div class="pack-group-label" id="group-toiletries"><span aria-hidden="true">🧴</span> Toiletries &amp; Skincare</div>
+      <div class="pack-items" role="group" aria-labelledby="group-toiletries">
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Sunscreen SPF 50+ (reef-safe)</span></button>
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Body wash</span></button>
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Deodorant</span></button>
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Razor</span></button>
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Moisturizer</span></button>
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Lip balm with SPF</span></button>
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Insect repellent</span></button>
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Face wash &amp; skincare routine</span></button>
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Hand sanitizer</span></button>
+      </div>
+    </div>
+
+    <!-- Hair & Makeup -->
+    <div class="pack-group">
+      <div class="pack-group-label" id="group-beauty"><span aria-hidden="true">💄</span> Hair &amp; Makeup</div>
+      <div class="pack-items" role="group" aria-labelledby="group-beauty">
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Makeup essentials</span></button>
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Makeup remover wipes</span></button>
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Travel hairbrush / comb</span></button>
+      </div>
+    </div>
+
+    <!-- Tech -->
+    <div class="pack-group">
+      <div class="pack-group-label" id="group-tech"><span aria-hidden="true">📱</span> Tech &amp; Essentials</div>
+      <div class="pack-items" role="group" aria-labelledby="group-tech">
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Phone charger</span></button>
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Portable power bank</span></button>
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Earphones / AirPods</span></button>
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Waterproof phone case</span></button>
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Camera (optional)</span></button>
+      </div>
+    </div>
+
+    <!-- Bags -->
+    <div class="pack-group">
+      <div class="pack-group-label" id="group-bags"><span aria-hidden="true">👜</span> Bags</div>
+      <div class="pack-items" role="group" aria-labelledby="group-bags">
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Beach bag / tote</span></button>
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Small crossbody for evenings</span></button>
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Waterproof dry bag</span></button>
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Travel wallet / passport holder</span></button>
+      </div>
+    </div>
+
+    <!-- Documents & Money -->
+    <div class="pack-group">
+      <div class="pack-group-label" id="group-docs"><span aria-hidden="true">📋</span> Documents &amp; Money</div>
+      <div class="pack-items" role="group" aria-labelledby="group-docs">
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Passport</span></button>
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Travel insurance details</span></button>
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Copies of bookings / itinerary</span></button>
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Local currency (exchange before you leave)</span></button>
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Credit / debit card</span></button>
+        <button class="pack-item" role="checkbox" aria-checked="false" onclick="toggle(this)"><div class="pack-check" aria-hidden="true"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"></polyline></svg></div><span class="pack-item-text">Emergency contact list</span></button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="footer-logo-placeholder">
+    <img src="../assets/logo.png" alt="Kbyeee Getaways logo" width="80" height="80" onerror="this.style.display='none'; this.parentElement.setAttribute('data-empty','true');"/>
+  </div>
+  <div class="footer-wordmark">Kbyeee Getaways</div>
+  <div class="footer-sub">
+    Fully handled. Stress-free. Unforgettable.
+    &nbsp;&middot;&nbsp;
+    <a href="https://www.instagram.com/kbyeee_getaways" target="_blank" rel="noopener noreferrer" aria-label="Follow Kbyeee Getaways on Instagram, opens in new tab">@kbyeee_getaways</a>
+    &nbsp;&middot;&nbsp;
+    <a href="https://www.kbyeeegetaways.com/privacy" rel="noopener noreferrer" aria-label="Privacy Policy, opens in new tab">Privacy Policy</a>
+  </div>
+  <div class="footer-cta">
+    <div class="footer-cta-heading">Ready to plan yours?</div>
+    <a class="footer-cta-btn" href="https://kbyeeegetaways.com" target="_blank" rel="noopener noreferrer" aria-label="Start planning your trip with Kbyeee Getaways, opens in new tab">Start Planning &rarr;</a>
+  </div>
+  <div class="footer-gems" aria-hidden="true">
+    <div class="gem"></div>
+    <div class="gem"></div>
+    <div class="gem"></div>
+    <div class="gem"></div>
+    <div class="gem"></div>
+  </div>
+</footer>
+
+<!-- Back to top — button, not anchor -->
+<button
+  class="back-top"
+  id="backTop"
+  aria-label="Back to top"
+  onclick="window.scrollTo({top:0,behavior:'smooth'})"
+>
+  <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg>
+</button>
+
+<script>
+  // ── Back to top visibility
+  const topBtn = document.getElementById('backTop');
+  window.addEventListener('scroll', () => {
+    topBtn.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+
+  // ── Packing list — full keyboard + aria + localStorage support
+  function getKey(el) {
+    return 'kbyeee-pack-' + el.querySelector('.pack-item-text').textContent.trim();
+  }
+
+  function updateProgress() {
+    const all   = document.querySelectorAll('.pack-item');
+    const done  = document.querySelectorAll('.pack-item[aria-checked="true"]').length;
+    const total = all.length;
+    const pct   = total ? Math.round((done / total) * 100) : 0;
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressText').textContent = done + ' of ' + total + ' items packed';
+    const bar = document.getElementById('progressBar');
+    bar.setAttribute('aria-valuenow', pct);
+  }
+
+  function toggle(el) {
+    const checked = el.getAttribute('aria-checked') === 'true';
+    el.setAttribute('aria-checked', checked ? 'false' : 'true');
+    try { localStorage.setItem(getKey(el), checked ? '0' : '1'); } catch(e) {}
+    updateProgress();
+  }
+
+  // Keyboard: Space or Enter fires toggle
+  document.querySelectorAll('.pack-item').forEach(el => {
+    el.addEventListener('keydown', e => {
+      if (e.key === ' ' || e.key === 'Enter') {
+        e.preventDefault();
+        toggle(el);
+      }
+    });
+  });
+
+  function resetAll() {
+    document.querySelectorAll('.pack-item[aria-checked="true"]').forEach(el => {
+      el.setAttribute('aria-checked', 'false');
+      try { localStorage.setItem(getKey(el), '0'); } catch(e) {}
+    });
+    updateProgress();
+  }
+
+  function loadSaved() {
+    document.querySelectorAll('.pack-item').forEach(el => {
+      try {
+        if (localStorage.getItem(getKey(el)) === '1') {
+          el.setAttribute('aria-checked', 'true');
+        }
+      } catch(e) {}
+    });
+  }
+function toggleDay(btn) {
+  const card = btn.closest('.day-card');
+  const isOpen = card.classList.contains('open');
+  document.querySelectorAll('.day-card.open').forEach(c => {
+    c.classList.remove('open');
+    c.querySelector('.day-card-trigger').setAttribute('aria-expanded', 'false');
+  });
+  if (!isOpen) {
+    card.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+  }
+}
+  loadSaved();
+  updateProgress();
+</script>
+
+</body>
+</html>
