@@ -362,33 +362,39 @@ body {
   letter-spacing: 0.04em;
 }
 
-/* ── DAY CARDS ───────────────────────────── */
+/* ── ACCORDION DAY CARDS ─────────────────── */
 .day-card {
   background: var(--white);
-  border-radius: 18px;
+  border-radius: 14px;
   border: 1px solid var(--border-l);
-  margin-bottom: 16px;
+  margin-bottom: 10px;
   overflow: hidden;
-  transition: box-shadow 0.25s, transform 0.25s;
+  transition: box-shadow 0.25s;
 }
-.day-card:hover {
-  box-shadow: 0 8px 28px rgba(58,95,196,0.1);
-  transform: translateY(-2px);
-}
+.day-card:hover { box-shadow: 0 4px 20px rgba(58,95,196,0.08); }
 
-/* Card header gets a jewel colour wash per day */
-.day-card-top {
+.day-card-trigger {
+  width: 100%;
   display: flex;
   align-items: center;
   gap: 16px;
-  padding: 16px 22px;
-  border-bottom: 1px solid var(--border-l);
+  padding: 16px 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  transition: background 0.18s;
+  -webkit-tap-highlight-color: transparent;
 }
-#day-1 .day-card-top { background: rgba(58,95,196,0.05); }
-#day-2 .day-card-top { background: rgba(26,122,94,0.05); }
-#day-3 .day-card-top { background: rgba(168,94,8,0.05); }
-#day-4 .day-card-top { background: rgba(107,63,160,0.05); }
-#day-5 .day-card-top { background: rgba(58,95,196,0.05); }
+.day-card-trigger:hover { background: rgba(58,95,196,0.03); }
+.day-card-trigger:focus-visible { outline: 2px solid var(--sapphire); outline-offset: -2px; }
+
+#day-1 .day-card-trigger { border-left: 3px solid var(--sapphire); }
+#day-2 .day-card-trigger { border-left: 3px solid var(--emerald); }
+#day-3 .day-card-trigger { border-left: 3px solid var(--topaz); }
+#day-4 .day-card-trigger { border-left: 3px solid var(--amethyst); }
+#day-5 .day-card-trigger { border-left: 3px solid var(--sapphire); }
 
 .day-num-badge {
   font-family: 'Cormorant Garamond', serif;
@@ -406,10 +412,11 @@ body {
 #day-4 .day-num-badge { background: var(--am-pale);    color: var(--amethyst); }
 #day-5 .day-num-badge { background: var(--sap-pale);   color: var(--sapphire); }
 
-/* Type hierarchy level 2b — card title */
+.day-trigger-text { flex: 1; min-width: 0; }
+
 .day-card-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 700;
   color: var(--ink);
   letter-spacing: -0.01em;
@@ -422,7 +429,38 @@ body {
   margin-top: 2px;
 }
 
-.day-card-body { padding: 20px 22px; }
+.day-chevron {
+  flex-shrink: 0;
+  width: 20px; height: 20px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--fog);
+  transition: transform 0.3s ease, color 0.2s;
+}
+.day-chevron svg {
+  width: 14px; height: 14px;
+  stroke: currentColor; fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+.day-card.open .day-chevron { transform: rotate(180deg); color: var(--sapphire); }
+
+.day-card-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease;
+  border-top: 0px solid var(--border-l);
+}
+.day-card.open .day-card-body {
+  grid-template-rows: 1fr;
+  border-top-width: 1px;
+}
+.day-card-body-inner {
+  overflow: hidden;
+  padding: 0 20px;
+  transition: padding 0.35s ease;
+}
+.day-card.open .day-card-body-inner { padding: 20px 20px; }
+
 .events { display: flex; flex-direction: column; gap: 18px; }
 
 .event {
@@ -945,17 +983,6 @@ body {
       <p>Every detail, laid out so you can just show up and enjoy it.</p>
     </div>
 
-    <!-- Day jump links -->
-    <nav aria-label="Jump to day">
-      <div class="day-pills">
-        <a class="day-pill" href="#day-1">Day 1 &middot; Arrival</a>
-        <a class="day-pill" href="#day-2">Day 2 &middot; Explore</a>
-        <a class="day-pill" href="#day-3">Day 3 &middot; Adventure</a>
-        <a class="day-pill" href="#day-4">Day 4 &middot; Unwind</a>
-        <a class="day-pill" href="#day-5">Day 5 &middot; Departure</a>
-      </div>
-    </nav>
-
     <!-- Hotel card — name is prominent, confirmation is de-emphasised -->
     <div class="hotel-card" role="region" aria-label="Accommodation details">
       <div class="hotel-card-header">
@@ -984,185 +1011,200 @@ body {
     </div>
 
     <!-- Day 1 -->
-    <article class="day-card" id="day-1" aria-labelledby="d1-title">
-      <div class="day-card-top">
-        <span class="day-num-badge" aria-hidden="true">Day 01</span>
-        <div>
-          <div class="day-card-title" id="d1-title">Arrival Day 🌅</div>
-          <div class="day-card-date">Thursday, June 5</div>
-        </div>
-      </div>
-      <div class="day-card-body">
-        <div class="events">
-          <div class="event">
-            <div class="event-time">Varies</div>
-            <div class="event-right">
-              <div class="event-name">Arrive &amp; Check In</div>
-              <div class="event-desc">Head to the hotel after landing. If you arrive before 3 PM the front desk can hold your bags so you can start exploring early.</div>
-              <span class="event-note">Check-in from 3:00 PM</span>
-            </div>
-          </div>
-          <div class="event">
-            <div class="event-time">Afternoon</div>
-            <div class="event-right">
-              <div class="event-name">Get Your Bearings</div>
-              <div class="event-desc">Wander the area, find a local spot for a bite, and take in the first golden hour. No agenda required.</div>
-            </div>
-          </div>
-          <div class="event">
-            <div class="event-time">Evening</div>
-            <div class="event-right">
-              <div class="event-name">Welcome Dinner</div>
-              <div class="event-desc">Dinner reservation confirmed at a local favorite. Full details will be in your personalized guide.</div>
-              <span class="event-badge">✓ Reservation Confirmed</span>
-            </div>
+<article class="day-card" id="day-1" aria-labelledby="d1-title">
+  <button class="day-card-trigger" aria-expanded="false" aria-controls="d1-body" onclick="toggleDay(this)">
+    <span class="day-num-badge" aria-hidden="true">Day 01</span>
+    <div class="day-trigger-text">
+      <div class="day-card-title" id="d1-title">Arrival Day 🌅</div>
+      <div class="day-card-date">Thursday, June 5</div>
+    </div>
+    <div class="day-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+  </button>
+  <div class="day-card-body" id="d1-body" role="region" aria-labelledby="d1-title">
+    <div class="day-card-body-inner">
+      <div class="events">
+        <div class="event">
+          <div class="event-time">Varies</div>
+          <div class="event-right">
+            <div class="event-name">Arrive &amp; Check In</div>
+            <div class="event-desc">Head to the hotel after landing. If you arrive before 3 PM the front desk can hold your bags so you can start exploring early.</div>
+            <span class="event-note">Check-in from 3:00 PM</span>
           </div>
         </div>
+        <div class="event">
+          <div class="event-time">Afternoon</div>
+          <div class="event-right">
+            <div class="event-name">Get Your Bearings</div>
+            <div class="event-desc">Wander the area, find a local spot for a bite, and take in the first golden hour. No agenda required.</div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="event-time">Evening</div>
+          <div class="event-right">
+            <div class="event-name">Welcome Dinner</div>
+            <div class="event-desc">Dinner reservation confirmed at a local favorite. Full details will be in your personalized guide.</div>
+            <span class="event-badge">✓ Reservation Confirmed</span>
+          </div>
+        </div>
       </div>
-    </article>
+    </div>
+  </div>
+</article>
 
-    <!-- Day 2 -->
-    <article class="day-card" id="day-2" aria-labelledby="d2-title">
-      <div class="day-card-top">
-        <span class="day-num-badge" aria-hidden="true">Day 02</span>
-        <div>
-          <div class="day-card-title" id="d2-title">City Exploration 🗺</div>
-          <div class="day-card-date">Friday, June 6</div>
-        </div>
-      </div>
-      <div class="day-card-body">
-        <div class="events">
-          <div class="event">
-            <div class="event-time">9:00 AM</div>
-            <div class="event-right">
-              <div class="event-name">Guided City Tour</div>
-              <div class="event-desc">Pickup from the hotel lobby. Comfortable shoes recommended — you'll be on your feet most of the morning.</div>
-              <span class="event-badge">✓ Pickup Included</span>
-            </div>
-          </div>
-          <div class="event">
-            <div class="event-time">1:00 PM</div>
-            <div class="event-right">
-              <div class="event-name">Lunch Stop</div>
-              <div class="event-desc">Lunch is included with the tour. Enjoy a local meal before the afternoon wraps up.</div>
-              <span class="event-badge">✓ Lunch Included</span>
-            </div>
-          </div>
-          <div class="event">
-            <div class="event-time">3:00 PM</div>
-            <div class="event-right">
-              <div class="event-name">Free Time</div>
-              <div class="event-desc">The rest of the day is yours. Shop, explore, rest, or find a rooftop bar for the sunset.</div>
-            </div>
+<!-- Day 2 -->
+<article class="day-card" id="day-2" aria-labelledby="d2-title">
+  <button class="day-card-trigger" aria-expanded="false" aria-controls="d2-body" onclick="toggleDay(this)">
+    <span class="day-num-badge" aria-hidden="true">Day 02</span>
+    <div class="day-trigger-text">
+      <div class="day-card-title" id="d2-title">City Exploration 🗺</div>
+      <div class="day-card-date">Friday, June 6</div>
+    </div>
+    <div class="day-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+  </button>
+  <div class="day-card-body" id="d2-body" role="region" aria-labelledby="d2-title">
+    <div class="day-card-body-inner">
+      <div class="events">
+        <div class="event">
+          <div class="event-time">9:00 AM</div>
+          <div class="event-right">
+            <div class="event-name">Guided City Tour</div>
+            <div class="event-desc">Pickup from the hotel lobby. Comfortable shoes recommended — you'll be on your feet most of the morning.</div>
+            <span class="event-badge">✓ Pickup Included</span>
           </div>
         </div>
+        <div class="event">
+          <div class="event-time">1:00 PM</div>
+          <div class="event-right">
+            <div class="event-name">Lunch Stop</div>
+            <div class="event-desc">Lunch is included with the tour. Enjoy a local meal before the afternoon wraps up.</div>
+            <span class="event-badge">✓ Lunch Included</span>
+          </div>
+        </div>
+        <div class="event">
+          <div class="event-time">3:00 PM</div>
+          <div class="event-right">
+            <div class="event-name">Free Time</div>
+            <div class="event-desc">The rest of the day is yours. Shop, explore, rest, or find a rooftop bar for the sunset.</div>
+          </div>
+        </div>
       </div>
-    </article>
+    </div>
+  </div>
+</article>
 
-    <!-- Day 3 -->
-    <article class="day-card" id="day-3" aria-labelledby="d3-title">
-      <div class="day-card-top">
-        <span class="day-num-badge" aria-hidden="true">Day 03</span>
-        <div>
-          <div class="day-card-title" id="d3-title">Adventure Day 🌊</div>
-          <div class="day-card-date">Saturday, June 7</div>
-        </div>
-      </div>
-      <div class="day-card-body">
-        <div class="events">
-          <div class="event">
-            <div class="event-time">7:30 AM</div>
-            <div class="event-right">
-              <div class="event-name">Meet at Pickup Point</div>
-              <div class="event-desc">5-minute walk from the hotel. Do not be late — this excursion departs on time. Bring reef-safe sunscreen and your swim things.</div>
-              <span class="event-note">Map link will be in your personalized guide</span>
-            </div>
-          </div>
-          <div class="event">
-            <div class="event-time">8:00 AM</div>
-            <div class="event-right">
-              <div class="event-name">Full Day Excursion</div>
-              <div class="event-desc">A full day out. Details specific to your destination and what to bring will all be in your personalized guide.</div>
-              <span class="event-badge">✓ Lunch Included</span>
-            </div>
-          </div>
-          <div class="event">
-            <div class="event-time">5:00 PM</div>
-            <div class="event-right">
-              <div class="event-name">Return &amp; Refresh</div>
-              <div class="event-desc">Back at the hotel by late afternoon. Evening is free to rest up or head out.</div>
-            </div>
+<!-- Day 3 -->
+<article class="day-card" id="day-3" aria-labelledby="d3-title">
+  <button class="day-card-trigger" aria-expanded="false" aria-controls="d3-body" onclick="toggleDay(this)">
+    <span class="day-num-badge" aria-hidden="true">Day 03</span>
+    <div class="day-trigger-text">
+      <div class="day-card-title" id="d3-title">Adventure Day 🌊</div>
+      <div class="day-card-date">Saturday, June 7</div>
+    </div>
+    <div class="day-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+  </button>
+  <div class="day-card-body" id="d3-body" role="region" aria-labelledby="d3-title">
+    <div class="day-card-body-inner">
+      <div class="events">
+        <div class="event">
+          <div class="event-time">7:30 AM</div>
+          <div class="event-right">
+            <div class="event-name">Meet at Pickup Point</div>
+            <div class="event-desc">5-minute walk from the hotel. Do not be late — this excursion departs on time. Bring reef-safe sunscreen and your swim things.</div>
+            <span class="event-note">Map link will be in your personalized guide</span>
           </div>
         </div>
+        <div class="event">
+          <div class="event-time">8:00 AM</div>
+          <div class="event-right">
+            <div class="event-name">Full Day Excursion</div>
+            <div class="event-desc">A full day out. Details specific to your destination and what to bring will all be in your personalized guide.</div>
+            <span class="event-badge">✓ Lunch Included</span>
+          </div>
+        </div>
+        <div class="event">
+          <div class="event-time">5:00 PM</div>
+          <div class="event-right">
+            <div class="event-name">Return &amp; Refresh</div>
+            <div class="event-desc">Back at the hotel by late afternoon. Evening is free to rest up or head out.</div>
+          </div>
+        </div>
       </div>
-    </article>
+    </div>
+  </div>
+</article>
 
-    <!-- Day 4 -->
-    <article class="day-card" id="day-4" aria-labelledby="d4-title">
-      <div class="day-card-top">
-        <span class="day-num-badge" aria-hidden="true">Day 04</span>
-        <div>
-          <div class="day-card-title" id="d4-title">Unwind Day 🧖🏾</div>
-          <div class="day-card-date">Sunday, June 8</div>
-        </div>
-      </div>
-      <div class="day-card-body">
-        <div class="events">
-          <div class="event">
-            <div class="event-time">9:45 AM</div>
-            <div class="event-right">
-              <div class="event-name">Arrive at Spa</div>
-              <div class="event-desc">7-minute walk from the hotel. Arrive 10 minutes early to get settled before your appointment starts.</div>
-            </div>
-          </div>
-          <div class="event">
-            <div class="event-time">10:00 AM</div>
-            <div class="event-right">
-              <div class="event-name">Spa Day</div>
-              <div class="event-desc">Full access to treatments and facilities. Confirmed services and all details will be in your personalized guide.</div>
-              <span class="event-badge">✓ Reservation Confirmed</span>
-            </div>
-          </div>
-          <div class="event">
-            <div class="event-time">Evening</div>
-            <div class="event-right">
-              <div class="event-name">Last Night Out</div>
-              <div class="event-desc">Dinner recommendations or a confirmed reservation will be included in your personalized guide for this evening.</div>
-            </div>
+<!-- Day 4 -->
+<article class="day-card" id="day-4" aria-labelledby="d4-title">
+  <button class="day-card-trigger" aria-expanded="false" aria-controls="d4-body" onclick="toggleDay(this)">
+    <span class="day-num-badge" aria-hidden="true">Day 04</span>
+    <div class="day-trigger-text">
+      <div class="day-card-title" id="d4-title">Unwind Day 🧖🏾</div>
+      <div class="day-card-date">Sunday, June 8</div>
+    </div>
+    <div class="day-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+  </button>
+  <div class="day-card-body" id="d4-body" role="region" aria-labelledby="d4-title">
+    <div class="day-card-body-inner">
+      <div class="events">
+        <div class="event">
+          <div class="event-time">9:45 AM</div>
+          <div class="event-right">
+            <div class="event-name">Arrive at Spa</div>
+            <div class="event-desc">7-minute walk from the hotel. Arrive 10 minutes early to get settled before your appointment starts.</div>
           </div>
         </div>
+        <div class="event">
+          <div class="event-time">10:00 AM</div>
+          <div class="event-right">
+            <div class="event-name">Spa Day</div>
+            <div class="event-desc">Full access to treatments and facilities. Confirmed services and all details will be in your personalized guide.</div>
+            <span class="event-badge">✓ Reservation Confirmed</span>
+          </div>
+        </div>
+        <div class="event">
+          <div class="event-time">Evening</div>
+          <div class="event-right">
+            <div class="event-name">Last Night Out</div>
+            <div class="event-desc">Dinner recommendations or a confirmed reservation will be included in your personalized guide for this evening.</div>
+          </div>
+        </div>
       </div>
-    </article>
+    </div>
+  </div>
+</article>
 
-    <!-- Day 5 -->
-    <article class="day-card" id="day-5" aria-labelledby="d5-title">
-      <div class="day-card-top">
-        <span class="day-num-badge" aria-hidden="true">Day 05</span>
-        <div>
-          <div class="day-card-title" id="d5-title">Departure ✈️</div>
-          <div class="day-card-date">Monday, June 9</div>
-        </div>
-      </div>
-      <div class="day-card-body">
-        <div class="events">
-          <div class="event">
-            <div class="event-time">Morning</div>
-            <div class="event-right">
-              <div class="event-name">Breakfast &amp; Pack Up</div>
-              <div class="event-desc">Check-out by 12:00 PM. The hotel can hold your luggage if your flight is later in the day.</div>
-            </div>
-          </div>
-          <div class="event">
-            <div class="event-time">Varies</div>
-            <div class="event-right">
-              <div class="event-name">Head to the Airport</div>
-              <div class="event-desc">Allow plenty of time. Transportation details will be coordinated by your advisor and included in your guide.</div>
-              <span class="event-note">Safe travels. Until next time!</span>
-            </div>
+<!-- Day 5 -->
+<article class="day-card" id="day-5" aria-labelledby="d5-title">
+  <button class="day-card-trigger" aria-expanded="false" aria-controls="d5-body" onclick="toggleDay(this)">
+    <span class="day-num-badge" aria-hidden="true">Day 05</span>
+    <div class="day-trigger-text">
+      <div class="day-card-title" id="d5-title">Departure ✈️</div>
+      <div class="day-card-date">Monday, June 9</div>
+    </div>
+    <div class="day-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+  </button>
+  <div class="day-card-body" id="d5-body" role="region" aria-labelledby="d5-title">
+    <div class="day-card-body-inner">
+      <div class="events">
+        <div class="event">
+          <div class="event-time">Morning</div>
+          <div class="event-right">
+            <div class="event-name">Breakfast &amp; Pack Up</div>
+            <div class="event-desc">Check-out by 12:00 PM. The hotel can hold your luggage if your flight is later in the day.</div>
           </div>
         </div>
+        <div class="event">
+          <div class="event-time">Varies</div>
+          <div class="event-right">
+            <div class="event-name">Head to the Airport</div>
+            <div class="event-desc">Allow plenty of time. Transportation details will be coordinated by your advisor and included in your guide.</div>
+            <span class="event-note">Safe travels. Until next time!</span>
+          </div>
+        </div>
       </div>
-    </article>
+    </div>
+  </div>
+</article>
 
   </div>
 </section>
@@ -1448,7 +1490,18 @@ body {
       } catch(e) {}
     });
   }
-
+function toggleDay(btn) {
+  const card = btn.closest('.day-card');
+  const isOpen = card.classList.contains('open');
+  document.querySelectorAll('.day-card.open').forEach(c => {
+    c.classList.remove('open');
+    c.querySelector('.day-card-trigger').setAttribute('aria-expanded', 'false');
+  });
+  if (!isOpen) {
+    card.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+  }
+}
   loadSaved();
   updateProgress();
 </script>
