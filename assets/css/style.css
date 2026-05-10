@@ -579,7 +579,7 @@ h3 { font-family: 'Fraunces', serif; font-size: clamp(1.2rem, 2vw, 1.5rem); font
 
 /* ─── PRIVACY ─── */
 .privacy-wrap { max-width: 720px; margin: 0 auto; padding: 120px 24px 80px; } 
-.privacy-wrap h1 { color: var(--purple-dk); margin-bottom: 12px; }
+.privacy-wrap > h1 { color: var(--purple-dk); margin-bottom: 12px; }
 .privacy-updated { font-size: 13px; color: var(--text-muted); margin-bottom: 40px; }
 .privacy-wrap h2 { color: var(--green-dk); font-size: 1.1rem; margin: 32px 0 8px; }
 .privacy-wrap p { font-size: 15px; line-height: 1.75; color: var(--text-muted); margin-bottom: 16px; }
