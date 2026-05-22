@@ -136,8 +136,14 @@
 
     <!-- EMAIL CAPTURE -->
     <div class="quiz-email-card" id="emailCapture">
-      <div id="mlFormContainer"></div>
-    </div>
+  <div id="ml-form-sunChaser" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="V2tq7n"></div></div>
+  <div id="ml-form-adventureSeeker" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="3VJMiY"></div></div>
+  <div id="ml-form-explorer" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="nB9QbI"></div></div>
+  <div id="ml-form-partyStarter" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="le8rcV"></div></div>
+  <div id="ml-form-balancedTraveler" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="tnuLsX"></div></div>
+  <div id="ml-form-hypePerson" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="cKLZ9Z"></div></div>
+  <div id="ml-form-magicMaker" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="L5e7No"></div></div>
+</div>
 
     <!-- RESULT -->
     <div class="quiz-result" id="quizResult">
@@ -268,8 +274,8 @@
     pendingResultKey = resultKey;
     // Inject the correct MailerLite form
     const formId = RESULTS[resultKey].formId;
-    document.getElementById('mlFormContainer').innerHTML = `<div class="ml-embedded" data-form="${formId}"></div>`;
-    if (window.MlEmbeddedFormInit) window.MlEmbeddedFormInit();
+document.querySelectorAll('.ml-form-wrapper').forEach(f => f.style.display = 'none');
+document.getElementById('ml-form-' + resultKey).style.display = 'block';
     document.getElementById('emailCapture').classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
     // Listen for ML form success
