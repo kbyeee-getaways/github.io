@@ -59,6 +59,57 @@
     </div>
   </div>
 
+  <!-- SUBSCRIBE FORM -->
+<div class="subscribe-wrap">
+  <div class="divider">Stay Connected</div>
+  <div id="mlb2-41665694" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-41665694">
+    <div class="ml-form-align-center">
+      <div class="ml-form-embedWrapper embedForm">
+
+        <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+          <div class="ml-form-embedContent">
+            <h4>Join the Getaway Crew!</h4>
+            <p>Travel updates, destination inspo, and good vibes — right to your inbox.</p>
+          </div>
+
+          <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/2343008/forms/188192264136165372/subscribe" data-code="" method="post" target="_blank">
+            <div class="ml-form-formContent">
+              <div class="ml-form-fieldRow">
+                <div class="ml-field-group ml-field-name">
+                  <input aria-label="name" type="text" class="form-control" data-inputmask="" name="fields[name]" placeholder="First and Last Name" autocomplete="given-name">
+                </div>
+              </div>
+              <div class="ml-form-fieldRow ml-last-item">
+                <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                  <input aria-label="email" aria-required="true" type="email" class="form-control" data-inputmask="" name="fields[email]" placeholder="Email" autocomplete="email">
+                </div>
+              </div>
+            </div>
+            <input type="hidden" name="ml-submit" value="1">
+            <div class="ml-form-embedSubmit">
+              <button type="submit" class="primary">Count Me In!</button>
+              <button disabled="disabled" style="display: none;" type="button" class="loading">
+                <div class="ml-form-embedSubmitLoad"></div>
+                <span class="sr-only">Loading...</span>
+              </button>
+            </div>
+            <input type="hidden" name="anticsrf" value="true">
+          </form>
+        </div>
+
+        <div class="ml-form-successBody row-success" style="display: none">
+          <div class="ml-form-successContent">
+            <h4>Yasss!</h4>
+            <p>One last step — check your inbox and confirm so we can make it official!</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END SUBSCRIBE FORM -->
+
   <div class="start-footer">
     <p>&copy; 2023-2026 Kbyeee Getaways</p>
     <p>
@@ -68,5 +119,17 @@
     </p>
   </div>
 
+  <script>
+  function ml_webform_success_41665694() {
+    var $ = ml_jQuery || jQuery;
+    $('.ml-subscribe-form-41665694 .row-success').show();
+    $('.ml-subscribe-form-41665694 .row-form').hide();
+  }
+</script>
+<script src="https://groot.mailerlite.com/js/w/webforms.min.js?vb397d78ebaa8a0f631d35384c46d781b" type="text/javascript"></script>
+<script>
+  fetch("https://assets.mailerlite.com/jsonp/2343008/forms/188192264136165372/takel")
+</script>
+  
 </body>
 </html>
