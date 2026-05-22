@@ -10,226 +10,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
-  <style>
-    :root {
-      --purple: #a028a0;
-      --purple-dk: #6b1a6b;
-      --purple-pale: #faf0fa;
-      --green: #28c800;
-      --green-dk: #1a8200;
-      --blue: #1478a0;
-      --ink: #130d13;
-      --ink-2: #4a3f4a;
-      --ink-3: #8a7e8a;
-      --surface: #ffffff;
-      --bg: #fdf9fd;
-      --border: rgba(160,40,160,.11);
-      --shadow-md: 0 8px 32px rgba(106,26,107,.12);
-      --ease: cubic-bezier(.4,0,.2,1);
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background: var(--green-pale);
-      color: var(--ink);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      -webkit-font-smoothing: antialiased;
-    }
-    img { display: block; max-width: 100%; }
-    a { text-decoration: none; color: inherit; }
-
-    /* ── LOGO ── */
-    .top-logo { padding: 16px 20px 0; }
-    .top-logo img { height: 48px; width: auto; }
-
-    /* ── QUIZ WRAPPER ── */
-    .quiz-page { max-width: 600px; margin: 0 auto; padding: 40px 20px 60px; width: 100%; }
-
-    /* ── EYEBROW ── */
-    .eyebrow {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: .7rem; font-weight: 700; letter-spacing: 3px;
-      text-transform: uppercase; color: var(--purple); margin-bottom: 14px;
-    }
-    .eyebrow::before { content: ''; width: 18px; height: 2px; background: var(--green); border-radius: 2px; flex-shrink: 0; }
-
-    /* ── INTRO ── */
-    .quiz-intro { text-align: center; margin-bottom: 40px; }
-    .quiz-intro h1 {
-      font-family: 'Fraunces', serif;
-      font-size: clamp(1.8rem, 5vw, 2.8rem);
-      font-weight: 900; color: var(--purple-dk);
-      line-height: 1.1; letter-spacing: -.02em;
-      margin-bottom: 14px;
-    }
-    .quiz-intro p { font-size: .95rem; color: var(--ink-2); line-height: 1.7; max-width: 440px; margin: 0 auto 28px; }
-    .btn-start {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--green-dk); color: #fff;
-      border: none; border-radius: 50px;
-      padding: 14px 28px;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: .9rem; font-weight: 600;
-      cursor: pointer; transition: background .2s, transform .2s;
-    }
-    .btn-start:hover { background: #0f5200; transform: translateY(-2px); }
-
-    /* ── PROGRESS ── */
-    .quiz-progress { margin-bottom: 32px; display: none; }
-    .quiz-progress-label { font-size: .7rem; font-weight: 700; color: var(--ink-3); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
-    .quiz-progress-track { height: 3px; background: var(--border); border-radius: 4px; overflow: hidden; }
-    .quiz-progress-fill { height: 100%; background: var(--green-dk); border-radius: 4px; transition: width .4s var(--ease); width: 0%; }
-
-    /* ── QUESTION CARD ── */
-    .quiz-card {
-      background: var(--surface);
-      border-radius: 20px;
-      padding: 36px 32px;
-      box-shadow: var(--shadow-md);
-      border: 1px solid var(--border);
-      display: none;
-    }
-    .quiz-card.active { display: block; }
-    .quiz-card h2 {
-      font-family: 'Fraunces', serif;
-      font-size: clamp(1.1rem, 3vw, 1.45rem);
-      font-weight: 700; color: var(--ink);
-      margin-bottom: 24px; line-height: 1.35;
-      letter-spacing: -.01em;
-    }
-
-    /* ── OPTIONS ── */
-    .quiz-options { display: flex; flex-direction: column; gap: 10px; }
-    .quiz-option {
-      display: flex; align-items: flex-start; gap: 12px;
-      padding: 14px 18px;
-      border-radius: 12px;
-      border: 1.5px solid var(--border);
-      background: var(--surface);
-      cursor: pointer;
-      transition: border-color .2s, background .2s, transform .15s;
-      font-size: .88rem; color: var(--ink-2); line-height: 1.5;
-    }
-    .quiz-option:hover { border-color: var(--green); background: var(--green-pale); transform: translateX(3px); }
-    .quiz-option.selected { border-color: var(--green-dk); background: var(--green-pale); }
-    .quiz-option.selected .opt-letter { background: var(--green-dk); color: #fff; }
-    .opt-letter {
-      width: 26px; height: 26px; border-radius: 50%;
-      background: rgba(40,200,0,.1); color: var(--green-dk);
-      font-size: .72rem; font-weight: 700;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; margin-top: 1px;
-      transition: background .2s, color .2s;
-    }
-
-    /* ── NAV BUTTONS ── */
-    .quiz-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 28px; }
-    .quiz-btn-back {
-      background: none; border: none; cursor: pointer;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: .82rem; font-weight: 600; color: var(--ink-3);
-      padding: 8px 0; transition: color .2s;
-    }
-    .quiz-btn-back:hover { color: var(--purple); }
-    .quiz-btn-next {
-      background: var(--green-dk); color: #fff;
-      border: none; border-radius: 50px;
-      padding: 12px 26px;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: .85rem; font-weight: 600;
-      cursor: pointer; transition: background .2s, transform .2s;
-    }
-    .quiz-btn-next:hover { background: #0f5200; transform: translateY(-2px); }
-    .quiz-btn-next:disabled { background: rgba(40,200,0,.15); color: rgba(255,255,255,.5); cursor: not-allowed; transform: none; }
-
-    /* ── EMAIL CAPTURE ── */
-    .quiz-email-card {
-      background: var(--surface);
-      border-radius: 20px;
-      padding: 36px 32px;
-      box-shadow: var(--shadow-md);
-      border: 1px solid var(--border);
-      text-align: center;
-      display: none;
-    }
-    .quiz-email-card.active { display: block; }
-    .quiz-email-card h2 {
-      font-family: 'Fraunces', serif;
-      font-size: clamp(1.4rem, 4vw, 2rem);
-      color: var(--purple-dk); margin-bottom: 10px;
-      letter-spacing: -.01em;
-    }
-    .quiz-email-card p { font-size: .9rem; color: var(--ink-2); line-height: 1.65; margin-bottom: 24px; }
-    .quiz-field {
-      width: 100%; padding: 13px 16px;
-      border: 1.5px solid var(--border);
-      border-radius: 12px;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: .9rem; color: var(--ink);
-      background: var(--bg); margin-bottom: 10px;
-      transition: border-color .2s; outline: none;
-    }
-    .quiz-field:focus { border-color: var(--green-dk); }
-    .quiz-submit {
-      width: 100%;
-      background: var(--green-dk); color: #fff;
-      border: none; border-radius: 50px;
-      padding: 14px 28px;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: .9rem; font-weight: 600;
-      cursor: pointer; margin-top: 6px;
-      transition: background .2s, transform .2s;
-    }
-    .quiz-submit:hover { background: #0f5200; transform: translateY(-2px); }
-    .quiz-privacy { font-size: .7rem; color: var(--ink-3); margin-top: 10px; line-height: 1.6; }
-
-    /* ── RESULT ── */
-    .quiz-result {
-      background: var(--surface);
-      border-radius: 20px;
-      padding: 36px 32px;
-      box-shadow: var(--shadow-md);
-      border: 1px solid var(--border);
-      text-align: center;
-      display: none;
-    }
-    .quiz-result.active { display: block; }
-    .result-label {
-      font-size: .7rem; font-weight: 700; letter-spacing: 3px;
-      text-transform: uppercase; color: var(--purple);
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-      margin-bottom: 14px;
-    }
-    .result-label::before, .result-label::after { content: ''; width: 18px; height: 2px; background: var(--green-dk); border-radius: 2px; }
-    .result-name {
-      font-family: 'Fraunces', serif;
-      font-size: clamp(2rem, 6vw, 3rem);
-      font-weight: 900; color: var(--purple-dk);
-      margin-bottom: 24px; line-height: 1.1;
-      letter-spacing: -.02em;
-    }
-    .result-desc { font-size: .9rem; color: var(--ink-2); line-height: 1.8; text-align: left; margin-bottom: 24px; }
-
-    .result-inbox { font-size: .82rem; color: var(--ink-3); line-height: 1.6; margin-bottom: 20px; }
-
-    /* ── FOOTER ── */
-    .quiz-footer {
-      margin-top: auto; padding: 40px 20px 24px;
-      text-align: center; font-size: .7rem;
-      color: var(--ink-3); line-height: 1.8;
-    }
-    .quiz-footer a { color: var(--purple); font-weight: 600; }
-    .quiz-footer a:hover { text-decoration: underline; }
-
-    @media (max-width: 480px) {
-      .quiz-card { padding: 24px 18px; }
-      .quiz-email-card { padding: 24px 18px; }
-      .quiz-result { padding: 24px 18px; }
-    }
-  </style>
+  <link rel="stylesheet" href="../assets/css/style.css"/>
+ 
   <!-- MailerLite Universal -->
   <script>
     (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);},l=d.createElement(e),l.async=1,l.src=u,n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
@@ -241,7 +23,7 @@
 
   <!-- LOGO -->
   <div class="top-logo">
-    <a href="/"><img src="assets/images/logo.png" alt="Kbyeee Getaways"/></a>
+    <a href="/"><img src="../assets/images/logo.png" alt="Kbyeee Getaways"/></a>
   </div>
 
   <div class="quiz-page">
@@ -268,7 +50,7 @@
       <div class="quiz-options">
         <div class="quiz-option" data-instinct="chill" onclick="selectOption(this)"><span class="opt-letter">A</span>Find my spot, get comfortable, and let the day come to me</div>
         <div class="quiz-option" data-instinct="celebrate" onclick="selectOption(this)"><span class="opt-letter">B</span>Get the group together and find out where the energy is</div>
-        <div class="quiz-option" data-instinct="experience" onclick="selectOption(this)"><span class="opt-letter">C</span>Looking for that moment that makes me go yep, this is exactly why I came</div>
+        <div class="quiz-option" data-instinct="experience" onclick="selectOption(this)"><span class="opt-letter">C</span>Looking for that moment that makes me realize this is exactly why I came</div>
         <div class="quiz-option" data-instinct="explore" onclick="selectOption(this)"><span class="opt-letter">D</span>Figure out what's around and start exploring on my own terms</div>
       </div>
       <div class="quiz-nav">
