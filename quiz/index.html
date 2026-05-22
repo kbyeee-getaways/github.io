@@ -1,1 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="color-scheme" content="light"/>
+  <title>What Kind of Traveler Are You? | Kbyeee Getaways</title>
+  <meta name="description" content="Take the Kbyeee Getaways travel personality quiz and find out what kind of traveler you are."/>
+  <meta name="robots" content="noindex"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --purple: #a028a0;
+      --purple-dk: #6b1a6b;
+      --purple-pale: #faf0fa;
+      --green: #28c800;
+      --green-dk: #1a8200;
+      --blue: #1478a0;
+      --ink: #130d13;
+      --ink-2: #4a3f4a;
+      --ink-3: #8a7e8a;
+      --surface: #ffffff;
+      --bg: #fdf9fd;
+      --border: rgba(160,40,160,.11);
+      --shadow-md: 0 8px 32px rgba(106,26,107,.12);
+      --ease: cubic-bezier(.4,0,.2,1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--green-pale);
+      color: var(--ink);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ── LOGO ── */
+    .top-logo { padding: 16px 20px 0; }
+    .top-logo img { height: 48px; width: auto; }
+
+    /* ── QUIZ WRAPPER ── */
+    .quiz-page { max-width: 600px; margin: 0 auto; padding: 40px 20px 60px; width: 100%; }
+
+    /* ── EYEBROW ── */
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: .7rem; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--purple); margin-bottom: 14px;
+    }
+    .eyebrow::before { content: ''; width: 18px; height: 2px; background: var(--green); border-radius: 2px; flex-shrink: 0; }
+
+    /* ── INTRO ── */
+    .quiz-intro { text-align: center; margin-bottom: 40px; }
+    .quiz-intro h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 900; color: var(--purple-dk);
+      line-height: 1.1; letter-spacing: -.02em;
+      margin-bottom: 14px;
+    }
+    .quiz-intro p { font-size: .95rem; color: var(--ink-2); line-height: 1.7; max-width: 440px; margin: 0 auto 28px; }
+    .btn-start {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--green-dk); color: #fff;
+      border: none; border-radius: 50px;
+      padding: 14px 28px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: .9rem; font-weight: 600;
+      cursor: pointer; transition: background .2s, transform .2s;
+    }
+    .btn-start:hover { background: #0f5200; transform: translateY(-2px); }
+
+    /* ── PROGRESS ── */
+    .quiz-progress { margin-bottom: 32px; display: none; }
+    .quiz-progress-label { font-size: .7rem; font-weight: 700; color: var(--ink-3); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+    .quiz-progress-track { height: 3px; background: var(--border); border-radius: 4px; overflow: hidden; }
+    .quiz-progress-fill { height: 100%; background: var(--green-dk); border-radius: 4px; transition: width .4s var(--ease); width: 0%; }
+
+    /* ── QUESTION CARD ── */
+    .quiz-card {
+      background: var(--surface);
+      border-radius: 20px;
+      padding: 36px 32px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
+      display: none;
+    }
+    .quiz-card.active { display: block; }
+    .quiz-card h2 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.1rem, 3vw, 1.45rem);
+      font-weight: 700; color: var(--ink);
+      margin-bottom: 24px; line-height: 1.35;
+      letter-spacing: -.01em;
+    }
+
+    /* ── OPTIONS ── */
+    .quiz-options { display: flex; flex-direction: column; gap: 10px; }
+    .quiz-option {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 14px 18px;
+      border-radius: 12px;
+      border: 1.5px solid var(--border);
+      background: var(--surface);
+      cursor: pointer;
+      transition: border-color .2s, background .2s, transform .15s;
+      font-size: .88rem; color: var(--ink-2); line-height: 1.5;
+    }
+    .quiz-option:hover { border-color: var(--green); background: var(--green-pale); transform: translateX(3px); }
+    .quiz-option.selected { border-color: var(--green-dk); background: var(--green-pale); }
+    .quiz-option.selected .opt-letter { background: var(--green-dk); color: #fff; }
+    .opt-letter {
+      width: 26px; height: 26px; border-radius: 50%;
+      background: rgba(40,200,0,.1); color: var(--green-dk);
+      font-size: .72rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 1px;
+      transition: background .2s, color .2s;
+    }
+
+    /* ── NAV BUTTONS ── */
+    .quiz-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 28px; }
+    .quiz-btn-back {
+      background: none; border: none; cursor: pointer;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: .82rem; font-weight: 600; color: var(--ink-3);
+      padding: 8px 0; transition: color .2s;
+    }
+    .quiz-btn-back:hover { color: var(--purple); }
+    .quiz-btn-next {
+      background: var(--green-dk); color: #fff;
+      border: none; border-radius: 50px;
+      padding: 12px 26px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: .85rem; font-weight: 600;
+      cursor: pointer; transition: background .2s, transform .2s;
+    }
+    .quiz-btn-next:hover { background: #0f5200; transform: translateY(-2px); }
+    .quiz-btn-next:disabled { background: rgba(40,200,0,.15); color: rgba(255,255,255,.5); cursor: not-allowed; transform: none; }
+
+    /* ── EMAIL CAPTURE ── */
+    .quiz-email-card {
+      background: var(--surface);
+      border-radius: 20px;
+      padding: 36px 32px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
+      text-align: center;
+      display: none;
+    }
+    .quiz-email-card.active { display: block; }
+    .quiz-email-card h2 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      color: var(--purple-dk); margin-bottom: 10px;
+      letter-spacing: -.01em;
+    }
+    .quiz-email-card p { font-size: .9rem; color: var(--ink-2); line-height: 1.65; margin-bottom: 24px; }
+    .quiz-field {
+      width: 100%; padding: 13px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: .9rem; color: var(--ink);
+      background: var(--bg); margin-bottom: 10px;
+      transition: border-color .2s; outline: none;
+    }
+    .quiz-field:focus { border-color: var(--green-dk); }
+    .quiz-submit {
+      width: 100%;
+      background: var(--green-dk); color: #fff;
+      border: none; border-radius: 50px;
+      padding: 14px 28px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: .9rem; font-weight: 600;
+      cursor: pointer; margin-top: 6px;
+      transition: background .2s, transform .2s;
+    }
+    .quiz-submit:hover { background: #0f5200; transform: translateY(-2px); }
+    .quiz-privacy { font-size: .7rem; color: var(--ink-3); margin-top: 10px; line-height: 1.6; }
+
+    /* ── RESULT ── */
+    .quiz-result {
+      background: var(--surface);
+      border-radius: 20px;
+      padding: 36px 32px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
+      text-align: center;
+      display: none;
+    }
+    .quiz-result.active { display: block; }
+    .result-label {
+      font-size: .7rem; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--purple);
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      margin-bottom: 14px;
+    }
+    .result-label::before, .result-label::after { content: ''; width: 18px; height: 2px; background: var(--green-dk); border-radius: 2px; }
+    .result-name {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2rem, 6vw, 3rem);
+      font-weight: 900; color: var(--purple-dk);
+      margin-bottom: 24px; line-height: 1.1;
+      letter-spacing: -.02em;
+    }
+    .result-desc { font-size: .9rem; color: var(--ink-2); line-height: 1.8; text-align: left; margin-bottom: 24px; }
+
+    .result-inbox { font-size: .82rem; color: var(--ink-3); line-height: 1.6; margin-bottom: 20px; }
+
+    /* ── FOOTER ── */
+    .quiz-footer {
+      margin-top: auto; padding: 40px 20px 24px;
+      text-align: center; font-size: .7rem;
+      color: var(--ink-3); line-height: 1.8;
+    }
+    .quiz-footer a { color: var(--purple); font-weight: 600; }
+    .quiz-footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 480px) {
+      .quiz-card { padding: 24px 18px; }
+      .quiz-email-card { padding: 24px 18px; }
+      .quiz-result { padding: 24px 18px; }
+    }
+  </style>
+  <!-- MailerLite Universal -->
+  <script>
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);},l=d.createElement(e),l.async=1,l.src=u,n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '2343008');
+  </script>
+  <!-- End MailerLite Universal -->
+</head>
+<body>
+
+  <!-- LOGO -->
+  <div class="top-logo">
+    <a href="/"><img src="assets/images/logo.png" alt="Kbyeee Getaways"/></a>
+  </div>
+
+  <div class="quiz-page">
+
+    <!-- INTRO -->
+    <div class="quiz-intro" id="quizIntro">
+      <span class="eyebrow">Travel Personality Quiz</span>
+      <h1>What Kind of Traveler Are You?</h1>
+      <p>6 questions stand between you and your next dream getaway. Find your travel type and get a free guide made just for you.</p>
+      <button class="btn-start" onclick="startQuiz()">Take the Quiz →</button>
+    </div>
+
+    <!-- PROGRESS -->
+    <div class="quiz-progress" id="quizProgress">
+      <div class="quiz-progress-label" id="progressLabel">Question 1 of 6</div>
+      <div class="quiz-progress-track">
+        <div class="quiz-progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+
+    <!-- Q1 -->
+    <div class="quiz-card" data-q="0">
+      <h2>It's day one, you've arrived, and the whole trip is ahead of you. What's your vibe?</h2>
+      <div class="quiz-options">
+        <div class="quiz-option" data-instinct="chill" onclick="selectOption(this)"><span class="opt-letter">A</span>Find my spot, get comfortable, and let the day come to me</div>
+        <div class="quiz-option" data-instinct="celebrate" onclick="selectOption(this)"><span class="opt-letter">B</span>Get the group together and find out where the energy is</div>
+        <div class="quiz-option" data-instinct="experience" onclick="selectOption(this)"><span class="opt-letter">C</span>Looking for that moment that makes me go yep, this is exactly why I came</div>
+        <div class="quiz-option" data-instinct="explore" onclick="selectOption(this)"><span class="opt-letter">D</span>Figure out what's around and start exploring on my own terms</div>
+      </div>
+      <div class="quiz-nav">
+        <span></span>
+        <button class="quiz-btn-next" disabled onclick="nextQuestion()">Next →</button>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="quiz-card" data-q="1">
+      <h2>How do you feel about a travel itinerary?</h2>
+      <div class="quiz-options">
+        <div class="quiz-option" data-instinct="experience" onclick="selectOption(this)"><span class="opt-letter">A</span>The more detailed the better, I don't want to miss a thing</div>
+        <div class="quiz-option" data-instinct="chill" onclick="selectOption(this)"><span class="opt-letter">B</span>I don't want one. I'll figure it out when I get there</div>
+        <div class="quiz-option" data-instinct="explore" onclick="selectOption(this)"><span class="opt-letter">C</span>A loose one is fine, I want room to wander and discover</div>
+        <div class="quiz-option" data-instinct="celebrate" onclick="selectOption(this)"><span class="opt-letter">D</span>Just tell me where everyone is going and I'm there</div>
+      </div>
+      <div class="quiz-nav">
+        <button class="quiz-btn-back" onclick="prevQuestion()">← Back</button>
+        <button class="quiz-btn-next" disabled onclick="nextQuestion()">Next →</button>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="quiz-card" data-q="2">
+      <h2>What does your vacation budget actually go toward first?</h2>
+      <div class="quiz-options">
+        <div class="quiz-option" data-instinct="celebrate" onclick="selectOption(this)"><span class="opt-letter">A</span>Nights out, outfits, and making sure the group has a good time</div>
+        <div class="quiz-option" data-instinct="experience" onclick="selectOption(this)"><span class="opt-letter">B</span>Experiences, dinners, shows, activities worth paying for</div>
+        <div class="quiz-option" data-instinct="explore" onclick="selectOption(this)"><span class="opt-letter">C</span>Excursions and getting off the resort, that's where the memories are</div>
+        <div class="quiz-option" data-instinct="chill" onclick="selectOption(this)"><span class="opt-letter">D</span>The room situation, if the room is right, everything else falls into place</div>
+      </div>
+      <div class="quiz-nav">
+        <button class="quiz-btn-back" onclick="prevQuestion()">← Back</button>
+        <button class="quiz-btn-next" disabled onclick="nextQuestion()">Next →</button>
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="quiz-card" data-q="3">
+      <h2>Which of these would actually ruin your trip?</h2>
+      <div class="quiz-options">
+        <div class="quiz-option" data-instinct="experience" onclick="selectOption(this)"><span class="opt-letter">A</span>Getting there and realizing everything you wanted is already booked</div>
+        <div class="quiz-option" data-instinct="celebrate" onclick="selectOption(this)"><span class="opt-letter">B</span>A dead group chat and nowhere fun to go at night</div>
+        <div class="quiz-option" data-instinct="chill" onclick="selectOption(this)"><span class="opt-letter">C</span>Being on someone else's schedule with no downtime</div>
+        <div class="quiz-option" data-instinct="explore" onclick="selectOption(this)"><span class="opt-letter">D</span>Staying in one place the entire time with nothing new to see</div>
+      </div>
+      <div class="quiz-nav">
+        <button class="quiz-btn-back" onclick="prevQuestion()">← Back</button>
+        <button class="quiz-btn-next" disabled onclick="nextQuestion()">Next →</button>
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="quiz-card" data-q="4">
+      <h2>Pick the trip that sounds most like you:</h2>
+      <div class="quiz-options">
+        <div class="quiz-option" data-instinct="celebrate" onclick="selectOption(this)"><span class="opt-letter">A</span>Beach club by day, rooftop bar by night, repeat all week</div>
+        <div class="quiz-option" data-instinct="experience" onclick="selectOption(this)"><span class="opt-letter">B</span>A trip built around something specific, a destination, a moment, an experience worth traveling for</div>
+        <div class="quiz-option" data-instinct="chill" onclick="selectOption(this)"><span class="opt-letter">C</span>Overwater bungalow, spa day, room service, absolute peace</div>
+        <div class="quiz-option" data-instinct="explore" onclick="selectOption(this)"><span class="opt-letter">D</span>A new place, view, or adventure waiting every single day</div>
+      </div>
+      <div class="quiz-nav">
+        <button class="quiz-btn-back" onclick="prevQuestion()">← Back</button>
+        <button class="quiz-btn-next" disabled onclick="nextQuestion()">Next →</button>
+      </div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="quiz-card" data-q="5">
+      <h2>Someone asks you to describe your ideal travel crew. You say:</h2>
+      <div class="quiz-options">
+        <div class="quiz-option" data-instinct="explore" onclick="selectOption(this)"><span class="opt-letter">A</span>People who are down to wander and see where the day takes them</div>
+        <div class="quiz-option" data-instinct="chill" onclick="selectOption(this)"><span class="opt-letter">B</span>People who don't need a packed schedule to have a good time</div>
+        <div class="quiz-option" data-instinct="experience" onclick="selectOption(this)"><span class="opt-letter">C</span>People who want to come back saying they did something they'll never forget</div>
+        <div class="quiz-option" data-instinct="celebrate" onclick="selectOption(this)"><span class="opt-letter">D</span>People who bring the energy no matter where we end up</div>
+      </div>
+      <div class="quiz-nav">
+        <button class="quiz-btn-back" onclick="prevQuestion()">← Back</button>
+        <button class="quiz-btn-next" disabled onclick="showEmailCapture()">See My Results →</button>
+      </div>
+    </div>
+
+    <!-- EMAIL CAPTURE -->
+    <div class="quiz-email-card" id="emailCapture">
+      <div id="mlFormContainer"></div>
+    </div>
+
+    <!-- RESULT -->
+    <div class="quiz-result" id="quizResult">
+      <div class="result-label">Your Travel Type</div>
+      <div class="result-name" id="resultName"></div>
+      <div class="result-desc" id="resultDesc"></div>
+
+      <p class="result-inbox">Check your inbox! Your free guide is on its way.</p>
+      <button onclick="location.reload()" style="background:none;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;color:var(--ink-3);text-decoration:underline;margin-top:12px;">Retake the quiz</button>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="quiz-footer">
+    <p>&copy; 2023-2026 Kbyeee Getaways</p>
+    <p>
+      <a href="https://drive.google.com/file/d/10eOUFTT8w2oSgYOZ9plQVgYR1DO-dkcG/view" target="_blank" rel="noopener">Terms &amp; Conditions</a>
+      &nbsp;&middot;&nbsp;
+      <a href="/privacy" target="_blank" rel="noopener">Privacy Policy</a>
+    </p>
+  </div>
+
+<script>
+  const SCORING = {
+    chill:      { sunChaser: 3, adventureSeeker: 1, explorer: 0, partyStarter: 0, balancedTraveler: 1, hypePerson: 0, magicMaker: 0 },
+    explore:    { sunChaser: 0, adventureSeeker: 2, explorer: 3, partyStarter: 1, balancedTraveler: 0, hypePerson: 1, magicMaker: 1 },
+    celebrate:  { sunChaser: 1, adventureSeeker: 0, explorer: 0, partyStarter: 3, balancedTraveler: 2, hypePerson: 2, magicMaker: 1 },
+    experience: { sunChaser: 0, adventureSeeker: 2, explorer: 1, partyStarter: 0, balancedTraveler: 1, hypePerson: 0, magicMaker: 3 }
+  };
+
+  const RESULTS = {
+    sunChaser: {
+      name: 'The Sun Chaser',
+      desc: "You didn't book this trip to have a packed schedule. You booked it to actually breathe. Your version of a perfect day involves a good view, a cold drink, and absolutely nowhere you have to be. You're not being lazy, you're being intentional. Rest IS the trip.<br><br>Trips that were made for you: all inclusive resorts, adults only properties, spa retreats, overwater bungalows, private villa rentals. Anywhere that lets you fully unplug, recharge, and come home actually feeling like you went on vacation.",
+      freebie: '5 Resorts Where You Can Actually Unplug',
+      group: 'MAILERLITE_GROUP_ID_SUN_CHASER'
+    },
+    adventureSeeker: {
+      name: 'The Adventure Seeker',
+      desc: "You want the comfort of a home base but you are NOT there to just sit by the pool. Every excursion, every shore day, every unplanned adventure is exactly why you came. You want the best of both worlds and you refuse to apologize for it.<br><br>Trips that were made for you: excursion heavy all inclusive stays, active cruise itineraries, adventure focused trip styles that mix comfort with getting out and doing something worth talking about.",
+      freebie: '7 Questions to Ask Before You Book Any Excursion',
+      group: 'MAILERLITE_GROUP_ID_ADVENTURE_SEEKER'
+    },
+    explorer: {
+      name: 'The Explorer',
+      desc: "Staying in one place the whole trip sounds like a waste of a passport to you. You want to wake up somewhere new, soak it in, and do it again tomorrow. The journey is just as much the point as the destination and you collect experiences the way other people collect souvenirs.<br><br>Trips that were made for you: cruise itineraries, multi destination trips, island hopping, river cruises. Anything that keeps you moving and puts something new in front of you every single day.",
+      freebie: 'How to See More Without Doing Too Much',
+      formId: 'nB9QbI'
+    },
+    partyStarter: {
+      name: 'The Party Starter',
+      desc: "You don't just want a good trip. You want an experience that actually delivers. You set the standard high because you know what a great trip feels like and anything less is not worth the flight. The vibe has to be right, the energy has to match, and the whole thing needs to feel like it was worth every penny.<br><br>Trips that were made for you: lively all inclusive resorts, adults only properties with nightlife and beach club energy, girls trips, birthday trips and group getaways where the atmosphere is everything.",
+      freebie: "Where to Go Based on the Vibe You're Going For",
+      group: 'MAILERLITE_GROUP_ID_PARTY_STARTER'
+    },
+    balancedTraveler: {
+      name: 'The Balanced Traveler',
+      desc: "Beach day. Good dinner. Night out. Lazy pool morning. Yes to all of it. You're not indecisive. You just know that the best trips have range. You can go from laid back to turned up without missing a beat and you want a trip that can keep up with you.<br><br>Trips that were made for you: resorts and cruise lines that offer both relaxation and nightlife, destinations and trip styles that give you the full experience without having to choose between a good time and a good rest.",
+      freebie: 'The Balanced Traveler\'s Checklist: What to Look For Before You Commit',
+      group: 'MAILERLITE_GROUP_ID_BALANCED_TRAVELER'
+    },
+    hypePerson: {
+      name: 'The Hype Person',
+      desc: "Every trip you plan has a reason behind it. A birthday, an anniversary, a bachelorette, a we made it moment. You don't just book vacations, you create experiences that the whole group will be talking about forever. The details matter because the people matter.<br><br>Trips that were made for you: group celebration trips, destination weddings, milestone birthday getaways, bachelorette trips, anniversary travel. Anything with an occasion at the center of it that deserves to be done right.",
+      freebie: 'How to Get Your Group to Actually Commit and Show Up',
+      group: 'MAILERLITE_GROUP_ID_HYPE_PERSON'
+    },
+    magicMaker: {
+      name: 'The Magic Maker',
+      desc: "You don't just want a good trip. You want a trip that feels like it was made for exactly this moment. Maybe it's a bucket list destination, maybe it's a once in a lifetime experience, maybe it's something you've been dreaming about for years. Whatever it is, the details matter and every part of it should feel intentional.<br><br>Trips that were made for you: theme park vacations, bucket list experiences, family trips where every detail needs to be just right, and once in a lifetime journeys that deserve more than a quick Google search.",
+      freebie: 'How to Finally Book the Trip You Keep Putting Off',
+      group: 'MAILERLITE_GROUP_ID_MAGIC_MAKER'
+    },
+  };
+
+  let currentQ = 0;
+  let answers = [];
+  const totalQ = 6;
+  let pendingResultKey = null;
+
+  function startQuiz() {
+    document.getElementById('quizIntro').style.display = 'none';
+    document.getElementById('quizProgress').style.display = 'block';
+    showQuestion(0);
+  }
+
+  function showQuestion(index) {
+    document.querySelectorAll('.quiz-card').forEach(c => c.classList.remove('active'));
+    document.querySelectorAll('.quiz-card')[index].classList.add('active');
+    currentQ = index;
+    const pct = (index / totalQ) * 100;
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressLabel').textContent = `Question ${index + 1} of ${totalQ}`;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function selectOption(el) {
+    const card = el.closest('.quiz-card');
+    card.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    card.querySelector('.quiz-btn-next').disabled = false;
+    answers[currentQ] = el.dataset.instinct;
+  }
+
+  function nextQuestion() {
+    if (currentQ < totalQ - 1) showQuestion(currentQ + 1);
+  }
+
+  function prevQuestion() {
+    if (currentQ > 0) showQuestion(currentQ - 1);
+  }
+
+  function calculateResult() {
+    const scores = { sunChaser: 0, adventureSeeker: 0, explorer: 0, partyStarter: 0, balancedTraveler: 0, hypePerson: 0, magicMaker: 0 };
+    answers.forEach(instinct => {
+      if (instinct && SCORING[instinct]) {
+        Object.keys(SCORING[instinct]).forEach(type => { scores[type] += SCORING[instinct][type]; });
+      }
+    });
+    return Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
+  }
+
+  function showEmailCapture() {
+    document.querySelectorAll('.quiz-card').forEach(c => c.classList.remove('active'));
+    document.getElementById('quizProgress').style.display = 'none';
+    const resultKey = calculateResult();
+    pendingResultKey = resultKey;
+    // Inject the correct MailerLite form
+    const formId = RESULTS[resultKey].formId;
+    document.getElementById('mlFormContainer').innerHTML = `<div class="ml-embedded" data-form="${formId}"></div>`;
+    if (window.ml) ml('reload');
+    document.getElementById('emailCapture').classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Listen for ML form success
+    window.addEventListener('ml_form_success', function() {
+      showResult(RESULTS[pendingResultKey]);
+    });
+  }
+
+  function showResult(result) {
+    document.getElementById('emailCapture').classList.remove('active');
+    document.getElementById('resultName').textContent = result.name;
+    document.getElementById('resultDesc').innerHTML = result.desc;
+    document.getElementById('quizResult').classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+
+
+  // TODO: wire up when API key + group IDs are ready
+  // async function submitToMailerLite(name, email, groupId) {
+  //   await fetch('https://connect.mailerlite.com/api/subscribers', {
+  //     method: 'POST',
+  //     headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer YOUR_API_KEY_HERE' },
+  //     body: JSON.stringify({ email, fields: { name }, groups: [groupId] })
+  //   });
+  // }
+</script>
+
+</body>
+</html>
 
