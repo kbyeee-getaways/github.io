@@ -278,11 +278,10 @@
     document.getElementById('ml-form-' + resultKey).style.display = 'block';
     document.getElementById('emailCapture').classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    // Poll for MailerLite success message
     const checkSuccess = setInterval(function() {
       const successEl = document.querySelector('#emailCapture .row-success');
-      console.log('checking...', successEl, successEl ? successEl.style.display : 'not found', successEl ? successEl.offsetHeight : 0);
-      if (successEl && successEl.style.display !== 'none' && successEl.offsetHeight > 0) {
+      const formEl = document.querySelector('#emailCapture .row-form');
+      if (successEl && formEl && formEl.style.display === 'none') {
         clearInterval(checkSuccess);
         setTimeout(() => showResult(RESULTS[pendingResultKey]), 600);
       }
