@@ -151,7 +151,7 @@
       <div class="result-name" id="resultName"></div>
       <div class="result-desc" id="resultDesc"></div>
 
-      <p class="result-inbox">Check your inbox! Your free guide is on its way.</p>
+      <p class="result-inbox">Check your inbox! Your free guide is on its way. (Check your spam!)</p>
       <button onclick="location.reload()" style="background:none;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;color:var(--ink-3);text-decoration:underline;margin-top:12px;">Retake the quiz</button>
     </div>
 
@@ -274,19 +274,18 @@
     pendingResultKey = resultKey;
     // Inject the correct MailerLite form
     const formId = RESULTS[resultKey].formId;
-document.querySelectorAll('.ml-form-wrapper').forEach(f => f.style.display = 'none');
-document.getElementById('ml-form-' + resultKey).style.display = 'block';
+    document.querySelectorAll('.ml-form-wrapper').forEach(f => f.style.display = 'none');
+    document.getElementById('ml-form-' + resultKey).style.display = 'block';
     document.getElementById('emailCapture').classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    // Watch for MailerLite success message appearing in DOM
-    const observer = new MutationObserver(function() {
-      const successEl = document.querySelector('#emailCapture .ml-form-successBody');
-      if (successEl && window.getComputedStyle(successEl).display !== 'none') {
-        observer.disconnect();
+    // Poll for MailerLite success message
+    const checkSuccess = setInterval(function() {
+      const successEl = document.querySelector('#emailCapture .row-success');
+      if (successEl && successEl.style.display !== 'none' && successEl.offsetHeight > 0) {
+        clearInterval(checkSuccess);
         setTimeout(() => showResult(RESULTS[pendingResultKey]), 600);
       }
-    });
-    observer.observe(document.getElementById('emailCapture'), { childList: true, subtree: true, attributes: true, attributeFilter: ['style'] });
+    }, 300);
   }
 
   function showResult(result) {
