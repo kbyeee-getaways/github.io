@@ -269,7 +269,7 @@
     // Inject the correct MailerLite form
     const formId = RESULTS[resultKey].formId;
     document.getElementById('mlFormContainer').innerHTML = `<div class="ml-embedded" data-form="${formId}"></div>`;
-    if (window.ml) ml('reload');
+    if (window.MlEmbeddedFormInit) window.MlEmbeddedFormInit();
     document.getElementById('emailCapture').classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
     // Listen for ML form success
