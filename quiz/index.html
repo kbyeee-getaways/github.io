@@ -278,10 +278,15 @@ document.querySelectorAll('.ml-form-wrapper').forEach(f => f.style.display = 'no
 document.getElementById('ml-form-' + resultKey).style.display = 'block';
     document.getElementById('emailCapture').classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    // Listen for ML form success
-    window.addEventListener('ml_form_success', function() {
-      showResult(RESULTS[pendingResultKey]);
+    // Watch for MailerLite success message appearing in DOM
+    const observer = new MutationObserver(function() {
+      const successEl = document.querySelector('#emailCapture .ml-form-successBody');
+      if (successEl && window.getComputedStyle(successEl).display !== 'none') {
+        observer.disconnect();
+        setTimeout(() => showResult(RESULTS[pendingResultKey]), 600);
+      }
     });
+    observer.observe(document.getElementById('emailCapture'), { childList: true, subtree: true, attributes: true, attributeFilter: ['style'] });
   }
 
   function showResult(result) {
