@@ -185,6 +185,16 @@
     magicMaker:       '41668181'
   };
 
+  const ML_EMBED_CODES = {
+  sunChaser:        'GGtjKQ',
+  adventureSeeker:  'G6zRUp',
+  explorer:         'dn3QoB',
+  partyStarter:     'jgCTfg',
+  balancedTraveler: '7HvKQ1',
+  hypePerson:       '22ahVV',
+  magicMaker:       'zmPyLy'
+};
+
   const RESULTS = {
     sunChaser: {
       name: 'The Sun Chaser',
@@ -277,16 +287,35 @@
     return Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
   }
 
-  function showEmailCapture() {
+//   function showEmailCapture() {
+//   document.querySelectorAll('.quiz-card').forEach(c => c.classList.remove('active'));
+//   document.getElementById('quizProgress').style.display = 'none';
+//   const resultKey = calculateResult();
+//   pendingResultKey = resultKey;
+//   const numericId = ML_FORM_IDS[resultKey];
+//   // Show correct form
+//   document.querySelectorAll('.ml-form-wrapper').forEach(f => f.style.display = 'none');
+//   document.getElementById('ml-form-' + resultKey).style.display = 'block';
+//   // Hook into success function
+//   window['ml_webform_success_' + numericId] = function() {
+//     var $ = window.ml_jQuery || window.jQuery;
+//     if ($) {
+//       $('.ml-subscribe-form-' + numericId + ' .row-success').show();
+//       $('.ml-subscribe-form-' + numericId + ' .row-form').hide();
+//     }
+//     setTimeout(function() { showResult(RESULTS[pendingResultKey]); }, 800);
+//   };
+//   document.getElementById('emailCapture').classList.add('active');
+//   window.scrollTo({ top: 0, behavior: 'smooth' });
+// }
+function showEmailCapture() {
   document.querySelectorAll('.quiz-card').forEach(c => c.classList.remove('active'));
   document.getElementById('quizProgress').style.display = 'none';
   const resultKey = calculateResult();
   pendingResultKey = resultKey;
   const numericId = ML_FORM_IDS[resultKey];
-  // Show correct form
-  document.querySelectorAll('.ml-form-wrapper').forEach(f => f.style.display = 'none');
-  document.getElementById('ml-form-' + resultKey).style.display = 'block';
-  // Hook into success function
+  const embedCode = ML_EMBED_CODES[resultKey];
+  // Hook into success function BEFORE injecting form
   window['ml_webform_success_' + numericId] = function() {
     var $ = window.ml_jQuery || window.jQuery;
     if ($) {
@@ -295,6 +324,8 @@
     }
     setTimeout(function() { showResult(RESULTS[pendingResultKey]); }, 800);
   };
+  // Inject form dynamically
+  document.getElementById('mlFormContainer').innerHTML = '<div class="ml-embedded" data-form="' + embedCode + '"></div>';
   document.getElementById('emailCapture').classList.add('active');
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
