@@ -136,14 +136,13 @@
 
     <!-- EMAIL CAPTURE -->
     <div class="quiz-email-card" id="emailCapture">
-  <!-- <div id="ml-form-sunChaser" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="GGtjKQ"></div></div>
+  <div id="ml-form-sunChaser" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="GGtjKQ"></div></div>
   <div id="ml-form-adventureSeeker" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="G6zRUp"></div></div>
   <div id="ml-form-explorer" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="dn3QoB"></div></div>
   <div id="ml-form-partyStarter" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="jgCTfg"></div></div>
   <div id="ml-form-balancedTraveler" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="7HvKQ1"></div></div>
   <div id="ml-form-hypePerson" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="22ahVV"></div></div>
-  <div id="ml-form-magicMaker" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="zmPyLy"></div></div> -->
-  <div id="mlFormContainer"></div>
+  <div id="ml-form-magicMaker" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="zmPyLy"></div></div>
 </div>
 
     <!-- RESULT -->
@@ -184,16 +183,6 @@
     hypePerson:       '41668150',
     magicMaker:       '41668181'
   };
-
-  const ML_EMBED_CODES = {
-  sunChaser:        'GGtjKQ',
-  adventureSeeker:  'G6zRUp',
-  explorer:         'dn3QoB',
-  partyStarter:     'jgCTfg',
-  balancedTraveler: '7HvKQ1',
-  hypePerson:       '22ahVV',
-  magicMaker:       'zmPyLy'
-};
 
   const RESULTS = {
     sunChaser: {
@@ -287,35 +276,16 @@
     return Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
   }
 
-//   function showEmailCapture() {
-//   document.querySelectorAll('.quiz-card').forEach(c => c.classList.remove('active'));
-//   document.getElementById('quizProgress').style.display = 'none';
-//   const resultKey = calculateResult();
-//   pendingResultKey = resultKey;
-//   const numericId = ML_FORM_IDS[resultKey];
-//   // Show correct form
-//   document.querySelectorAll('.ml-form-wrapper').forEach(f => f.style.display = 'none');
-//   document.getElementById('ml-form-' + resultKey).style.display = 'block';
-//   // Hook into success function
-//   window['ml_webform_success_' + numericId] = function() {
-//     var $ = window.ml_jQuery || window.jQuery;
-//     if ($) {
-//       $('.ml-subscribe-form-' + numericId + ' .row-success').show();
-//       $('.ml-subscribe-form-' + numericId + ' .row-form').hide();
-//     }
-//     setTimeout(function() { showResult(RESULTS[pendingResultKey]); }, 800);
-//   };
-//   document.getElementById('emailCapture').classList.add('active');
-//   window.scrollTo({ top: 0, behavior: 'smooth' });
-// }
-function showEmailCapture() {
+  function showEmailCapture() {
   document.querySelectorAll('.quiz-card').forEach(c => c.classList.remove('active'));
   document.getElementById('quizProgress').style.display = 'none';
   const resultKey = calculateResult();
   pendingResultKey = resultKey;
   const numericId = ML_FORM_IDS[resultKey];
-  const embedCode = ML_EMBED_CODES[resultKey];
-  // Hook into success function BEFORE injecting form
+  // Show correct form
+  document.querySelectorAll('.ml-form-wrapper').forEach(f => f.style.display = 'none');
+  document.getElementById('ml-form-' + resultKey).style.display = 'block';
+  // Hook into success function
   window['ml_webform_success_' + numericId] = function() {
     var $ = window.ml_jQuery || window.jQuery;
     if ($) {
@@ -324,8 +294,6 @@ function showEmailCapture() {
     }
     setTimeout(function() { showResult(RESULTS[pendingResultKey]); }, 800);
   };
-  // Inject form dynamically
-  document.getElementById('mlFormContainer').innerHTML = '<div class="ml-embedded" data-form="' + embedCode + '"></div>';
   document.getElementById('emailCapture').classList.add('active');
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
