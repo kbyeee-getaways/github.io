@@ -268,25 +268,25 @@
   }
 
   function showEmailCapture() {
-    document.querySelectorAll('.quiz-card').forEach(c => c.classList.remove('active'));
-    document.getElementById('quizProgress').style.display = 'none';
-    const resultKey = calculateResult();
-    pendingResultKey = resultKey;
-    // Inject the correct MailerLite form
-    const formId = RESULTS[resultKey].formId;
-    document.querySelectorAll('.ml-form-wrapper').forEach(f => f.style.display = 'none');
-    document.getElementById('ml-form-' + resultKey).style.display = 'block';
-    document.getElementById('emailCapture').classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    const checkSuccess = setInterval(function() {
-      const successEl = document.querySelector('#emailCapture .row-success');
-      const formEl = document.querySelector('#emailCapture .row-form');
-      if (successEl && formEl && formEl.style.display === 'none') {
-        clearInterval(checkSuccess);
-        setTimeout(() => showResult(RESULTS[pendingResultKey]), 600);
-      }
-    }, 300);
-  }
+  document.querySelectorAll('.quiz-card').forEach(c => c.classList.remove('active'));
+  document.getElementById('quizProgress').style.display = 'none';
+  const resultKey = calculateResult();
+  pendingResultKey = resultKey;
+  const embedCode = ML_EMBED_CODES[resultKey];
+  const numericId = ML_FORM_IDS[resultKey];
+  // Set success hook BEFORE injecting form
+  window['ml_webform_success_' + numericId] = function() {
+    var $ = window.ml_jQuery || window.jQuery;
+    if ($) {
+      $('.ml-subscribe-form-' + numericId + ' .row-success').show();
+      $('.ml-subscribe-form-' + numericId + ' .row-form').hide();
+    }
+    setTimeout(function() { showResult(RESULTS[pendingResultKey]); }, 800);
+  };
+  document.getElementById('mlFormContainer').innerHTML = '<div class="ml-embedded" data-form="' + embedCode + '"></div>';
+  document.getElementById('emailCapture').classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
   function showResult(result) {
     document.getElementById('emailCapture').classList.remove('active');
