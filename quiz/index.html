@@ -272,9 +272,11 @@
   document.getElementById('quizProgress').style.display = 'none';
   const resultKey = calculateResult();
   pendingResultKey = resultKey;
-  const embedCode = ML_EMBED_CODES[resultKey];
   const numericId = ML_FORM_IDS[resultKey];
-  // Set success hook BEFORE injecting form
+  // Show correct form
+  document.querySelectorAll('.ml-form-wrapper').forEach(f => f.style.display = 'none');
+  document.getElementById('ml-form-' + resultKey).style.display = 'block';
+  // Hook into success function
   window['ml_webform_success_' + numericId] = function() {
     var $ = window.ml_jQuery || window.jQuery;
     if ($) {
@@ -283,7 +285,6 @@
     }
     setTimeout(function() { showResult(RESULTS[pendingResultKey]); }, 800);
   };
-  document.getElementById('mlFormContainer').innerHTML = '<div class="ml-embedded" data-form="' + embedCode + '"></div>';
   document.getElementById('emailCapture').classList.add('active');
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
