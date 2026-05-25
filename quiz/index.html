@@ -136,7 +136,7 @@
 
     <!-- EMAIL CAPTURE -->
     <div class="quiz-email-card" id="emailCapture">
-  <div id="ml-form-sunChaser" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="GGtjKQ"></div></div>
+  <div id="ml-form-leisureTraveler" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="GGtjKQ"></div></div>
   <div id="ml-form-adventureSeeker" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="G6zRUp"></div></div>
   <div id="ml-form-explorer" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="dn3QoB"></div></div>
   <div id="ml-form-partyStarter" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="jgCTfg"></div></div>
@@ -168,14 +168,14 @@
 
 <script>
   const SCORING = {
-    chill:      { sunChaser: 3, adventureSeeker: 1, explorer: 0, partyStarter: 0, balancedTraveler: 1, hypePerson: 0, magicMaker: 0 },
-    explore:    { sunChaser: 0, adventureSeeker: 2, explorer: 3, partyStarter: 1, balancedTraveler: 0, hypePerson: 1, magicMaker: 1 },
-    celebrate:  { sunChaser: 1, adventureSeeker: 0, explorer: 0, partyStarter: 3, balancedTraveler: 2, hypePerson: 2, magicMaker: 1 },
-    experience: { sunChaser: 0, adventureSeeker: 2, explorer: 1, partyStarter: 0, balancedTraveler: 1, hypePerson: 0, magicMaker: 3 }
+    chill:      { leisureTraveler: 3, adventureSeeker: 1, explorer: 0, partyStarter: 0, balancedTraveler: 1, hypePerson: 0, magicMaker: 0 },
+    explore:    { leisureTraveler: 0, adventureSeeker: 2, explorer: 3, partyStarter: 1, balancedTraveler: 0, hypePerson: 1, magicMaker: 1 },
+    celebrate:  { leisureTraveler: 1, adventureSeeker: 0, explorer: 0, partyStarter: 3, balancedTraveler: 2, hypePerson: 2, magicMaker: 1 },
+    experience: { leisureTraveler: 0, adventureSeeker: 2, explorer: 1, partyStarter: 0, balancedTraveler: 1, hypePerson: 0, magicMaker: 3 }
   };
 
   const ML_FORM_IDS = {
-    sunChaser:        '41668158',
+    leisureTraveler:        '41668158',
     adventureSeeker:  '41668190',
     explorer:         '41667731',
     partyStarter:     '41668177',
@@ -185,8 +185,8 @@
   };
 
   const RESULTS = {
-    sunChaser: {
-      name: 'The Sun Chaser',
+    leisureTraveler: {
+      name: 'The Leisure Traveler',
       desc: "You didn't book this trip to have a packed schedule. You booked it to actually breathe. Your version of a perfect day involves a good view, a cold drink, and absolutely nowhere you have to be. You're not being lazy, you're being intentional. Rest IS the trip.<br><br>Trips that were made for you: all inclusive resorts, adults only properties, spa retreats, overwater bungalows, private villa rentals. Anywhere that lets you fully unplug, recharge, and come home actually feeling like you went on vacation.",
       freebie: '5 Resorts Where You Can Actually Unplug',
       group: 'GGtjKQ'
@@ -267,7 +267,7 @@
   }
 
   function calculateResult() {
-    const scores = { sunChaser: 0, adventureSeeker: 0, explorer: 0, partyStarter: 0, balancedTraveler: 0, hypePerson: 0, magicMaker: 0 };
+    const scores = { leisureTraveler: 0, adventureSeeker: 0, explorer: 0, partyStarter: 0, balancedTraveler: 0, hypePerson: 0, magicMaker: 0 };
     answers.forEach(instinct => {
       if (instinct && SCORING[instinct]) {
         Object.keys(SCORING[instinct]).forEach(type => { scores[type] += SCORING[instinct][type]; });
