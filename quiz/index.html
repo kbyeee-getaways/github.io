@@ -141,7 +141,7 @@
   <div id="ml-form-explorer" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="dn3QoB"></div></div>
   <!-- <div id="ml-form-partyStarter" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="jgCTfg"></div></div> -->
   <div id="ml-form-balancedTraveler" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="7HvKQ1"></div></div>
-  <div id="ml-form-hypePerson" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="22ahVV"></div></div>
+  <div id="ml-form-designatedPlanner" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="22ahVV"></div></div>
   <div id="ml-form-magicMaker" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="zmPyLy"></div></div>
 </div>
 
@@ -168,10 +168,10 @@
 
 <script>
   const SCORING = {
-    chill:      { leisureTraveler: 3, adventureSeeker: 1, explorer: 0, balancedTraveler: 1, hypePerson: 0, magicMaker: 0 },
-    explore:    { leisureTraveler: 0, adventureSeeker: 2, explorer: 3, balancedTraveler: 0, hypePerson: 0, magicMaker: 1 },
-    celebrate:  { leisureTraveler: 1, adventureSeeker: 0, explorer: 0, balancedTraveler: 2, hypePerson: 3, magicMaker: 1 },
-    experience: { leisureTraveler: 0, adventureSeeker: 2, explorer: 1, balancedTraveler: 2, hypePerson: 2, magicMaker: 3 }
+    chill:      { leisureTraveler: 3, adventureSeeker: 1, explorer: 0, balancedTraveler: 1, designatedPlanner: 0, magicMaker: 0 },
+    explore:    { leisureTraveler: 0, adventureSeeker: 2, explorer: 3, balancedTraveler: 0, designatedPlanner: 0, magicMaker: 1 },
+    celebrate:  { leisureTraveler: 1, adventureSeeker: 0, explorer: 0, balancedTraveler: 2, designatedPlanner: 3, magicMaker: 1 },
+    experience: { leisureTraveler: 0, adventureSeeker: 2, explorer: 1, balancedTraveler: 2, designatedPlanner: 2, magicMaker: 3 }
   };
 
   const ML_FORM_IDS = {
@@ -180,7 +180,7 @@
     explorer:         '41667731',
     // partyStarter:     '41668177',
     balancedTraveler: '41668165',
-    hypePerson:       '41668150',
+    designatedPlanner:       '41668150',
     magicMaker:       '41668181'
   };
 
@@ -188,13 +188,13 @@
     leisureTraveler: {
       name: 'The Leisure Traveler',
       desc: "You didn't book this trip to have a packed schedule. You booked it to actually breathe. Your version of a perfect day involves a good view, a cold drink, and absolutely nowhere you have to be. You're not being lazy, you're being intentional. Rest IS the trip.<br><br>Trips that were made for you: all inclusive resorts, adults only properties, spa retreats, overwater bungalows, private villa rentals. Anywhere that lets you fully unplug, recharge, and come home actually feeling like you went on vacation.",
-      freebie: '5 Resorts Where You Can Actually Unplug',
+      freebie: 'Finding Your Perfect Escape',
       group: 'GGtjKQ'
     },
     adventureSeeker: {
       name: 'The Adventure Seeker',
       desc: "You want the comfort of a home base but you are NOT there to just sit by the pool. Every excursion, every shore day, every unplanned adventure is exactly why you came. You want the best of both worlds and you refuse to apologize for it.<br><br>Trips that were made for you: excursion heavy all inclusive stays, active cruise itineraries, adventure focused trip styles that mix comfort with getting out and doing something worth talking about.",
-      freebie: '7 Questions to Ask Before You Book Any Excursion',
+      freebie: '6 Questions to Ask Before You Book Any Excursion',
       group: 'G6zRUp'
     },
     explorer: {
@@ -212,19 +212,19 @@
     balancedTraveler: {
       name: 'The Balanced Traveler',
       desc: "Beach day. Good dinner. Night out. Lazy pool morning. Yes to all of it. You're not indecisive. You just know that the best trips have range. You can go from laid back to turned up without missing a beat and you want a trip that can keep up with you.<br><br>Trips that were made for you: resorts and cruise lines that offer both relaxation and nightlife, destinations and trip styles that give you the full experience without having to choose between a good time and a good rest.",
-      freebie: 'The Balanced Traveler\'s Checklist: What to Look For Before You Commit',
+      freebie: 'What to Look For Before You Commit',
       group: '7HvKQ1'
     },
-    hypePerson: {
-      name: 'The Hype Person',
-      desc: "Every trip you plan has a reason behind it. A birthday, an anniversary, a bachelorette, a we made it moment. You don't just book vacations, you create experiences that the whole group will be talking about forever. The details matter because the people matter.<br><br>Trips that were made for you: group celebration trips, destination weddings, milestone birthday getaways, bachelorette trips, anniversary travel. Anything with an occasion at the center of it that deserves to be done right.",
-      freebie: 'How to Get Your Group to Actually Commit and Show Up',
+    designatedPlanner: {
+      name: 'The Designated Planner',
+      desc: "Every group has one. The person who gets tagged in every 'we should go somewhere' post, fielding 15 different opinions, chasing deposits, and somehow making it all come together. You don't just book trips, you coordinate experiences for the people you love. The details matter because the people matter and somebody has to make sure it all goes right.",
+      freebie: 'Get Out The Group Chat!',
       group: '22ahVV'
     },
     magicMaker: {
       name: 'The Magic Maker',
       desc: "You don't just want a good trip. You want a trip that feels like it was made for exactly this moment. Maybe it's a bucket list destination, maybe it's a once in a lifetime experience, maybe it's something you've been dreaming about for years. Whatever it is, the details matter and every part of it should feel intentional.<br><br>Trips that were made for you: theme park vacations, bucket list experiences, family trips where every detail needs to be just right, and once in a lifetime journeys that deserve more than a quick Google search.",
-      freebie: 'How to Finally Book the Trip You Keep Putting Off',
+      freebie: 'Plannign a Trip Worth the Wait',
       group: 'zmPyLy'
     },
   };
@@ -267,7 +267,7 @@
   }
 
   function calculateResult() {
-    const scores = { leisureTraveler: 0, adventureSeeker: 0, explorer: 0, balancedTraveler: 0, hypePerson: 0, magicMaker: 0 };
+    const scores = { leisureTraveler: 0, adventureSeeker: 0, explorer: 0, balancedTraveler: 0, designatedPlanner: 0, magicMaker: 0 };
     answers.forEach(instinct => {
       if (instinct && SCORING[instinct]) {
         Object.keys(SCORING[instinct]).forEach(type => { scores[type] += SCORING[instinct][type]; });
