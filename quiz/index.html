@@ -141,7 +141,7 @@
   <div id="ml-form-explorer" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="dn3QoB"></div></div>
   <!-- <div id="ml-form-partyStarter" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="jgCTfg"></div></div> -->
   <div id="ml-form-balancedTraveler" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="7HvKQ1"></div></div>
-  <div id="ml-form-designatedPlanner" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="22ahVV"></div></div>
+  <!-- <div id="ml-form-designatedPlanner" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="22ahVV"></div></div> -->
   <div id="ml-form-magicMaker" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="zmPyLy"></div></div>
 </div>
 
@@ -168,10 +168,10 @@
 
 <script>
   const SCORING = {
-    chill:      { leisureTraveler: 3, adventureSeeker: 1, explorer: 0, balancedTraveler: 1, designatedPlanner: 0, magicMaker: 0 },
-    explore:    { leisureTraveler: 0, adventureSeeker: 2, explorer: 3, balancedTraveler: 0, designatedPlanner: 0, magicMaker: 1 },
-    celebrate:  { leisureTraveler: 1, adventureSeeker: 0, explorer: 0, balancedTraveler: 2, designatedPlanner: 3, magicMaker: 1 },
-    experience: { leisureTraveler: 0, adventureSeeker: 2, explorer: 1, balancedTraveler: 2, designatedPlanner: 2, magicMaker: 3 }
+    chill:      { leisureTraveler: 3, adventureSeeker: 1, explorer: 0, balancedTraveler: 2, magicMaker: 0 },
+    explore:    { leisureTraveler: 0, adventureSeeker: 2, explorer: 3, balancedTraveler: 1, magicMaker: 1 },
+    celebrate:  { leisureTraveler: 1, adventureSeeker: 0, explorer: 0, balancedTraveler: 2, magicMaker: 1 },
+    experience: { leisureTraveler: 0, adventureSeeker: 2, explorer: 1, balancedTraveler: 2, magicMaker: 3 }
   };
 
   const ML_FORM_IDS = {
@@ -180,7 +180,7 @@
     explorer:         '41667731',
     // partyStarter:     '41668177',
     balancedTraveler: '41668165',
-    designatedPlanner:       '41668150',
+    // designatedPlanner:       '41668150',
     magicMaker:       '41668181'
   };
 
@@ -215,12 +215,12 @@
       freebie: 'What to Look For Before You Commit',
       group: '7HvKQ1'
     },
-    designatedPlanner: {
-      name: 'The Designated Planner',
-      desc: "Every group has one. The person who gets tagged in every 'we should go somewhere' post, fielding 15 different opinions, chasing deposits, and somehow making it all come together. You don't just book trips, you coordinate experiences for the people you love. The details matter because the people matter and somebody has to make sure it all goes right.",
-      freebie: 'Get Out The Group Chat!',
-      group: '22ahVV'
-    },
+    // designatedPlanner: {
+    //   name: 'The Designated Planner',
+    //   desc: "Every group has one. The person who gets tagged in every 'we should go somewhere' post, fielding 15 different opinions, chasing deposits, and somehow making it all come together. You don't just book trips, you coordinate experiences for the people you love. The details matter because the people matter and somebody has to make sure it all goes right.",
+    //   freebie: 'Get Out The Group Chat!',
+    //   group: '22ahVV'
+    // },
     magicMaker: {
       name: 'The Magic Maker',
       desc: "You don't just want a good trip. You want a trip that feels like it was made for exactly this moment. Maybe it's a bucket list destination, maybe it's a once in a lifetime experience, maybe it's something you've been dreaming about for years. Whatever it is, the details matter and every part of it should feel intentional.<br><br>Trips that were made for you: theme park vacations, bucket list experiences, family trips where every detail needs to be just right, and once in a lifetime journeys that deserve more than a quick Google search.",
@@ -267,7 +267,7 @@
   }
 
   function calculateResult() {
-    const scores = { leisureTraveler: 0, adventureSeeker: 0, explorer: 0, balancedTraveler: 0, designatedPlanner: 0, magicMaker: 0 };
+    const scores = { leisureTraveler: 0, adventureSeeker: 0, explorer: 0, balancedTraveler: 0, magicMaker: 0 };
     answers.forEach(instinct => {
       if (instinct && SCORING[instinct]) {
         Object.keys(SCORING[instinct]).forEach(type => { scores[type] += SCORING[instinct][type]; });
