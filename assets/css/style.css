@@ -104,7 +104,7 @@ h3 { font-family: 'Fraunces', serif; font-size: clamp(1.2rem, 2vw, 1.5rem); font
 .result-label::before, .result-label::after { content: ''; width: 18px; height: 2px; background: var(--green-dk); border-radius: 2px; }
 .result-name { font-family: 'Fraunces', serif; font-size: clamp(2rem, 6vw, 3rem); font-weight: 900; color: var(--purple-dk); margin-bottom: 24px; line-height: 1.1; letter-spacing: -.02em; }
 .result-desc { font-size: .9rem; color: var(--ink-2); line-height: 1.8; text-align: left; margin-bottom: 24px; }
-.result-inbox { font-size: .82rem; color: var(--ink-3); line-height: 1.6; margin-bottom: 20px; }
+.result-inbox { font-size: .82rem; color: var(--green-dk); line-height: 1.6; margin-bottom: 20px; }
 .quiz-footer { margin-top: 60px; padding: 40px 20px 24px; text-align: center; font-size: .7rem; color: var(--ink-3); line-height: 1.8; }
 .quiz-footer a { color: var(--purple); font-weight: 600; }
 .quiz-footer a:hover { text-decoration: underline; }
