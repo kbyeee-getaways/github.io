@@ -116,7 +116,7 @@ h3 { font-family: 'Fraunces', serif; font-size: clamp(1.2rem, 2vw, 1.5rem); font
 .quiz-footer a:hover { text-decoration: underline; }
 @media (max-width: 480px) { .quiz-card { padding: 24px 18px; } .quiz-email-card { padding: 24px 18px; } .quiz-result { padding: 24px 18px; } }
 
-/* ─── MAILERLITE FORM ─── */
+/* ─── SOCIAL MAILERLITE FORM ─── */
 @import url("https://assets.mlcdn.com/fonts.css?version=1778769");
 
 .ml-form-embedSubmitLoad {
@@ -156,7 +156,8 @@ h3 { font-family: 'Fraunces', serif; font-size: clamp(1.2rem, 2vw, 1.5rem); font
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
-#mlb2-41665694.ml-form-embedContainer {
+#mlb2-41665694.ml-form-embedContainer,
+#mlb2-42565318.ml-form-embedContainer {
   box-sizing: border-box;
   display: table;
   margin: 0 auto;
@@ -166,11 +167,16 @@ h3 { font-family: 'Fraunces', serif; font-size: clamp(1.2rem, 2vw, 1.5rem); font
 #mlb2-41665694.ml-form-embedContainer h4,
 #mlb2-41665694.ml-form-embedContainer p,
 #mlb2-41665694.ml-form-embedContainer span,
-#mlb2-41665694.ml-form-embedContainer button {
+#mlb2-41665694.ml-form-embedContainer button,
+#mlb2-42565318.ml-form-embedContainer h4,
+#mlb2-42565318.ml-form-embedContainer p,
+#mlb2-42565318.ml-form-embedContainer span,
+#mlb2-42565318.ml-form-embedContainer button {
   text-transform: none !important;
   letter-spacing: normal !important;
 }
-#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper {
+#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper,
+#mlb2-42565318.ml-form-embedContainer .ml-form-embedWrapper {
   background-color: #f6f6f6;
   border-width: 0px;
   border-color: transparent;
@@ -182,23 +188,49 @@ h3 { font-family: 'Fraunces', serif; font-size: clamp(1.2rem, 2vw, 1.5rem); font
   padding: 0;
   position: relative;
 }
+
 #mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper.embedPopup,
-#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper.embedDefault { width: 400px; }
-#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper.embedForm { max-width: 400px; width: 100%; }
-#mlb2-41665694.ml-form-embedContainer .ml-form-align-left { text-align: left; }
-#mlb2-41665694.ml-form-embedContainer .ml-form-align-center { text-align: center; }
-#mlb2-41665694.ml-form-embedContainer .ml-form-align-default { display: table-cell !important; vertical-align: middle !important; text-align: center !important; }
-#mlb2-41665694.ml-form-embedContainer .ml-form-align-right { text-align: right; }
-#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedHeader img { border-top-left-radius: 4px; border-top-right-radius: 4px; height: auto; margin: 0 auto !important; max-width: 100%; }
+#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper.embedDefault,
+#mlb2-42565318.ml-form-embedContainer .ml-form-embedWrapper.embedPopup,
+#mlb2-42565318.ml-form-embedContainer .ml-form-embedWrapper.embedDefault { width: 400px; }
+
+#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper.embedForm,
+#mlb2-42565318.ml-form-embedContainer .ml-form-embedWrapper.embedForm { max-width: 400px; width: 100%; }
+
+#mlb2-41665694.ml-form-embedContainer .ml-form-align-left,
+#mlb2-42565318.ml-form-embedContainer .ml-form-align-left { text-align: left; }
+
+#mlb2-41665694.ml-form-embedContainer .ml-form-align-center,
+#mlb2-42565318.ml-form-embedContainer .ml-form-align-center { text-align: center; }
+
+#mlb2-41665694.ml-form-embedContainer .ml-form-align-default,
+#mlb2-42565318.ml-form-embedContainer .ml-form-align-default { display: table-cell !important; vertical-align: middle !important; text-align: center !important; }
+
+#mlb2-41665694.ml-form-embedContainer .ml-form-align-right,
+#mlb2-42565318.ml-form-embedContainer .ml-form-align-right { text-align: right; }
+
+#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedHeader img,
+#mlb2-42565318.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedHeader img { border-top-left-radius: 4px; border-top-right-radius: 4px; height: auto; margin: 0 auto !important; max-width: 100%; }
+
 #mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody,
-#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody { padding: 20px 20px 0 20px; }
+#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody,
+#mlb2-42565318.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody,
+#mlb2-42565318.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody { padding: 20px 20px 0 20px; }
+
 #mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent,
-#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent { text-align: left; margin: 0 0 20px 0; }
+#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent,
+#mlb2-42565318.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent,
+#mlb2-42565318.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent { text-align: left; margin: 0 0 20px 0; }
+
 #mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent h4,
-#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent h4 { color: #a028a0; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size: 30px; font-weight: 400; margin: 0 0 10px 0;
-  text-align: left; word-break: break-word; }
+#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent h4,
+#mlb2-42565318.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent h4,
+#mlb2-42565318.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent h4 { color: #a028a0; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size: 30px; font-weight: 400; margin: 0 0 10px 0; text-align: left; word-break: break-word; }
+
 #mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent p,
-#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent p {
+#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent p,
+#mlb2-42565318.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent p,
+#mlb2-42565318.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent p {
   color: #000000;
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
   font-size: 14px;
@@ -207,30 +239,46 @@ h3 { font-family: 'Fraunces', serif; font-size: clamp(1.2rem, 2vw, 1.5rem); font
   margin: 0 0 10px 0;
   text-align: left;
 }
+
 #mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent p:last-child,
-#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent p:last-child {
+#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent p:last-child,
+#mlb2-42565318.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent p:last-child,
+#mlb2-42565318.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent p:last-child {
   margin: 0;
 }
-#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody form {
+
+#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody form,
+#mlb2-42565318.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody form {
   margin: 0;
   width: 100%;
 }
+
 #mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-formContent,
-#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow {
+#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow,
+#mlb2-42565318.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-formContent,
+#mlb2-42565318.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow {
   margin: 0 0 20px 0;
   width: 100%;
 }
-#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow {
+
+#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow,
+#mlb2-42565318.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow {
   float: left;
 }
-#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow {
+
+#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow,
+#mlb2-42565318.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow {
   margin: 0 0 10px 0;
   width: 100%;
 }
-#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow.ml-last-item {
+
+#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow.ml-last-item,
+#mlb2-42565318.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow.ml-last-item {
   margin: 0;
 }
-#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input {
+
+#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input,
+#mlb2-42565318.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input {
   background-color: #ffffff !important;
   color: #333333 !important;
   border-color: #cccccc;
@@ -247,18 +295,31 @@ h3 { font-family: 'Fraunces', serif; font-size: clamp(1.2rem, 2vw, 1.5rem); font
   box-sizing: border-box !important;
   max-width: 100% !important;
 }
+
 #mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input::-webkit-input-placeholder,
-#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input::-webkit-input-placeholder { color: #333333; }
+#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input::-webkit-input-placeholder,
+#mlb2-42565318.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input::-webkit-input-placeholder,
+#mlb2-42565318.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input::-webkit-input-placeholder { color: #333333; }
+
 #mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input::-moz-placeholder,
-#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input::-moz-placeholder { color: #333333; }
+#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input::-moz-placeholder,
+#mlb2-42565318.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input::-moz-placeholder,
+#mlb2-42565318.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input::-moz-placeholder { color: #333333; }
+
 #mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input:-ms-input-placeholder,
-#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input:-ms-input-placeholder { color: #333333; }
-#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit {
+#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input:-ms-input-placeholder,
+#mlb2-42565318.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input:-ms-input-placeholder,
+#mlb2-42565318.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input:-ms-input-placeholder { color: #333333; }
+
+#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit,
+#mlb2-42565318.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit {
   margin: 0 0 20px 0;
   float: left;
   width: 100%;
 }
-#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button {
+
+#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button,
+#mlb2-42565318.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button {
   background-color: #a028a0 !important;
   border: none !important;
   border-radius: 4px !important;
@@ -274,10 +335,14 @@ h3 { font-family: 'Fraunces', serif; font-size: clamp(1.2rem, 2vw, 1.5rem); font
   width: 100% !important;
   box-sizing: border-box !important;
 }
-#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button.loading {
+
+#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button.loading,
+#mlb2-42565318.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button.loading {
   display: none;
 }
-#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button:hover {
+
+#mlb2-41665694.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button:hover,
+#mlb2-42565318.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button:hover {
   background-color: #3a9e5f !important;
 }
 .ml-error input, .ml-error textarea, .ml-error select { border-color: red !important; }
@@ -290,12 +355,12 @@ h3 { font-family: 'Fraunces', serif; font-size: clamp(1.2rem, 2vw, 1.5rem); font
 }
 
 /* ─── SUBSCRIBE WRAP ─── */
-.subscribe-wrap {
+/* .subscribe-wrap {
   width: 100%;
   padding: 8px 24px;
   box-sizing: border-box;
   margin-top: 12px;
-}
+} */
 
 /* ─── INQUIRY PAGE ─── */
 .inquiry-nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 5%; border-bottom: 1px solid var(--border); background: rgba(253,249,253,.95); backdrop-filter: blur(16px); position: sticky; top: 0; z-index: 100; margin-bottom: 52px; }
@@ -789,8 +854,8 @@ h3 { font-family: 'Fraunces', serif; font-size: clamp(1.2rem, 2vw, 1.5rem); font
 #contact h2 { color: var(--ink); margin-bottom: 10px; }
 .contact-col-heading { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 700; color: var(--purple-dk); margin-bottom: 6px; text-align: center}
 .contact-col-heading + p { text-align: center; }
-/* Single column now — change to 1fr 1fr when adding Stay in the Loop */
-.contact-grid { display: grid; grid-template-columns: 1fr; gap: 48px; max-width: 640px; }
+/* Was Single column — changed to 1fr 1fr when added Subscribe */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; max-width: 640px; }
 .contact-hours { margin-top: 44px; padding-top: 36px; border-top: 1px solid var(--border); max-width: 640px; }
 .contact-info { max-width: 600px; }
 .c-details { display: flex; flex-direction: column; gap: 18px; margin-top: 8px; }
@@ -872,7 +937,7 @@ h3 { font-family: 'Fraunces', serif; font-size: clamp(1.2rem, 2vw, 1.5rem); font
   text-decoration: underline;
 }
 
-/* ─── MAILERLITE FORM ─── */
+/* ─── PREFERENCES MAILERLITE FORM ─── */
 
 .ml-form-embedSubmitLoad {
   display: inline-block;
