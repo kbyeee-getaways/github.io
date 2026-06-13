@@ -456,11 +456,11 @@
       <div class="reveal">
         <h3 class="contact-col-heading">Join the Getaway Crew!</h3>
         <p class="body-sm" style="margin-bottom:24px;">Get travel inspo, exclusive deals, and travel tips delivered straight to your inbox.</p>
-        <div id="mlb2-41665694" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-41665694">
+        <div id="mlb2-42565318" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-42565318">
           <div class="ml-form-align-center">
             <div class="ml-form-embedWrapper embedForm">
               <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
-                <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/2343008/forms/188192264136165372/subscribe" data-code="" method="post" target="_blank">
+                <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/2343008/forms/190170308610622856/subscribe" data-code="" method="post" target="_blank">
                   <div class="ml-form-formContent">
                     <div class="ml-form-fieldRow">
                       <div class="ml-field-group ml-field-name ml-validate-required">
@@ -611,15 +611,6 @@ if (carousel) {
     document.body.style.overflow = '';
   };
 
-  // Newsletter -- add back when add stay in touch back
-  // function handleNewsletter() {
-  //   const email = document.getElementById('nlEmail').value.trim();
-  //   if (!email || !email.includes('@')) { document.getElementById('nlEmail').focus(); return; }
-  //   document.getElementById('nlForm').style.display = 'none';
-  //   document.getElementById('nlSuccess').style.display = 'block';
-  // }
-  // document.getElementById('nlEmail').addEventListener('keydown', e => { if (e.key === 'Enter') handleNewsletter(); });
-
   // Scroll reveal with stagger
   const revealObs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -664,6 +655,19 @@ if (carousel) {
     document.querySelectorAll('.reveal:not(.on)').forEach(el => el.classList.add('on'));
   }, 1500);
   }); // end DOMContentLoaded
+</script>
+
+<!-- SUBSCRIBE SCRIPT - mailerlite -->
+<script>
+  function ml_webform_success_42565318() {
+    var $ = ml_jQuery || jQuery;
+    $('.ml-subscribe-form-42565318 .row-success').show();
+    $('.ml-subscribe-form-42565318 .row-form').hide();
+  }
+</script>
+<script src="https://groot.mailerlite.com/js/w/webforms.min.js?v83147fa8ce2d95cb73ece7f28b469519" type="text/javascript"></script>
+<script>
+  fetch("https://assets.mailerlite.com/jsonp/2343008/forms/190170308610622856/takel")
 </script>
 </body>
 </html>
