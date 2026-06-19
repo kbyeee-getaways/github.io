@@ -173,6 +173,13 @@
   </div>
 
 <script>
+  const SCORING = {
+    chill:      { leisureTraveler: 3, adventureSeeker: 1, explorer: 0, balancedTraveler: 2, magicMaker: 0 },
+    explore:    { leisureTraveler: 0, adventureSeeker: 2, explorer: 3, balancedTraveler: 1, magicMaker: 1 },
+    celebrate:  { leisureTraveler: 1, adventureSeeker: 0, explorer: 0, balancedTraveler: 2, magicMaker: 1 },
+    experience: { leisureTraveler: 0, adventureSeeker: 2, explorer: 1, balancedTraveler: 2, magicMaker: 3 }
+  };
+  
   const GROUP_IDS = {
   leisureTraveler:  'bW1NxJ',
   adventureSeeker:  'eXPOyW',
