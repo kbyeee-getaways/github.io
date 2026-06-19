@@ -179,7 +179,7 @@
     celebrate:  { leisureTraveler: 1, adventureSeeker: 0, explorer: 0, balancedTraveler: 2, magicMaker: 1 },
     experience: { leisureTraveler: 0, adventureSeeker: 2, explorer: 1, balancedTraveler: 2, magicMaker: 3 }
   };
-  
+
   const GROUP_IDS = {
   leisureTraveler:  'bW1NxJ',
   adventureSeeker:  'eXPOyW',
@@ -187,8 +187,6 @@
   balancedTraveler: 'eZgQAJ',
   magicMaker:       'e1MA0R'
   };
-
-  const SENDER_API_TOKEN = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNzk5Mzk4YjA3MjQyODVjYmIyMWMyM2Y3OTdkY2Y0NjZkZDBlYjIyNWUzZDNmZDAxM2JmMjdlODg3NjI4ZWUyNzI1YzVmNjg4ZTJkNTdhNGUiLCJpYXQiOjE3ODE4NzU0MzYuMTAyMDksIm5iZiI6MTc4MTg3NTQzNi4xMDIwOTMsImV4cCI6NDkzNTQ3NTQzNi4wOTk4Nywic3ViIjoiMTA3OTU4NCIsInNjb3BlcyI6W119.Iy2D5ZU-pVXRuVSChUChmGKMh-8aoXBRUWfm_22lgurFPbAL0OfVFBGm83lV8ayL5QnW-EWzOoYARaKWKm2QTyqixlk-IffmoQxjCzYkhbGoR3Y37GxTDJ5-kdAMoJmBK7AWvPHgRonaNVwMxhyyvMsmlCNpPg30qhvHOMpN6ZRPu0rVCREi5bToq884B5zKFpw48EHfxAKyiRDAVrc6SlWVahXbqBqVjWtORDleuQzhLU-n5J3WXK2sEJpL0Kw75TA5vwE56Lo_qKcP29DfZYqCbdMvX1weNypu7ZXjAhVlROI_Hj3bwF6r-CSqZ1QtAWFJdJAMo404_Z9JIWH2cFOTiaIFmlzJbOFn3h7e8_pOg07rXNXJRwZaRg1CW97HxwZJ_GPWXK6cw-6epxcW5Ij8udd3-ht5yWxRi0O4g3tTiXBbdVSVxR5lMqbU0kw0KuHAY8PtkpaWXWqSgawI7ogjFJ4iqeHFL6kGiLx3ijiB_lgxZXLDcNqSQhnOmm76pNTaC4Q4nf9NDmzXWG4boI5IJ80_DDsl9dYVPzfmw-lkanDuUpjb6czbekeCR5uL5ePR-fyCsQg0CW6be2vSY2msnthJ7eLxtTSPNWvoCYcUEYsO_PbjAhM_0lMgr72j0bldC7QnmeMf_V4X5_Vx0rYBzDEvypaeTIoZJw8Ge1o';
 
   const RESULTS = {
     leisureTraveler: {
@@ -273,47 +271,45 @@
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function handleResultsSubmit(event) {
-  event.preventDefault();
-  const firstName = document.getElementById('ecFirstName').value.trim();
-  const lastName = document.getElementById('ecLastName').value.trim();
-  const email = document.getElementById('ecEmail').value.trim();
-  const submitBtn = document.getElementById('ecSubmitBtn');
+  function handleResultsSubmit(event) {
+    event.preventDefault();
+    const firstName = document.getElementById('ecFirstName').value.trim();
+    const lastName = document.getElementById('ecLastName').value.trim();
+    const email = document.getElementById('ecEmail').value.trim();
+    const submitBtn = document.getElementById('ecSubmitBtn');
 
-  submitBtn.disabled = true;
-  submitBtn.textContent = 'Submitting...';
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
 
-  fetch('https://api.sender.net/v2/subscribers', {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Bearer ' + SENDER_API_TOKEN,
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
-    },
-    body: JSON.stringify({
-      email: email,
-      firstname: firstName,
-      lastname: lastName,
-      groups: [GROUP_IDS[pendingResultKey]]
+    fetch('https://travel-quiz-proxy.brandi-c5f.workers.dev/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: email,
+        firstname: firstName,
+        lastname: lastName,
+        groupId: GROUP_IDS[pendingResultKey]
+      })
     })
-  })
-  .then(response => response.json())
-  .then(data => {
-    if (data.success) {
-      showResult(RESULTS[pendingResultKey]);
-    } else {
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        showResult(RESULTS[pendingResultKey]);
+      } else {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Get My Results!';
+        alert('Something went wrong. Please try again.');
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
       submitBtn.disabled = false;
       submitBtn.textContent = 'Get My Results!';
       alert('Something went wrong. Please try again.');
-    }
-  })
-  .catch(error => {
-    console.error('Error:', error);
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Get My Results!';
-    alert('Something went wrong. Please try again.');
-  });
-}
+    });
+  }
 
   function showResult(result) {
     document.getElementById('emailCapture').classList.remove('active');
