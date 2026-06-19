@@ -11,13 +11,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="../assets/css/style.css"/>
- 
-  <!-- MailerLite Universal -->
-  <script>
-    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);},l=d.createElement(e),l.async=1,l.src=u,n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
-    ml('account', '2343008');
-  </script>
-  <!-- End MailerLite Universal -->
 </head>
 <body class="quiz-body">
 
@@ -136,14 +129,20 @@
 
     <!-- EMAIL CAPTURE -->
     <div class="quiz-email-card" id="emailCapture">
-  <div id="ml-form-leisureTraveler" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="GGtjKQ"></div></div>
-  <div id="ml-form-adventureSeeker" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="G6zRUp"></div></div>
-  <div id="ml-form-explorer" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="dn3QoB"></div></div>
-  <!-- <div id="ml-form-partyStarter" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="jgCTfg"></div></div> -->
-  <div id="ml-form-balancedTraveler" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="7HvKQ1"></div></div>
-  <!-- <div id="ml-form-designatedPlanner" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="22ahVV"></div></div> -->
-  <div id="ml-form-magicMaker" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="zmPyLy"></div></div>
-</div>
+      <h3 class="ec-title">Almost There!</h3>
+      <p class="ec-subtitle">Enter your name and email and you'll receive your results and your free guide shortly!</p>
+      <form id="resultsForm" onsubmit="handleResultsSubmit(event)">
+        <input type="text" id="ecFirstName" placeholder="First Name" required autocomplete="given-name">
+        <input type="text" id="ecLastName" placeholder="Last Name" required autocomplete="family-name">
+        <input type="email" id="ecEmail" placeholder="Email" required autocomplete="email">
+        <button type="submit" class="ec-submit" id="ecSubmitBtn">Get My Results!</button>
+      </form>
+      <!-- <div id="ml-form-leisureTraveler" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="GGtjKQ"></div></div>
+      <div id="ml-form-adventureSeeker" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="G6zRUp"></div></div>
+      <div id="ml-form-explorer" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="dn3QoB"></div></div>
+      <div id="ml-form-balancedTraveler" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="7HvKQ1"></div></div>
+      <div id="ml-form-magicMaker" class="ml-form-wrapper" style="display:none;"><div class="ml-embedded" data-form="zmPyLy"></div></div> -->
+    </div>
 
     <!-- RESULT -->
     <div class="quiz-result" id="quizResult">
@@ -151,7 +150,7 @@
       <div class="result-name" id="resultName"></div>
       <div class="result-desc" id="resultDesc"></div>
 
-      <p class="result-inbox">Check your inbox (or spam). Your free guide is on its way!</p>
+      <p class="result-inbox">Check your inbox (or spam). Your freebie is on its way!</p>
     </div>
 
   </div>
@@ -174,58 +173,39 @@
     experience: { leisureTraveler: 0, adventureSeeker: 2, explorer: 1, balancedTraveler: 2, magicMaker: 3 }
   };
 
-  const ML_FORM_IDS = {
-    leisureTraveler:        '41668158',
-    adventureSeeker:  '41668190',
-    explorer:         '41667731',
-    // partyStarter:     '41668177',
-    balancedTraveler: '41668165',
-    // designatedPlanner:       '41668150',
-    magicMaker:       '41668181'
+  const GROUP_IDS = {
+  leisureTraveler:  'bW1NxJ',
+  adventureSeeker:  'eXPOyW',
+  explorer:         'bYZPzK',
+  balancedTraveler: 'eZgQAJ',
+  magicMaker:       'e1MA0R'
   };
 
   const RESULTS = {
     leisureTraveler: {
       name: 'The Leisure Traveler',
       desc: "You didn't book this trip to have a packed schedule. You booked it to actually breathe. Your version of a perfect day involves a good view, a cold drink, and absolutely nowhere you have to be. You're not being lazy, you're being intentional. Rest IS the trip.<br><br>Trips that were made for you: all inclusive resorts, adults only properties, spa retreats, overwater bungalows, private villa rentals. Anywhere that lets you fully unplug, recharge, and come home actually feeling like you went on vacation.",
-      freebie: 'Finding Your Perfect Escape',
-      group: 'GGtjKQ'
+      freebie: 'Finding Your Perfect Escape'
     },
     adventureSeeker: {
       name: 'The Adventure Seeker',
       desc: "You want the comfort of a home base but you are NOT there to just sit by the pool. Every excursion, every shore day, every unplanned adventure is exactly why you came. You want the best of both worlds and you refuse to apologize for it.<br><br>Trips that were made for you: excursion heavy all inclusive stays, active cruise itineraries, adventure focused trip styles that mix comfort with getting out and doing something worth talking about.",
-      freebie: '6 Questions to Ask Before You Book Any Excursion',
-      group: 'G6zRUp'
+      freebie: '6 Questions to Ask Before You Book Any Excursion'
     },
     explorer: {
       name: 'The Explorer',
       desc: "Staying in one place the whole trip sounds like a waste of a passport to you. You want to wake up somewhere new, soak it in, and do it again tomorrow. The journey is just as much the point as the destination and you collect experiences the way other people collect souvenirs.<br><br>Trips that were made for you: cruise itineraries, multi destination trips, island hopping, river cruises. Anything that keeps you moving and puts something new in front of you every single day.",
-      freebie: 'How to See More Without Doing Too Much',
-      group: 'dn3QoB'
+      freebie: 'How to See More Without Doing Too Much'
     },
-    // partyStarter: {
-    //   name: 'The Party Starter',
-    //   desc: "You don't just want a good trip. You want an experience that actually delivers. You set the standard high because you know what a great trip feels like and anything less is not worth the flight. The vibe has to be right, the energy has to match, and the whole thing needs to feel like it was worth every penny.<br><br>Trips that were made for you: lively all inclusive resorts, adults only properties with nightlife and beach club energy, girls trips, birthday trips and group getaways where the atmosphere is everything.",
-    //   freebie: "Where to Go Based on the Vibe You're Going For",
-    //   group: 'jgCTfg'
-    // },
     balancedTraveler: {
       name: 'The Balanced Traveler',
       desc: "Beach day. Good dinner. Night out. Lazy pool morning. Yes to all of it. You're not indecisive. You just know that the best trips have range. You can go from laid back to turned up without missing a beat and you want a trip that can keep up with you.<br><br>Trips that were made for you: resorts and cruise lines that offer both relaxation and nightlife, destinations and trip styles that give you the full experience without having to choose between a good time and a good rest.",
-      freebie: 'What to Look For Before You Commit',
-      group: '7HvKQ1'
+      freebie: 'What to Look For Before You Commit'
     },
-    // designatedPlanner: {
-    //   name: 'The Designated Planner',
-    //   desc: "Every group has one. The person who gets tagged in every 'we should go somewhere' post, fielding 15 different opinions, chasing deposits, and somehow making it all come together. You don't just book trips, you coordinate experiences for the people you love. The details matter because the people matter and somebody has to make sure it all goes right.",
-    //   freebie: 'Get Out The Group Chat!',
-    //   group: '22ahVV'
-    // },
     magicMaker: {
       name: 'The Magic Maker',
       desc: "You don't just want a good trip. You want a trip that feels like it was made for exactly this moment. Maybe it's a bucket list destination, maybe it's a once in a lifetime experience, maybe it's something you've been dreaming about for years. Whatever it is, the details matter and every part of it should feel intentional.<br><br>Trips that were made for you: theme park vacations, bucket list experiences, family trips where every detail needs to be just right, and once in a lifetime journeys that deserve more than a quick Google search.",
-      freebie: 'Plannign a Trip Worth the Wait',
-      group: 'zmPyLy'
+      freebie: 'Planning a Trip Worth the Wait'
     },
   };
 
@@ -279,24 +259,50 @@
   function showEmailCapture() {
   document.querySelectorAll('.quiz-card').forEach(c => c.classList.remove('active'));
   document.getElementById('quizProgress').style.display = 'none';
-  const resultKey = calculateResult();
-  pendingResultKey = resultKey;
-  const numericId = ML_FORM_IDS[resultKey];
-  // Show correct form
-  document.querySelectorAll('.ml-form-wrapper').forEach(f => f.style.display = 'none');
-  document.getElementById('ml-form-' + resultKey).style.display = 'block';
-  // Hook into success function
-  window['ml_webform_success_' + numericId] = function() {
-    var $ = window.ml_jQuery || window.jQuery;
-    if ($) {
-      $('.ml-subscribe-form-' + numericId + ' .row-success').show();
-      $('.ml-subscribe-form-' + numericId + ' .row-form').hide();
-    }
-    setTimeout(function() { showResult(RESULTS[pendingResultKey]); }, 800);
-  };
+  pendingResultKey = calculateResult();
   document.getElementById('emailCapture').classList.add('active');
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+  function handleResultsSubmit(event) {
+    event.preventDefault();
+    const firstName = document.getElementById('ecFirstName').value.trim();
+    const lastName = document.getElementById('ecLastName').value.trim();
+    const email = document.getElementById('ecEmail').value.trim();
+    const submitBtn = document.getElementById('ecSubmitBtn');
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+
+    fetch('https://travel-quiz-proxy.brandi-c5f.workers.dev/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: email,
+        firstname: firstName,
+        lastname: lastName,
+        groupId: GROUP_IDS[pendingResultKey]
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        showResult(RESULTS[pendingResultKey]);
+      } else {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Get My Results!';
+        alert('Something went wrong. Please try again.');
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Get My Results!';
+      alert('Something went wrong. Please try again.');
+    });
+  }
 
   function showResult(result) {
     document.getElementById('emailCapture').classList.remove('active');
@@ -307,15 +313,6 @@
   }
 
 
-
-  // TODO: wire up when API key + group IDs are ready
-  // async function submitToMailerLite(name, email, groupId) {
-  //   await fetch('https://connect.mailerlite.com/api/subscribers', {
-  //     method: 'POST',
-  //     headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer YOUR_API_KEY_HERE' },
-  //     body: JSON.stringify({ email, fields: { name }, groups: [groupId] })
-  //   });
-  // }
 </script>
 
 </body>
