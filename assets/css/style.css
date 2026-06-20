@@ -270,6 +270,7 @@ h3 { font-family: 'Fraunces', serif; font-size: clamp(1.2rem, 2vw, 1.5rem); font
   color: var(--purple-dk);
   white-space: nowrap;
 }
+
 /* Desktop links — shown inside the mobile overlay only, hidden in nav bar */
 .nav-links { display: none; }
 
@@ -803,14 +804,15 @@ h3 { font-family: 'Fraunces', serif; font-size: clamp(1.2rem, 2vw, 1.5rem); font
 .privacy-wrap a { color: var(--purple); }
 
 /* ─── FOOTER ─── */
-footer { background: #0e5c80; color: #fff; text-align: center; padding: 48px 5% 32px; }
-.footer-logo { display: flex; justify-content: center; margin-bottom: 16px; }
+footer { background: #0e5c80; color: #fff; text-align: center; padding: 40px 5% 32px; }
+.footer-logo { display: flex; justify-content: center; margin-bottom: 50px; }
 .footer-logo img { height: 52px; width: auto; }
 footer p { font-size: .82rem; line-height: 1.9; }
 .footer-hours {
   display: inline-grid; grid-template-columns: auto 1fr;
   gap: 4px 20px; margin: 14px auto; font-size: .8rem;
 }
+.footer-brand-text { font-family: 'Fraunces', serif; font-weight: 700; font-size: 1.1rem; color: var(--purple-pale); white-space: nowrap;}
 .footer-hours .h-day { color: rgba(255,255,255,.6); white-space: nowrap; padding: 2px 0; }
 .footer-hours .h-time { font-weight: 500; color: #fff; padding: 2px 0; }
 footer a { color: rgba(255,255,255,.85); transition: color .2s; }
