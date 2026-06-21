@@ -81,10 +81,10 @@
 <header id="nav">
   <div class="nav-inner">
     <a href="#hero" class="nav-logo" aria-label="Kbyeee Getaways home">
-      <img src="assets/images/logo.png" alt="Kbyeee Getaways"/>
+      <img src="assets/images/logo_t.png" alt="Kbyeee Getaways"/>
     </a>
     <div class="nav-cta-center">
-      <a href="/plan" class="btn btn-purple arr" rel="noopener">Plan My Getaway!</a>
+       <span class="nav-brand-text">Kbyeee Getaways</span>
     </div>
     <div class="nav-right">
       <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
@@ -108,13 +108,18 @@
 <!-- HERO -->
 <section id="hero">
   <div class="hero-inner">
-    <h1>Pack your bags.<br><em>Leave the rest to us.</em></h1>
-    <p class="body-lg">Custom travel planning built around you. Every detail handled from start to finish so you can just show up and enjoy the ride.</p>
-    <div class="hero-actions">
-      <a href="/plan" class="btn btn-white btn-lg arr" rel="noopener">Plan My Getaway!</a>
+    <div class="hero-text">
+      <h1>Pack your bags.<br><em>Leave the rest to us.</em></h1>
+      <p class="body-lg">Custom travel planning built around you. Every detail handled from start to finish so you can just show up and enjoy the ride.</p>
+      <div class="hero-actions">
+        <a href="/plan" class="btn btn-white btn-lg arr" rel="noopener">Plan My Getaway!</a>
+      </div>
+      <div class="hero-trust">
+        <span class="hero-trust-stars">★★★★★</span>&nbsp;5-star rated by real travelers
+      </div>
     </div>
-    <div class="hero-trust">
-      <span class="hero-trust-stars">★★★★★</span>&nbsp;5-star rated by real travelers
+    <div class="hero-img-wrap">
+      <img src="assets/images/hero-img.png" alt="Travelers enjoying the water on a Kbyeee Getaways trip" />
     </div>
   </div>
 </section>
@@ -146,13 +151,13 @@
       <div class="meet-grid reveal">
         <div class="intro-right">
           <div class="photo-frame">
-            <img src="assets/images/brandi.png" alt="Brandi, Travel Advisor" />
+            <img src="assets/images/beach.jpg" alt="Brandi, Travel Advisor" />
           </div>
         </div>
         <div class="meet-text">
           <span class="eyebrow">Meet Brandi</span>
           <h2>Heeey! I'm Brandi.</h2>
-          <p class="body-lg">Travel has been part of my whole life. Road trips, travel sports, and the military were my foundation. When I became a travel advisor, it just made sense; although the perks didn't hurt either. What kept me here is the work itself. The research, the logistics, the details that make a trip actually come together — that is my jam!</p>
+          <p class="body-lg">Travel has been part of my whole life. Road trips, travel sports, and the military were my foundation. When I became a travel advisor, it just made sense; although the perks didn't hurt either. What kept me here is the work itself. The research, the logistics, the details that make a trip actually come together... that is my jam!</p>
           <p class="body-lg" style="margin-top:14px;">I take your vision, turn it into a real plan, and handle every detail so you can finally stop scrolling and start seeing the world. Let's turn <strong style="color:--purple-dk;">"one day"</strong> into <strong style="color:var(--green-dk);">TODAY.</strong></p>
           <p class="body-lg" style="margin-top:14px;">I'd love to make your next getaway my favorite obsession.</p>
           <div style="text-align:center;">
@@ -173,6 +178,9 @@
           <span class="eyebrow">Why Kbyeee Getaways</span>
           <h2>You Dream It. <br> We Plan It.</h2>
           <p class="body-lg">Overwhelmed by the options? That is exactly what we are here for. Here is what you can expect when you work with us.</p>
+          <div class="value-img-wrap">
+            <img src="assets/images/value-img.png" alt="Travel destination" />
+          </div>
         </div>
         <div class="promise-list">
           <div class="promise-item">
@@ -244,18 +252,22 @@
     <div class="services-header reveal">
       <span class="eyebrow eyebrow-light">What We Offer</span>
       <h2>Ready to Get Started?</h2>
-      <p>Two ways to work with us. Both lead to a great trip.</p>
+      <p>Two ways to work with Kbyeee Getaways. Both lead to a great trip.</p>
+    </div>
+
+    <div class="services-thumbs reveal">
+      <img src="assets/images/tropic.png" alt="Tropical beach getaway" />
+      <img src="assets/images/cruise.png" alt="Cruise vacation" />
+      <img src="assets/images/dream-pic.png" alt="Bali temple at sunset" />
     </div>
 
     <div class="services-grid">
       <a href="/plan" class="service-card reveal" target="_blank" rel="noopener">
-        <div class="sc-icon">✈️</div>
         <h3>Custom Getaways</h3>
         <p>Full-service travel planning built around your vision, budget, and style. Vacations, cruises, group trips, destination weddings and more. Start with a free inquiry and we'll take it from there.</p>
         <span class="sc-cta">Start Your Inquiry</span>
       </a>
       <a href="https://traveljoy.com/bookings/9D1djVAGqm81bdurAkGBmPAX" class="service-card reveal" target="_blank" rel="noopener">
-        <div class="sc-icon">🌴</div>
         <h3>Posted Getaways</h3>
         <p>Pre-packaged deals posted periodically on social media. If you saw a deal and want to check availability or book, this is the place. Spots are limited so don't wait.</p>
         <span class="sc-cta">Check Availability</span>
@@ -263,6 +275,7 @@
     </div>
   </div>
 </section>
+
   <!-- PRICING -->
 <section id="pricing">
   <div class="wrap">
@@ -455,11 +468,11 @@
           <div class="cf-grid">
             <div class="cf-field">
               <label class="cf-label" for="cf-name">Your Name</label>
-              <input class="cf-input" type="text" id="cf-name" name="name" placeholder="Your name" required/>
+              <input class="cf-input" type="text" id="cf-name" name="name" required/>
             </div>
             <div class="cf-field">
               <label class="cf-label" for="cf-email">Your Email</label>
-              <input class="cf-input" type="email" id="cf-email" name="email" placeholder="you@email.com" required/>
+              <input class="cf-input" type="email" id="cf-email" name="email" required/>
             </div>
           </div>
           <div class="cf-field" style="margin-top:14px;">
@@ -475,7 +488,7 @@
       <!-- SUBSCRIBE -->
       <div class="reveal">
         <h3 class="contact-col-heading">Join the Getaway Crew!</h3>
-        <p class="body-sm" style="margin-bottom:24px;">Get travel inspo, exclusive deals, and travel tips delivered straight to your inbox.</p>
+        <p class="body-sm" style="margin-bottom:10px;">Get travel inspo, exclusive deals, and travel tips delivered straight to your inbox.</p>
         <div style="text-align: left" class="sender-form-field" data-sender-form-id="epYvVr"></div>
       </div>    
     </div>
@@ -483,7 +496,8 @@
   
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo"><img src="assets/images/logo.png" alt="Kbyeee Getaways"/></div>
+  <span class="footer-brand-text">Kbyeee Getaways</span>
+  <!-- <div class="footer-logo"><img src="assets/images/logo_t.png" alt="Kbyeee Getaways"/></div> -->
   <p>You Dream It. We Plan It. Your Perfect Getaway, Seamlessly Designed.</p>
   <div class="footer-hours">
     <div class="h-row"><span class="h-day">Mon - Fri</span><span class="h-time">12pm - 6pm EST</span></div>
